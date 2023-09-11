@@ -1,7 +1,7 @@
 - title: Watson Fellow
   from: 2023
   to: present
-  description: I have been awarded the <a href="https://watson.foundation/">Watson Fellowship</a>.
+  description: I have been awarded the <a href="https://watson.foundation/">Watson Fellowship</a>. Check out <a href="{{site.baseurl}}/stories">my blogs </a>
 
 - title: PhD Student, Stanford
   from: 2022
