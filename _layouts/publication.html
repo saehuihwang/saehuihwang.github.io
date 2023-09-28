@@ -48,8 +48,8 @@ layout: default
         document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
           var adobeDCView = new AdobeDC.View({clientId: "8913b8b0c5754cfcaf2029e658e36f44", divId: "adobe-dc-view"});
           adobeDCView.previewFile({
-            content:{location: {url: "https://documentservices.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf"}},
-            metaData:{fileName: "Bodea Brochure.pdf"}
+            content: { location: { url: "{{site.baseurl}}/assets/publications/{{page.buttons[0]['link']}}" } },
+            metaData: { fileName: "Main Text" }
           }, {embedMode: "IN_LINE"});
         });
       </script>

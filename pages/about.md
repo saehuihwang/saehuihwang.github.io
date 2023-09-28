@@ -11,15 +11,6 @@ I was trained as an electrical engineer by training, data science enthusiast by 
 
 I am also a crafter. I'm always thinking of how to combine my skills to better understand the natural world.
 
-In my free time, I like to go out dancing (my current obsession is Lindy Hop).
-
-{% include elements/video.html id="WQ4aDTtnl58" %}
-
-<div class="row">
-<!-- {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
-{% include about/skills.html title="Other Skills" source=site.data.other-skills %} -->
-</div>
-
 <div class="row">
 {% include about/timeline.html %}
 </div>
