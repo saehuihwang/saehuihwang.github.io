@@ -13,14 +13,17 @@
   %}
 
   <!-- Local Projects -->
-  {% for project in site.projects %} {%- if page.layout == "publication" -%} {%-
-  assign project_type = "publication" -%} {%- assign pub_id = pub.title |
-  slugify -%} {%- else -%} {%- assign project_id = project.name | slugify -%}
-  {%- assign project_img = project.image -%} {%- assign project_name =
-  project.name -%} {%- assign project_desc = project.description -%} {%- assign
-  project_tools = project.tools -%} {%- if project.external_url -%} {%- assign
-  project_url = project.external_url -%} {%- assign external = true -%} {%- else
-  -%} {%- assign project_url = project.url | relative_url -%} {%- assign
-  external = false -%} {%- endif -%} {%- assign project_type = "local" -%} {%-
-  endif -%} {%- include projects/project-card.html -%} {% endfor %}
+  {% for project in site.projects %} {%- assign project_img = project.image -%}
+  {%- assign project_name = project.name -%}{%- if project.layout ==
+  "publication" -%} {%- assign project_type = "publication" -%} {%- assign
+  pub_id = project.title | slugify -%} {%- assign journal = project.journal -%}
+  {%- assign title = project.title -%} {%- assign year = project.year -%} {%-
+  assign title = project.title -%} {%- assign doi = project.doi -%} {%- assign
+  authors = project.authors -%} {%- else -%} {%- assign project_id =
+  project.name | slugify -%} {%- assign project_desc = project.description -%}
+  {%- assign project_tools = project.tools -%} {%- if project.external_url -%}
+  {%- assign project_url = project.external_url -%} {%- assign external = true
+  -%} {%- else -%} {%- assign project_url = project.url | relative_url -%} {%-
+  assign external = false -%} {%- endif -%} {%- assign project_type = "local"
+  -%} {%- endif -%} {%- include projects/project-card.html -%} {% endfor %}
 </div>

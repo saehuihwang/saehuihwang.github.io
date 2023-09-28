@@ -1,7 +1,7 @@
 <div class="wow animated fadeIn" data-wow-delay=".15s">
   {% if project_type == "publication" %}
   <a
-    href="{{ pub.url }}"
+    href="{{ project_url }}"
     class="project card text-themed"
     {%-
     if
@@ -14,47 +14,51 @@
     endif
     -%}
   >
-    {%- if pub.image -%}
-    <div
+    {%- if project_img -%}
+    <img
+      id="{{ project_id }}-img"
       class="card-img-top"
-      style="background-image: url({{site.baseurl}}/assets/publications/{{pub.image}});"
-    ></div>
+      src="{{ project_img }}"
+      alt="{{ project_name }}"
+    />
     {%- endif -%}
     <div class="card-body">
       <p id="{{pub_id}}-year" class="card-text">
         <span class="badge badge-pill text-primary border border-primary ml-1"
-          >{{pub.year}}</span
+          >{{year}}</span
         >
       </p>
       <h6 id="{{ pub_id }}-name" class="card-title">
-        <p style="font-weight: 600; text-align: left">{{ pub.title }}</p>
+        <p style="font-weight: 600; text-align: left">{{ title }}</p>
       </h6>
       <p id="{{ pub_id }}-desc" class="card-text" , style="font-size: 10pt">
-        {% for auth in pub.authors %} {% if auth == pub.authors.last %} {% if
-        auth != pub.authors.first %}{% endif %} {% if auth contains "Griffin
-        Chure" %}<b>{{auth}}</b>{% else %}{{auth}}{% endif %} {% else %} {% if
-        auth contains "Griffin Chure" %}<b>{{auth}}</b>,{% if pub.authors.length
-        > 2 %},{% endif %}{% else %}{{auth}},{% if pub.authors.length > 2 %},{%
-        endif %} {% endif %} {% endif %} {% endfor %}
+        {% for auth in authors %} {% if auth == authors.last %} {% if auth !=
+        authors.first %}{% endif %} {% if auth contains "Saehui Hwang"
+        %}<b>{{auth}}</b>{% else %}{{auth}}{% endif %} {% else %} {% if auth
+        contains "Saehui Hwang" %}<b>{{auth}}</b>,{% if authors.length > 2 %},{%
+        endif %}{% else %}{{auth}},{% if authors.length > 2 %},{% endif %} {%
+        endif %} {% endif %} {% endfor %}
       </p>
       <p id="{{pub_id}}-info" class="card-text"></p>
-      {% if pub.status == 'under review' or pub.status == 'in revision' %}
+      {% if status == 'under review' or status == 'in revision' %}
       <span class="badge badge-pill text-danger border border-danger ml-1">
-        {{pub.status}}
+        {{status}}
       </span>
-      {% endif %} {% if pub.journal contains 'xiv' %}
+      {% endif %} {% if journal contains 'xiv' %}
       <span class="badge badge-pill text-primary border border-primary ml-1">
-        preprint available on {{pub.journal}}</span
+        preprint available on {{journal}}</span
       >
       {% else %}
+
       <span class="badge badge-pill text-success border border-success ml-1">
-        Published in {{pub.journal}}</span
+        Published in {{journal}}</span
       >
-      {% endif %} {% if pub.doi %}
+      {% endif %} {% if doi %}
+
       <span
         class="badge badge-pill text-secondary border border-secondary ml-1"
       >
-        DOI: {{pub.doi}}</span
+        DOI: {{doi}}</span
       >
       {% endif %}
     </div>

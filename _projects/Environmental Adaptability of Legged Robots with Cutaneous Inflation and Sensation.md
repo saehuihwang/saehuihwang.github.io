@@ -1,19 +1,24 @@
 ---
 layout: publication
 image: /assets/images/SNUPPY.jpg
-year: 2022
-doi: "10.48550/arXiv:2210.02593"
+year: 2023
+doi: "10.1002/aisy.202300172"
 title: >
-  Be Prospective, Not Retrospective: A Philosophy for Advancing Reproducibility in Modern Biological Research
+  Environmental Adaptability of Legged Robots with Cutaneous Inflation and Sensation
 abstract: >
-  The ubiquity of computation in modern scientific research inflicts new challenges for reproducibility. While most journals now require code and data be made available, the standards for organization, annotation, and validation remain lax, making the data and code often difficult to decipher or practically use. I believe that this is due to the documentation, collation, and validation of code and data only being done in retrospect. In this essay, I reflect on my experience contending with these challenges and present a philosophy for prioritizing reproducibility in modern biological research where balancing computational analysis and wet-lab experiments is commonplace. Modern tools used in scientific workflows (such as GitHub repositories) lend themselves well to this philosophy where reproducibility begins at project inception, not completion. To that end, I present and provide a programming-language agnostic template architecture that can be immediately copied and made bespoke to your next paper, whether your lab work is wet, dry, or somewhere in between.
+  In this article, a novel approach to enhance the maneuverability and adaptability of legged robots in challenging environments is proposed. This approach involves the integration of soft inflatable sensing skin, which provides additional mobile modes and environmental adaptability. The inflated skin's structural properties, such as buoyancy, volumed shape, and physical compliance, enable quadruped robots to extend their mobility to stable swimming and crawling modes. The inflated skin also offers physical protection through cushioning and backing effects, allowing robots to roll down stair-like structures. Furthermore, the integration of tactile sensors provides the host robot with accurate and intuitive contact information, enabling increased environmental adaptability and responsive behavior. The robot can protect itself from impacts, detect and detour obstacles, and dynamically interact with its surrounding environment. Overall, the proposed approach offers a synergistic integration of soft inflatable sensing skin and tactile sensors to enhance legged robots’ maneuverability and adaptability in harsh environments. The integrated system enables robots to achieve challenging missions, extending their capabilities beyond conventional locomotive modes. The proposed approach has significant potential applications in fields such as search and rescue, surveillance, and exploration.
 authors:
-  - Griffin Chure<sup>⛧</sup>
-journal: arXiv
+  - Taekyoung Kim
+  - Sudong Lee
+  - Shinwon Chang
+  - Saehui Hwang
+  - Yong-Lae Park
+
+journal: Adv. Intell. Syst.
 buttons:
   - name: PDF
     icon: fas fa-file-pdf
     link: reproducibility/Chure2022b_reproducibility.pdf
-  - name: Template GitHub Repository
-    icon: fas fa-solid fa-github
+#   - name: Template GitHub Repository
+#     icon: fas fa-solid fa-github
 ---
