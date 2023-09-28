@@ -18,7 +18,7 @@ journal: Adv. Intell. Syst.
 buttons:
   - name: PDF
     icon: fas fa-file-pdf
-    link: reproducibility/Chure2022b_reproducibility.pdf
+    link: InflatableSkin.pdf
 #   - name: Template GitHub Repository
 #     icon: fas fa-solid fa-github
 ---
