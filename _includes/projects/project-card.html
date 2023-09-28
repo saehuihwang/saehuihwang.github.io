@@ -1,4 +1,65 @@
 <div class="wow animated fadeIn" data-wow-delay=".15s">
+  {% if project_type == "publication" %}
+  <a
+    href="{{ pub.url }}"
+    class="project card text-themed"
+    {%-
+    if
+    external
+    and
+    site.open_new_tab
+    -%}
+    target="_blank"
+    {%-
+    endif
+    -%}
+  >
+    {%- if pub.image -%}
+    <div
+      class="card-img-top"
+      style="background-image: url({{site.baseurl}}/assets/publications/{{pub.image}});"
+    ></div>
+    {%- endif -%}
+    <div class="card-body">
+      <p id="{{pub_id}}-year" class="card-text">
+        <span class="badge badge-pill text-primary border border-primary ml-1"
+          >{{pub.year}}</span
+        >
+      </p>
+      <h6 id="{{ pub_id }}-name" class="card-title">
+        <p style="font-weight: 600; text-align: left">{{ pub.title }}</p>
+      </h6>
+      <p id="{{ pub_id }}-desc" class="card-text" , style="font-size: 10pt">
+        {% for auth in pub.authors %} {% if auth == pub.authors.last %} {% if
+        auth != pub.authors.first %}{% endif %} {% if auth contains "Griffin
+        Chure" %}<b>{{auth}}</b>{% else %}{{auth}}{% endif %} {% else %} {% if
+        auth contains "Griffin Chure" %}<b>{{auth}}</b>,{% if pub.authors.length
+        > 2 %},{% endif %}{% else %}{{auth}},{% if pub.authors.length > 2 %},{%
+        endif %} {% endif %} {% endif %} {% endfor %}
+      </p>
+      <p id="{{pub_id}}-info" class="card-text"></p>
+      {% if pub.status == 'under review' or pub.status == 'in revision' %}
+      <span class="badge badge-pill text-danger border border-danger ml-1">
+        {{pub.status}}
+      </span>
+      {% endif %} {% if pub.journal contains 'xiv' %}
+      <span class="badge badge-pill text-primary border border-primary ml-1">
+        preprint available on {{pub.journal}}</span
+      >
+      {% else %}
+      <span class="badge badge-pill text-success border border-success ml-1">
+        Published in {{pub.journal}}</span
+      >
+      {% endif %} {% if pub.doi %}
+      <span
+        class="badge badge-pill text-secondary border border-secondary ml-1"
+      >
+        DOI: {{pub.doi}}</span
+      >
+      {% endif %}
+    </div>
+  </a>
+  {% else %}
   <a
     href="{{ project_url }}"
     class="project card text-themed"
@@ -43,4 +104,5 @@
       </p>
     </div>
   </a>
+  {% endif %}
 </div>

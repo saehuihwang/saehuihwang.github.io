@@ -1,60 +1,19 @@
 ---
-name: Environmental Adaptability of Legged Robots with Cutaneous Inflation and Sensation
-tools: [Published in Adv. Intell. Syst.]
+layout: publication
 image: /assets/images/SNUPPY.jpg
-description: Taekyoung Kim, Sudong Lee, Shinwon Chang, Saehui Hwang*, Yong-Lae Park
+year: 2022
+doi: "10.48550/arXiv:2210.02593"
+title: >
+  Be Prospective, Not Retrospective: A Philosophy for Advancing Reproducibility in Modern Biological Research
+abstract: >
+  The ubiquity of computation in modern scientific research inflicts new challenges for reproducibility. While most journals now require code and data be made available, the standards for organization, annotation, and validation remain lax, making the data and code often difficult to decipher or practically use. I believe that this is due to the documentation, collation, and validation of code and data only being done in retrospect. In this essay, I reflect on my experience contending with these challenges and present a philosophy for prioritizing reproducibility in modern biological research where balancing computational analysis and wet-lab experiments is commonplace. Modern tools used in scientific workflows (such as GitHub repositories) lend themselves well to this philosophy where reproducibility begins at project inception, not completion. To that end, I present and provide a programming-language agnostic template architecture that can be immediately copied and made bespoke to your next paper, whether your lab work is wet, dry, or somewhere in between.
+authors:
+  - Griffin Chure<sup>⛧</sup>
+journal: arXiv
+buttons:
+  - name: PDF
+    icon: fas fa-file-pdf
+    link: reproducibility/Chure2022b_reproducibility.pdf
+  - name: Template GitHub Repository
+    icon: fas fa-solid fa-github
 ---
-
-# A fully BLV-accessible UI that provides customized accessibility-centric itinerary
-
-My colleageus Aya Mouallem, Chih-Ling Chang, Gene Kim, and I've made an AI powered travel assistant for the BLV community.
-
-Travelers who are blind or have low vision (BLV) have reported different challenges hindering a smooth travel planning process, as they needed an accessible travel planning platform that provided all the needed travel information, including accessibility details, in one place.
-
-With a fully BLV-accessible user interface, the traveler can use AVEC to customize their accessibility preferences and travel interests, generate a personalized, accessibility-centric itinerary that aggregates all the needed information in one place, and ask an AI chat assistant any questions that they may have.
-
-AVEC, an acronym for Accessible, Virtual Exploration Customizability, also means alongside or together in French, representing togetherness and inclusivity.
-
-{% capture carousel_images %}
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-29.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-30.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-31.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-32.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-33.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-34.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-35.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-36.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-37.jpg
-/assets/images/AVEC/Project Slides/ME331ProjectSlides-38.jpg
-
-{% endcapture %}
-{% include elements/carousel.html carousel_images=carousel_images%}
-
-### Needfinding
-
-{% capture carousel_images %}
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-2.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-3.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-4.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-5.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-8.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-6.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-7.jpg
-/assets/images/AVEC/Needfinding/ME331ProjectSlides-8.jpg
-{% endcapture %}
-
-{% include elements/carousel.html carousel_id="carousel2" carousel_images=carousel_images%}
-
-### User Study
-
-{% capture carousel_images %}
-/assets/images/AVEC/User Study/ME331ProjectSlides-16.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-17.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-18.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-19.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-20.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-21.jpg
-/assets/images/AVEC/User Study/ME331ProjectSlides-22.jpg
-{% endcapture %}
-
-{% include elements/carousel.html carousel_id="carousel1" carousel_images=carousel_images%}
