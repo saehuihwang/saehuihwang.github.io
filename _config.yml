@@ -1,8 +1,7 @@
 ### Site Settings ###
 title: Saehui Hwang
 description: >-
-  Hello! Welcome to my personal website. If you are wondering how to
-  pronounce my name, it's "Say-Hee".
+  Hi! I'm Saehui.
 baseurl: "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository: saehuihwang/saehuihwang.github.io # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme: YoussefRaafatNasry/portfolYOU
