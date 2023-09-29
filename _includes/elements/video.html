@@ -1,3 +1,37 @@
-<div class="video">
+<!-- <div class="video">
   <iframe src="https://www.youtube.com/embed/{{ include.id }}" frameborder="0" allowfullscreen></iframe>
+</div> -->
+
+<!-- video.html -->
+<!-- video.html -->
+
+{% assign video_ids = include.video_ids | split: ',' %}
+
+<div class="video-container">
+  {% for video_id in video_ids %}
+  <div class="video">
+    <iframe
+      src="https://www.youtube.com/embed/{{ video_id }}"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </div>
+  {% endfor %}
 </div>
+<style>
+  .video-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .video {
+    width: calc(48% - 10px); /* Adjust as needed, subtracting margin */
+    box-sizing: border-box;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+
+  .video:last-child {
+    margin-right: 0; /* Remove the right margin for the last video */
+  }
+</style>
