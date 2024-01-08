@@ -13,3 +13,13 @@ weight: 5
 Along with rocket scientists from NASA JPL, Caltech students performed a show about sending a rocket to the moon in 1865!
 
 {% include elements/video.html video_ids="rhW2UfrEMF0?si=1gb3N1iNAhbqC76B&amp;clip=UgkxpS1XIsXKVl-yJ4UADmmZUV50-G2t6a6H&amp;clipt=ENzmngEYvLuiAQ" %}
+
+### Crafts
+
+I am an avid crafter, enjoying anything that involves creating something with my hands. Below are some of my sewing and knitting projects I've done in the past
+{% capture carousel_images %}
+/assets/images/crafts/DRESS1.jpg
+/assets/images/crafts/!DRESS2.jpg
+/assets/images/crafts/IMG_0749.jpg
+{% endcapture %}
+{% include elements/carousel.html carousel_images=carousel_images%}
