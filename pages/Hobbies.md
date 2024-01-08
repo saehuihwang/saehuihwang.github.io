@@ -5,7 +5,14 @@ permalink: /hobbies/
 weight: 5
 ---
 
+I emjoy dipping my feet into various hobbies. My latest obsession is swing dancing!
+
+### Dance
+
 {% include elements/video.html video_ids="WQ4aDTtnl58" %}
+
+### A capella
+
 {% include elements/video.html video_ids="ozj0uEkmrV0?si=7tQt0YFJnQwLv6P2,PTRqm8e9ZI8" %}
 
 ### Musical Theater : probably one of the best things I did at Caltech.

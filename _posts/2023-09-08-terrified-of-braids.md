@@ -12,3 +12,7 @@ I confided in my friends Maggie and Janice, both Kenyan locals. They exchanged s
 The truth is, cultures have _always_ borrowed from one another. No single group can lay exclusive claim to a hairstyle. Cultural exchanges — like a Korean girl wearing African braids — celebrate the beauty of diversity. At the same time, it also requires understanding the significance of these traditions.
 
 Experiences can be powerful, and my braids have taught me that appreciating and learning from different cultures requires empathy, respect, and an open heart. I think these braids are beautiful and practical, and I have Maggie and Janice to thank for giving me the courage to have this experience!
+
+![alt text](/assets/images/IMG_8029.JPG)
+![alt text](/assets/images/IMG_8030.JPG)
+![alt text](/assets/images/IMG_7717.JPG)
