@@ -3,10 +3,10 @@ title: Trip to the Galápagos - Caltech students' immersive study on evolution
 tags: [Equador, Galapagos]
 style: border
 color: primary
-# description: I connected with nature in a way I never imagined possible before, and I’m filled with wonder and curiosity.
+description: I connected with nature in a way I never imagined possible before, and I’m filled with wonder and curiosity.
 ---
 
-{% include elements/video.html id="-kvtbkyhvyE" %}
+{% include elements/video.html video_ids="-kvtbkyhvyE" %}
 
 Over spring break, 14 Caltech students and two professors embarked on a voyage to the Galapagos. On this trip, I hiked volcanoes and snorkeled lagoons, watching Darwin's finches, marine iguanas, and penguins. I connected with nature in a way I never imagined possible before, and I’m filled with wonder and curiosity.
 
