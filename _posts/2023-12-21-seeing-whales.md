@@ -1,5 +1,5 @@
 ---
-title: I see the wales
+title: I see the whales
 tags: [Watson, Travel, Sailing]
 style: border
 color: primary
