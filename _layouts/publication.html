@@ -3,54 +3,65 @@ layout: default
 ---
 
 <div class="col-lg-10 mx-auto mt-0 markdown-body">
+  <h2>{{page.title}}</h2>
+  <p>
+    {% for auth in page.authors %}{%if auth == page.authors.last%}{% if auth !=
+    pub.authors.first %}{%endif%} {%if auth contains "Saehui Hwang"
+    %}<b>{{auth}}</b>{%else%}{{auth}}{%endif%}{%else%}{% if auth contains
+    "Saehui Hwang" %}<b>{{auth}}</b>,{% if page.authors.length > 2
+    %},{%endif%}{%else%}{{auth}},{% if page.authors.length > 2 %},{%endif%}
+    {%endif%} {%endif%} {%endfor%}<br />
 
-
-  <h2> {{page.title}}</h2>
-  <p>{% for auth in page.authors %}{%if auth == page.authors.last%}{% if auth
-    !=
-    pub.authors.first %}{%endif%}
-    {%if auth contains "Saehui Hwang" %}<b>{{auth}}</b>{%else%}{{auth}}{%endif%}{%else%}{% if auth contains
-    "Saehui Hwang"
-    %}<b>{{auth}}</b>,{% if page.authors.length > 2 %},{%endif%}{%else%}{{auth}},{% if page.authors.length >
-    2 %},{%endif%} {%endif%} {%endif%} {%endfor%}<br />
-
-
-    {% for button in page.buttons %}
-    {% if button.link contains "https" %}<a class="m-1 btn btn-outline-primary btn-md" href="{{button.link}}">{%else%}<a
-        class="m-1 btn btn-outline-primary btn-md" href="{{site.baseurl}}/assets/publications/{{button.link}}">{%endif%}
-        <i class="{{button.icon}}"></i> {{button.name}}</a>
+    {% for button in page.buttons %} {% if button.link contains "https" %}<a
+      class="m-1 btn btn-outline-primary btn-md"
+      href="{{button.link}}"
+      >{%else%}<a
+        class="m-1 btn btn-outline-primary btn-md"
+        href="{{site.baseurl}}/assets/publications/{{button.link}}"
+        >{%endif%} <i class="{{button.icon}}"></i> {{button.name}}</a
+      >
       {%endfor%}
       <br />
-      {% if page.notes %}
-      {% for note in page.notes %}
-      <i style="color: #6c757d;">{{note}}</i><br />
-      {%endfor%}
-      {% endif %}
+      {% if page.notes %} {% for note in page.notes %}
+      <i style="color: #6c757d">{{note}}</i><br />
+      {%endfor%} {% endif %}
 
       <hr />
 
       {% if page.summary %}
       <hr />
-      <h3> Non-expert Summary </h3>
+      <h3>Non-expert Summary</h3>
       <p>{{page.summary}}</p>
 
       <hr />
       {% endif %}
 
-      <h3> Scientific Abstract </h3>
+      <h3>Scientific Abstract</h3>
 
       <p>{{page.abstract}}</p>
 
       <hr />
-      <div id="adobe-dc-view" style="width: 800px;"></div>
+      <div id="adobe-dc-view" style="width: 800px"></div>
       <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
       <script type="text/javascript">
-        document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-          var adobeDCView = new AdobeDC.View({clientId: "8913b8b0c5754cfcaf2029e658e36f44", divId: "adobe-dc-view"});
-          adobeDCView.previewFile({
-            content: { location: { url: "{{site.baseurl}}/assets/publications/{{page.buttons[0]['link']}}" } },
-            metaData: { fileName: "Main Text" }
-          }, {embedMode: "IN_LINE"});
+        document.addEventListener("adobe_dc_view_sdk.ready", function () {
+          var adobeDCView = new AdobeDC.View({
+            clientId: "8913b8b0c5754cfcaf2029e658e36f44",
+            divId: "adobe-dc-view",
+          });
+          adobeDCView.previewFile(
+            {
+              content: {
+                location: {
+                  url: "{{site.baseurl}}/assets/publications/{{page.buttons[0]['link']}}",
+                },
+              },
+              metaData: { fileName: "Main Text" },
+            },
+            { embedMode: "IN_LINE" }
+          );
         });
-      </script>
+      </script></a
+    >
+  </p>
 </div>

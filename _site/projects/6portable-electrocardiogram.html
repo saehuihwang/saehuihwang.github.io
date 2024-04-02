@@ -20,12 +20,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Pulse Oximeter">
-  <meta property="og:description" content="An inexpensive arduino-based pulse oximeter">
-  <meta property="og:image" content="https://github.com/saehuihwang/pulse_ox/blob/main/Media/pulseox_wiring_diagram.png?raw=true">
+  <meta property="og:title" content="Portable Electrocardiogram">
+  <meta property="og:description" content="desc">
+  <meta property="og:image" content="/assets/images/SNUPPY.jpg">
 
-  <title>Pulse Oximeter</title>
-  <meta name="description" content="An inexpensive arduino-based pulse oximeter">
+  <title>Portable Electrocardiogram</title>
+  <meta name="description" content="desc">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
@@ -107,24 +107,69 @@
   </div>
 </nav>
  <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  <h1 id="arduino-pulse-oximeter-and-browser-app">Arduino Pulse Oximeter and Browser App</h1>
+  <h1 id="portable-electrocardiogram">Portable Electrocardiogram</h1>
 
-<h4 id="source-code"><a href="https://github.com/saehuihwang/pulse_ox">Source Code</a></h4>
+<p>My colleageus Hamza Abdul-Ghani, Grace Ding and I’ve made an inexpensive portable electrocardiogram, otherwise known as an EKG.</p>
 
-<p>This project is an inexpensive arduino-based pulse oximeter. The design is characterized by its small size and robust digital signal processing.<br />
-<img src="https://github.com/saehuihwang/pulse_ox/blob/main/Media/pulseox_wiring_diagram.png?raw=true" alt="alt text" /></p>
+<h2 id="goals">Goals</h2>
 
-<h3 id="app--user-interface">App &amp; User Interface</h3>
+<p>The goal of this project is to create an affordable ECG device that can be used regularly at home. To provide adequate data for medical diagnostics, we plan to design the ECG to compute Leads I/II/III and report the estimated angle of the heart. The user can view the trace on an integrated display, on a computer over USB, or on a smartphone application over Low Energy Bluetooth. CSV data to plot the measured trace will also be recorded on an SD card. An LED indicator will light with each heartbeat, and an optionally enabled speaker will beep with each heartbeat. To power the device while maintaining enforced isolation from mains electricity, a lithium polymer battery will supply the power rails to the system. The device will not function while the battery is charging.</p>
 
-<p>To run the app, run</p>
+<!-- <div class="video">
+  <iframe src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+</div> -->
 
-<p><code class="language-plaintext highlighter-rouge">bokeh serve --show pulseox_app.py</code></p>
+<!-- video.html -->
+<!-- video.html -->
 
-<p>On the command line.<br />
-The following user interface will show, displaying the heartrate, and the blood oxygen concentration below.
-<img src="https://github.com/saehuihwang/pulse_ox/blob/main/Media/UI.png?raw=true" alt="alt text" /></p>
+<div class="video-container">
+  
+  <div class="video">
+    <iframe src="https://www.youtube.com/embed/BthJ6cHA9PI" frameborder="0" allowfullscreen=""></iframe>
+  </div>
+  
+</div>
+<style>
+  .video-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 
-</div> </main>
+  .video {
+    width: calc(48% - 10px); /* Adjust as needed, subtracting margin */
+    box-sizing: border-box;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+
+  .video:last-child {
+    margin-right: 0; /* Remove the right margin for the last video */
+  }
+</style>
+
+
+</div> 
+      <div id="adobe-dc-view" style="width: 800px"></div>
+      <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+      <script type="text/javascript">
+        document.addEventListener("adobe_dc_view_sdk.ready", function () {
+          var adobeDCView = new AdobeDC.View({
+            clientId: "8913b8b0c5754cfcaf2029e658e36f44",
+            divId: "adobe-dc-view",
+          });
+          adobeDCView.previewFile(
+            {
+              content: {
+                location: {
+                  url: "/assets/publications/InflatableSkin.pdf}}",
+                },
+              },
+              metaData: { fileName: "Main Text" },
+            },
+            { embedMode: "IN_LINE" }
+          );
+        });
+      </script></a</main>
     <footer class="mt-auto py-3 text-center">
   <small class="text-muted mb-2"><i class="fas fa-code"></i> with <i class="fas fa-heart"></i> by
     <strong>Saehui HWANG</strong>, adapted from

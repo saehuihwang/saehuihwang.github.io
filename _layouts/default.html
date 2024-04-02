@@ -7,23 +7,48 @@
 -->
 
 <html lang="en" class="h-100">
+  {% include head.html %}
 
-{% include head.html %}
-
-<body class="h-100 d-flex flex-column">
-
-  <main class="flex-shrink-0 container mt-5">
-    {% include navbar.html %}
-    {{ content }}
-  </main>
-  {% include footer.html %}
-
-  {% include analytics.html %}
-  {% include scripts.html %}
-
-  {%- if site.buymeacoffee.enabled == true -%}
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="{{ site.buymeacoffee.username }}" data-description="{{ site.buymeacoffee.description }}" data-message="{{ site.buymeacoffee.message }}" data-color="{{ site.buymeacoffee.color }}" data-position="Right" data-x_margin="16" data-y_margin="16"></script>
-  {%- endif -%}
-</body>
-
+  <body class="h-100 d-flex flex-column">
+    <main class="flex-shrink-0 container mt-5">
+      {% include navbar.html %} {{ content }} {% if page.pdf %}
+      <div id="adobe-dc-view" style="width: 800px"></div>
+      <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+      <script type="text/javascript">
+        document.addEventListener("adobe_dc_view_sdk.ready", function () {
+          var adobeDCView = new AdobeDC.View({
+            clientId: "8913b8b0c5754cfcaf2029e658e36f44",
+            divId: "adobe-dc-view",
+          });
+          adobeDCView.previewFile(
+            {
+              content: {
+                location: {
+                  url: "{{site.baseurl}}/assets/publications/InflatableSkin.pdf}}",
+                },
+              },
+              metaData: { fileName: "Main Text" },
+            },
+            { embedMode: "IN_LINE" }
+          );
+        });
+      </script></a
+      {%- endif -%}
+    </main>
+    {% include footer.html %} {% include analytics.html %} {% include
+    scripts.html %} {%- if site.buymeacoffee.enabled == true -%}
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="{{ site.buymeacoffee.username }}"
+      data-description="{{ site.buymeacoffee.description }}"
+      data-message="{{ site.buymeacoffee.message }}"
+      data-color="{{ site.buymeacoffee.color }}"
+      data-position="Right"
+      data-x_margin="16"
+      data-y_margin="16"
+    ></script>
+    {%- endif -%}
+  </body>
 </html>
