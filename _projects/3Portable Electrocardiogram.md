@@ -1,7 +1,7 @@
 ---
 name: Portable Electrocardiogram
 tools: [ESP32]
-# image: /assets/images/SNUPPY.jpg
+image: /assets/images/EKG.png
 # description:
 pdf: /assets/publications/Final Report.pdf
 ---
