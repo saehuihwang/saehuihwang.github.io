@@ -1,32 +1,31 @@
 ---
 layout: page
-title: Hobbies
-permalink: /hobbies/
+title: Videography
+permalink: /videography/
 weight: 5
 ---
 
-I emjoy dipping my feet into various hobbies. My latest obsession is swing dancing!
+## Documentary
 
-### Dance
+{% include elements/video.html video_ids="89TspaI5IoY" %}
 
-{% include elements/video.html video_ids="WQ4aDTtnl58" %}
+### Vlog
 
-### A capella
+{% include elements/video.html video_ids="jmGnTUdypkk,-kvtbkyhvyE" %}
 
-{% include elements/video.html video_ids="ozj0uEkmrV0?si=7tQt0YFJnQwLv6P2,PTRqm8e9ZI8" %}
 
-### Musical Theater : probably one of the best things I did at Caltech.
+### Other fun things!
+#### Crafts
 
+I am an avid crafter! I love pretty much anything that involves creating something with my hands.
+{% include elements/figure.html image="/assets/images/crafts/crafts-collage.png" caption="Creative Projects" %} 
+
+##### Musical Theater
 Along with rocket scientists from NASA JPL, Caltech students performed a show about sending a rocket to the moon in 1865!
 
 {% include elements/video.html video_ids="rhW2UfrEMF0?si=1gb3N1iNAhbqC76B&amp;clip=UgkxpS1XIsXKVl-yJ4UADmmZUV50-G2t6a6H&amp;clipt=ENzmngEYvLuiAQ" %}
 
-### Crafts
+##### A capella
 
-I am an avid crafter, enjoying anything that involves creating something with my hands. Below are some of my sewing and knitting projects I've done in the past
-{% capture carousel_images %}
-/assets/images/crafts/DRESS1.jpg
-/assets/images/crafts/!DRESS2.jpg
-/assets/images/crafts/IMG_0749.jpg
-{% endcapture %}
-{% include elements/carousel.html carousel_images=carousel_images%}
+{% include elements/video.html video_ids="ozj0uEkmrV0?si=7tQt0YFJnQwLv6P2,PTRqm8e9ZI8" %}
+
