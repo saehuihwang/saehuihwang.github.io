@@ -1,7 +1,7 @@
 ### Site Settings ###
 title: Saehui Hwang
 description: >-
-  Hi! I'm Saehui :wave:  I am currently in the Chilean Patagonia :mountain: for a film project. Check out my instagram or my blog for the latest updates!
+  Hi! I'm Saehui :wave:  
 baseurl: "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository: saehuihwang/saehuihwang.github.io # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme: YoussefRaafatNasry/portfolYOU
