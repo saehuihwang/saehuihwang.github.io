@@ -2,7 +2,7 @@
    {%- if external and site.open_new_tab %} target="_blank" rel="noopener"{% endif -%}>
 
   {%- if card_img -%}
-  <div class="card__media">
+  <div class="card__media{% if card_fit == 'contain' %} media--contain{% endif %}">
     <img src="{{ card_img }}" alt="" loading="lazy">
   </div>
   {%- else -%}

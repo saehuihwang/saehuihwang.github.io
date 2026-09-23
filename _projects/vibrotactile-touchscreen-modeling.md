@@ -2,6 +2,8 @@
 order: 3
 category: Research
 layout: publication
+image: /assets/images/papers/vibrotactile-overview.png
+image_fit: contain
 pdf: /assets/pdf/papers/vibrotactile-modeling-chi25ea.pdf
 title: "Computational Modeling of Non-Visual Vibrotactile Touchscreen Exploration"
 year: 2025

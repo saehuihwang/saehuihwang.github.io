@@ -142,3 +142,10 @@ a.tag:hover { background: var(--orange); border-color: var(--orange); color: var
 .feature:nth-of-type(3n)   .feature__media--empty .halftone { --halftone-size: 8px; }
 .grid > .card:nth-of-type(3n+2) .card__media--empty .halftone { --halftone-size: 13px; }
 .grid > .card:nth-of-type(3n)   .card__media--empty .halftone { --halftone-size: 8px; }
+
+/* Figures and diagrams: letterbox rather than crop. A wide teaser
+   cropped to a square loses most of its meaning. */
+.media--contain img {
+  object-fit: contain;
+  padding: 7%;
+}

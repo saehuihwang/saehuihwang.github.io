@@ -43,7 +43,7 @@
             {%- assign p_name = project.name -%}{%- assign p_desc = project.description -%}
           {%- endif -%}
           <a class="feature" href="{{ project.url | relative_url }}">
-            <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}">
+            <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}{% if project.image_fit == 'contain' %} media--contain{% endif %}">
               {%- if project.image -%}
                 <img src="{{ project.image }}" alt="" loading="lazy">
               {%- else -%}
