@@ -156,3 +156,13 @@ hr {
 /* Full-width variant: for project pages that are mostly imagery */
 .prose--wide { max-width: none; }
 .prose--wide > h1:first-child { max-width: 20ch; margin-bottom: var(--sp-7); }
+
+/* Paper titles run long; all caps at display size is unreadable at that
+   length, so they are set smaller and in sentence case. */
+.page-head__title--paper {
+  font-size: var(--step-3);
+  text-transform: none;
+  letter-spacing: -.03em;
+  line-height: .98;
+  max-width: 26ch;
+}

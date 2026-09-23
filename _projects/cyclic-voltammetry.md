@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 12
 category: Misc Projects
 name: Open Source Hardware - Cyclic Voltammetry
 tools: [Arduino, Python]

@@ -1,4 +1,4 @@
-<a class="card" href="{{ card_url }}" data-reveal
+<a class="card{% if card_type == "publication" %} card--paper{% endif %}" href="{{ card_url }}" data-reveal
    {%- if external and site.open_new_tab %} target="_blank" rel="noopener"{% endif -%}>
 
   {%- if card_img -%}
