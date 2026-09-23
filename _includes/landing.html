@@ -29,7 +29,8 @@
 
 
 {%- comment -%} ---------- Featured work: stamps only ---------- {%- endcomment -%}
-{%- assign featured = site.projects | sort: 'order' | slice: 0, 6 -%}
+{%- comment -%} Papers only; everything else lives behind the + {%- endcomment -%}
+{%- assign featured = site.projects | where: 'category', 'Research' | sort: 'order' -%}
 {%- if featured.size > 0 -%}
 <section class="slab slab--sky">
   <div class="shell">
@@ -53,6 +54,16 @@
             {%- if p_desc -%}<p class="feature__desc">{{ p_desc | strip_html }}</p>{%- endif -%}
           </a>
         {%- endfor -%}
+
+        <a class="feature feature--more" href="{{ '/projects/' | relative_url }}">
+          <span class="feature__media feature__media--more">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" aria-hidden="true">
+              <path d="M16 8v16M8 16h16"/>
+            </svg>
+          </span>
+          <h2 class="feature__title">All projects</h2>
+        </a>
       </div>
 
       <div class="carousel__hint" data-carousel-nav>

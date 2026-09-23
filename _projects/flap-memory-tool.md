@@ -1,6 +1,6 @@
 ---
-order: 6
-category: Creative Projects
+order: 9
+category: Misc Projects
 name: Augmented Reality based Memory Tool
 tools: [Unity]
 image: /assets/images/FLAP-16-9-min.png

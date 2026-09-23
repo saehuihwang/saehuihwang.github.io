@@ -25,15 +25,6 @@ main { flex: 1 0 auto; }
   gap: var(--sp-4);
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
-.section-head__num {
-  font-family: var(--font-ui);
-  font-size: var(--step--2);
-  font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  flex: none;
-}
 .section-head__title {
   font-size: var(--step-2);
   flex: none;
@@ -43,34 +34,6 @@ main { flex: 1 0 auto; }
   flex: 1 1 4rem;
   height: 1px;
   background: var(--rule);
-}
-.section-head__count {
-  flex: none;
-  font-family: var(--font-ui);
-  font-size: var(--step--2);
-  letter-spacing: .1em;
-  color: var(--fg-mute);
-}
-.section-head__link {
-  flex: none;
-  font-family: var(--font-ui);
-  font-size: var(--step--2);
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--fg);
-  border: var(--border) solid var(--rule);
-  border-radius: var(--radius-pill);
-  padding: .4rem .9rem;
-  transition: background-color var(--dur-1) var(--ease),
-              border-color var(--dur-1) var(--ease),
-              color var(--dur-1) var(--ease);
-}
-.section-head__link:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--cream);
 }
 
 /* Reading layout: contents rail left of the text column */

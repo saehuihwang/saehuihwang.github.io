@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 7
 category: Creative Projects
 name: Dyson AirWrap &trade; Stand
 tools: [Turning, Sheet metal bending, Waterjet Cutting, Brazing, Polishing]

@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 6
 category: Creative Projects
 wide: true
 name: Silly Bots

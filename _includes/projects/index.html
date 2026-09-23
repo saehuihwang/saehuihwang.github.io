@@ -12,10 +12,8 @@
   {%- if group.size > 0 -%}
   <section class="project-section" id="{{ section | slugify }}">
     <div class="section-head">
-      <span class="section-head__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
       <h2 class="section-head__title">{{ section }}</h2>
       <span class="section-head__rule" aria-hidden="true"></span>
-      <span class="section-head__count label">{{ group.size }}</span>
     </div>
 
     <div class="grid grid--stamps">

@@ -47,7 +47,7 @@
 .feature {
   --perf: 10px;
   --step: 19px;
-  flex: 0 0 min(15rem, 58vw);
+  flex: 0 0 min(14rem, 58vw);
   scroll-snap-align: start;
   text-decoration: none;
   color: var(--fg);
@@ -138,3 +138,21 @@
   margin-top: var(--sp-2);
 }
 .carousel__hint[hidden] { display: none; }
+
+/* The last stamp in the strip is a way through to everything else.
+   Kept narrow so it still fits beside the papers at common widths
+   rather than being pushed off the end. */
+.feature--more {
+  flex: 0 0 9rem;
+  text-align: left;
+}
+.feature__media--more {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--blue-soft);
+  color: var(--blue);
+  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+.feature__media--more svg { width: 34%; height: 34%; }
+.feature--more:hover .feature__media--more { background: var(--blue); color: var(--cream); }
