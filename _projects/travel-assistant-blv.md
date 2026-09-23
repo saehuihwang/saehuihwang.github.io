@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 10
 category: Misc Projects
 name: AI Powered Travel Assistant for BLV
 tools: [HTML, Javascript, chatGPT]

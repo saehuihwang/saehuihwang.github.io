@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Videography
+title: Creative Projects
 permalink: /videography/
 weight: 5
 page_title: true

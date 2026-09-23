@@ -4,7 +4,7 @@
   To add a section, add its name here and use it as a `category:`.
 {%- endcomment -%}
 
-{%- assign sections = "Research,Creative Projects,Misc Projects" | split: "," -%}
+{%- assign sections = "Research,Misc Projects" | split: "," -%}
 {%- assign ordered = site.projects | sort: 'order' -%}
 
 {%- for section in sections -%}

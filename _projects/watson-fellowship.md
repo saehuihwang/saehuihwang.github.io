@@ -1,6 +1,6 @@
 ---
 order: 8
-category: Creative Projects
+category: Misc Projects
 name: My Watson Year
 external_url: /watson/
 image: /assets/images/watson/ship.JPG

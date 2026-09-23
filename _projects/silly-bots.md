@@ -1,6 +1,6 @@
 ---
 order: 6
-category: Creative Projects
+category: Misc Projects
 wide: true
 name: Silly Bots
 tools: [MediaPipe, Inverse Kinematics, Servos]
