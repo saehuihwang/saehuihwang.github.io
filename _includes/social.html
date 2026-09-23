@@ -6,7 +6,7 @@
       <a class="social" href="{{ service_data.url }}{{ account[1] }}"
          aria-label="{{ service_name | capitalize }}" title="{{ service_name | capitalize }}"
          {%- unless service_name == 'email' %} rel="me noopener" target="_blank"{% endunless -%}>
-        <i class="{{ service_data.icon }}" aria-hidden="true"></i>
+        {{ service_name | capitalize }}<span class="arrow-out" aria-hidden="true"></span>
       </a>
     {%- endif -%}
   {%- endfor -%}

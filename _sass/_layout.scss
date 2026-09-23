@@ -1,106 +1,115 @@
 /* ---------- Layout ----------
-   A fixed ink-orange rail down the left edge, content to its
-   right. Sections are full-bleed colour slabs that butt directly
-   against each other with no gap — like pages of a printed zine. */
+   Centred composition: a top bar, then a column that holds the page.
+   The fixed side rail is gone. */
 
-body { padding-left: var(--rail-w); }
+body { padding-left: 0; }
 
 main { flex: 1 0 auto; }
 
-/* Left-aligned rather than centred: content is anchored to the orange
-   rail. The cap is high enough to fill a 1920 display; beyond that a
-   right margin returns, but line length is held by --measure and by
-   each component's own max-width rather than by the container. */
 .shell {
   width: 100%;
-  max-width: 110rem;
-  margin-right: auto;
+  max-width: var(--shell);
+  margin-inline: auto;
   padding-inline: var(--gutter);
 }
+.shell--wide { max-width: 88rem; }
 
-/* Full-bleed colour section */
-.slab {
-  padding-block: clamp(3rem, 7vw, 6.5rem);
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
+.section { padding-block: clamp(3rem, 8vw, 7rem); }
+.slab { padding-block: clamp(3rem, 8vw, 7rem); position: relative; }
 .slab--tight { padding-block: clamp(2rem, 4vw, 3.5rem); }
 
-/* Section head: giant number, heavy rule, title */
+/* Centred section head: rule, label, rule */
 .section-head {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: var(--sp-4);
-  margin-bottom: var(--sp-7);
-  flex-wrap: wrap;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 .section-head__num {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: var(--step-3);
-  line-height: .8;
-  letter-spacing: -.05em;
+  font-family: var(--font-ui);
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
   color: var(--accent);
   flex: none;
 }
 .section-head__title {
-  font-size: var(--step-3);
+  font-size: var(--step-2);
   flex: none;
-  line-height: .8;
+  line-height: 1;
 }
 .section-head__rule {
-  flex: 1 1 6rem;
-  height: var(--border-heavy);
+  flex: 1 1 4rem;
+  height: 1px;
   background: var(--rule);
-  margin-bottom: .35em;
+}
+.section-head__count {
+  flex: none;
+  font-family: var(--font-ui);
+  font-size: var(--step--2);
+  letter-spacing: .1em;
+  color: var(--fg-mute);
 }
 .section-head__link {
   flex: none;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .14em;
+  font-weight: 500;
+  letter-spacing: .12em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--fg);
   border: var(--border) solid var(--rule);
-  padding: .45rem .8rem;
-  margin-bottom: .2em;
-  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+  border-radius: var(--radius-pill);
+  padding: .4rem .9rem;
+  transition: background-color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease),
+              color var(--dur-1) var(--ease);
 }
-.section-head__link:hover { background: var(--rule); color: var(--bg); }
+.section-head__link:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--cream);
+}
 
-/* Reading layout: TOC rail stays on the left of the text column */
+/* Reading layout: contents rail left of the text column */
 .reading {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--sp-6);
   align-items: start;
 }
-@media (min-width: 72rem) {
+@media (min-width: 68rem) {
   .reading {
-    grid-template-columns: 12rem minmax(0, var(--measure)) minmax(0, 1fr);
-    gap: clamp(2rem, 4vw, 4rem);
+    grid-template-columns: 11rem minmax(0, var(--measure)) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
   }
-  .reading > .rail { grid-column: 1; position: sticky; top: var(--sp-6); }
+  .reading > .rail { grid-column: 1; position: sticky; top: 6rem; }
   .reading > .reading__body { grid-column: 2; }
 }
 
 .cluster { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
+.center { text-align: center; }
+.center .cluster { justify-content: center; }
 
 .grid {
   display: grid;
-  gap: 0;
-  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+}
+.grid--wide { grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr)); }
+
+.project-section + .project-section { margin-top: clamp(3rem, 6vw, 5rem); }
+
+/* A tinted bed so stamp perforations read against the page */
+.grid--stamps {
+  background: var(--cream-3);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border-radius: var(--radius-2);
 }
 
-.grid--wide { grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr)); }
-
-/* Grouped project sections */
-.project-section + .project-section { margin-top: clamp(3rem, 6vw, 5rem); }
-.section-head__count {
-  flex: none;
-  color: var(--fg-soft);
-  margin-bottom: .35em;
+/* The reference floats its stamps on a sky; this is the same idea */
+.slab--sky {
+  background: linear-gradient(180deg, var(--blue-soft) 0%, var(--cream-3) 78%, var(--cream-2) 100%);
 }

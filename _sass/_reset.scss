@@ -12,7 +12,7 @@ html {
 
 body {
   min-height: 100svh;
-  background-color: var(--canvas);
+  background-color: var(--cream);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--step-0);
@@ -49,8 +49,9 @@ a { color: inherit; }
 hr { border: 0; border-top: 1px solid var(--rule); }
 
 :focus-visible {
-  outline: var(--border-heavy) solid var(--teal);
-  outline-offset: 2px;
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 ::selection {
@@ -72,10 +73,10 @@ hr { border: 0; border-top: 1px solid var(--rule); }
   left: var(--sp-3);
   z-index: 200;
   padding: var(--sp-2) var(--sp-4);
-  background: var(--ink);
-  color: var(--canvas);
-  border: var(--border) solid var(--canvas);
-  font-family: var(--font-mono);
+  background: var(--blue);
+  color: var(--cream);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: .12em;

@@ -3,41 +3,30 @@
   fixed orange rail, which also serves as this page's <h1>.
 {%- endcomment -%}
 
-<section class="hero on-canvas">
-  <div class="shell hero__grid">
+<section class="hero">
+  <div class="shell">
 
-    <div>
-      <p class="hero__lede" data-reveal>
-        I'm a PhD candidate in Mechanical Engineering at Stanford University, working on designing
-        <span class="block-mark">multimodal media</span> applied to learning, entertainment, and accessibility.
-      </p>
+    <p class="hero__lede" data-reveal>
+      I'm a PhD candidate in Mechanical Engineering at Stanford University, working on designing
+      <span class="block-mark">multimodal media</span> applied to learning, entertainment, and accessibility.
+    </p>
 
-      <div class="hero__body" data-reveal>
-        <p>
-          <!-- I care about storytelling, making, and inclusive design.   -->
-        </p>
-      </div>
-
-      <div class="cluster" style="margin-top: var(--sp-6)" data-reveal>
-        <a class="btn btn--solid" href="{{ '/assets/publications/Master_Resume.pdf' | relative_url }}">Résumé</a>
-        <a class="btn" href="mailto:{{ site.author.email }}">Email</a>
-        <a class="btn btn--icon" href="https://www.linkedin.com/in/{{ site.author.linkedin }}/"
-           aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-        <a class="btn btn--icon" href="https://scholar.google.com/citations?user=EnAM_4kAAAAJ&hl=en"
-           aria-label="Google Scholar" target="_blank" rel="noopener"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
-        <a class="btn btn--icon" href="https://orcid.org/{{ site.author.orcid }}"
-           aria-label="ORCID" target="_blank" rel="noopener"><i class="fab fa-orcid" aria-hidden="true"></i></a>
-      </div>
+    <div class="cluster" style="margin-top: var(--sp-6)" data-reveal>
+      <a class="btn btn--solid" href="{{ '/assets/publications/Master_Resume.pdf' | relative_url }}">Résumé</a>
+      <a class="btn" href="mailto:{{ site.author.email }}">Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/{{ site.author.linkedin }}/"
+         target="_blank" rel="noopener">LinkedIn<span class="arrow-out" aria-hidden="true"></span></a>
+      <a class="btn" href="https://scholar.google.com/citations?user=EnAM_4kAAAAJ&hl=en"
+         target="_blank" rel="noopener">Scholar<span class="arrow-out" aria-hidden="true"></span></a>
+      <a class="btn" href="https://orcid.org/{{ site.author.orcid }}"
+         target="_blank" rel="noopener">ORCID<span class="arrow-out" aria-hidden="true"></span></a>
     </div>
 
-    <aside class="hero__aside">
-      <div class="portrait" data-reveal>
-        <span class="portrait__blob" aria-hidden="true"></span>
-        <img class="portrait__img"
-             src="{{ '/assets/images/Saehui_Profile_square.png' | relative_url }}"
-             alt="Saehui Hwang" width="600" height="600">
-      </div>
-    </aside>
+    <div class="portrait" data-reveal>
+      <img class="portrait__img"
+           src="{{ '/assets/images/Saehui_Profile_square.png' | relative_url }}"
+           alt="Saehui Hwang" width="600" height="750">
+    </div>
 
   </div>
 </section>
@@ -46,7 +35,7 @@
 {%- comment -%} ---------- Featured work: ink slab ---------- {%- endcomment -%}
 {%- assign featured = site.projects | sort: 'order' | slice: 0, 6 -%}
 {%- if featured.size > 0 -%}
-<section class="slab on-ink">
+<section class="slab slab--sky">
   <div class="shell">
     <div class="carousel" data-carousel>
 
@@ -80,7 +69,7 @@
               {%- if project.image -%}
                 <img src="{{ project.image }}" alt="" loading="lazy">
               {%- else -%}
-                <span class="pattern" aria-hidden="true"></span>
+                <span class="halftone" aria-hidden="true"></span>
               {%- endif -%}
             </div>
             <h3 class="feature__title">{{ p_name }} <span class="arrow" aria-hidden="true">&rarr;</span></h3>

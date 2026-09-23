@@ -18,7 +18,7 @@
       <span class="section-head__count label">{{ group.size }}</span>
     </div>
 
-    <div class="grid">
+    <div class="grid grid--stamps">
       {%- for project in group -%}
         {%- assign card_img = project.image -%}
         {%- assign card_year    = nil -%}
@@ -62,7 +62,7 @@
     <h2 class="section-head__title">Other</h2>
     <span class="section-head__rule" aria-hidden="true"></span>
   </div>
-  <div class="grid">
+  <div class="grid grid--stamps">
     {%- for project in uncategorised -%}
       {%- assign card_type = "local" -%}
       {%- assign card_url  = project.url | relative_url -%}

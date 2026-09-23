@@ -7,7 +7,7 @@
   inset: 0;
   z-index: 200;
   pointer-events: none;
-  opacity: var(--grain-opacity);
+  opacity: .045;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
   background-size: 160px 160px;
@@ -18,7 +18,7 @@
 .halftone {
   position: absolute;
   pointer-events: none;
-  background-color: var(--halftone-ink, var(--teal));
+  background-color: var(--halftone-ink, var(--blue));
   opacity: var(--halftone-opacity, 1);
   mix-blend-mode: multiply;
   -webkit-mask-image: var(--pat-halftone);
@@ -34,7 +34,7 @@
 .pattern {
   position: absolute;
   pointer-events: none;
-  background-color: var(--pattern-color, var(--teal));
+  background-color: var(--pattern-color, var(--blue));
   opacity: var(--pattern-opacity, 1);
   mix-blend-mode: multiply;
   -webkit-mask-image: var(--pattern, var(--pat-scribble));

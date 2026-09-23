@@ -1,94 +1,79 @@
 /* ---------- Home hero ----------
-   A wall of display type on white, with a teal field bleeding off
-   the right edge and an orange halftone laid over it so the two
-   inks overprint where they meet. */
+   Centred, display-led: one enormous serif line with a small
+   annotation tucked beside it, then the actions. */
 
 .hero {
   position: relative;
-  isolation: isolate;
-  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
-  overflow: hidden;
+  text-align: center;
+  padding-block: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.hero__grid {
-  display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  grid-template-columns: minmax(0, 1fr);
-  align-items: start;
-}
-@media (min-width: 62rem) {
-  .hero__grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-    /* Centre the columns against each other: the copy is shorter than
-       the portrait, so top-aligning left a void under the buttons. */
-    align-items: center;
-  }
-}
+.hero__grid { display: block; }
 
 .hero__lede {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "wdth" 100, "opsz" 72;
-  font-size: var(--step-2);
-  line-height: 1.02;
-  letter-spacing: -.03em;
-  /* Sentence case: the headings shout, but a 30-word lede set in
-     all caps would be genuinely hard to read. */
-  text-transform: none;
-  max-width: 24ch;
+  font-weight: 400;
+  font-size: var(--step-3);
+  line-height: 1.04;
+  letter-spacing: -.025em;
+  color: var(--blue);
+  max-width: 26ch;
+  margin-inline: auto;
+  text-wrap: balance;
 }
-.hero__lede a {
-  color: var(--teal-text);
-  text-decoration: none;
-  box-shadow: inset 0 -.14em 0 var(--teal);
+.hero__lede a { color: inherit; text-decoration: none; box-shadow: inset 0 -.06em 0 currentColor; }
+.hero__lede a:hover { color: var(--orange); }
+.hero__lede .block-mark { color: var(--orange); background: none; padding: 0; }
+
+/* Small serif note set beside the display line, as in the reference */
+.hero__note {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  line-height: 1.4;
+  color: var(--fg-mute);
+  max-width: 22ch;
+  margin-inline: auto;
+  margin-top: var(--sp-5);
 }
-.hero__lede a:hover { background: var(--teal); color: var(--ink); box-shadow: none; }
 
 .hero__body {
   margin-top: var(--sp-6);
-  max-width: 48ch;
+  max-width: 50ch;
+  margin-inline: auto;
+  font-family: var(--font-body);
   font-size: var(--step-0);
+  color: var(--fg-mute);
 }
 .hero__body p + p { margin-top: var(--sp-4); }
 
-/* ---- Portrait: photo masked into the hand-drawn blob, with a
-   second blob offset behind it in orange ---- */
+.hero .cluster { justify-content: center; }
+
+/* ---- Portrait: a stamp of its own ---- */
 .portrait {
   position: relative;
-  width: min(100%, 30rem);
-  aspect-ratio: 1;
-  margin-inline: auto;
+  width: min(100%, 17rem);
+  aspect-ratio: 4 / 5;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  background: var(--blue);
+  overflow: hidden;
+  border-radius: var(--radius-2);
 }
-.portrait__blob,
+.portrait__blob { display: none; }
 .portrait__img {
-  position: absolute;
-  inset: 0;
-  -webkit-mask-image: var(--pat-arch);
-          mask-image: var(--pat-arch);
-  -webkit-mask-size: contain;
-          mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-}
-.portrait__blob {
-  background: var(--orange);
-  translate: 5% 6%;
-  rotate: -9deg;
-}
-.portrait__img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: rotate var(--dur-3) var(--ease), scale var(--dur-3) var(--ease);
+  filter: grayscale(1) contrast(1.4) brightness(.75);
+  mix-blend-mode: screen;
+  transition: filter var(--dur-3) var(--ease);
 }
-.portrait:hover .portrait__img { rotate: 2deg; scale: 1.02; }
+.portrait:hover .portrait__img { filter: none; mix-blend-mode: normal; }
 
-/* ---- Field-note rows, hard ruled ---- */
+/* ---- Field-note rows ---- */
 .notes {
-  margin-top: var(--sp-7);
-  border-top: var(--border-heavy) solid var(--rule);
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  max-width: 46rem;
+  border-top: var(--border) solid var(--rule);
+  text-align: left;
 }
 .notes__row {
   display: grid;
@@ -101,46 +86,58 @@
   .notes__row { grid-template-columns: 11rem minmax(0, 1fr); gap: var(--sp-5); align-items: baseline; }
 }
 .notes__key {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .14em;
+  font-weight: 500;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--orange-text);
+  color: var(--orange);
 }
-.notes__val { font-size: var(--step-0); }
+.notes__val { font-family: var(--font-body); color: var(--fg); }
 
-/* ---------- Buttons: hard edges, the shadow collapses on press ---------- */
+/* ---------- Buttons: pills ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .12em;
+  font-weight: 500;
+  letter-spacing: .1em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--fg);
-  background: var(--bg);
-  padding: .8rem 1.1rem;
-  border: var(--border) solid var(--fg);
-  box-shadow: 5px 5px 0 var(--fg);
-  transition: transform var(--dur-1) var(--ease),
-              box-shadow var(--dur-1) var(--ease),
+  color: var(--blue);
+  background: transparent;
+  padding: .65rem 1.2rem;
+  border: var(--border) solid var(--rule);
+  border-radius: var(--radius-pill);
+  transition: transform var(--dur-2) var(--ease),
               background-color var(--dur-1) var(--ease),
-              color var(--dur-1) var(--ease);
+              border-color var(--dur-1) var(--ease),
+              color var(--dur-1) var(--ease),
+              box-shadow var(--dur-2) var(--ease);
 }
 .btn:hover, .btn:focus-visible {
-  background: var(--orange);
-  color: var(--ink);
-  border-color: var(--ink);
-  box-shadow: 5px 5px 0 var(--ink);
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
 }
-.btn:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--fg); }
+.btn:active { transform: translateY(0); }
 
-.btn--solid { background: var(--fg); color: var(--bg); }
-.btn--solid:hover, .btn--solid:focus-visible { background: var(--teal); color: var(--ink); }
+/* The one orange thing on the page */
+.btn--solid {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--ink);
+  font-weight: 600;
+}
+.btn--solid:hover, .btn--solid:focus-visible {
+  background: var(--orange);
+  border-color: var(--ink);
+  color: var(--ink);
+}
 
-.btn--icon { width: 2.9rem; height: 2.9rem; padding: 0; }
+.btn--icon { width: 2.4rem; height: 2.4rem; padding: 0; }

@@ -1,51 +1,48 @@
-/* ---------- Table of contents ---------- */
-
-.toc { font-family: var(--font-mono); }
-
+/* ---------- Contents rail ---------- */
+.toc { font-family: var(--font-ui); }
 .toc__title {
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .16em;
+  font-weight: 500;
+  letter-spacing: .14em;
   text-transform: uppercase;
+  color: var(--fg-mute);
   padding-bottom: var(--sp-2);
-  border-bottom: var(--border-heavy) solid var(--rule);
+  border-bottom: var(--border) solid var(--rule);
   margin-bottom: var(--sp-3);
 }
-
 .toc__link {
   display: block;
-  padding: .35rem .5rem;
+  padding: .32rem 0 .32rem .7rem;
+  border-left: 2px solid transparent;
+  margin-left: -1px;
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  line-height: 1.35;
-  color: var(--fg-soft);
+  line-height: 1.45;
+  color: var(--fg-mute);
   text-decoration: none;
-  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
 }
-.toc__link:hover { background: var(--teal); color: var(--ink); }
-.toc__link[aria-current="true"] { background: var(--orange); color: var(--ink); }
-.toc__link--3 { padding-left: 1.4rem; }
+.toc__link:hover { color: var(--blue); }
+.toc__link[aria-current="true"] { color: var(--orange); border-left-color: var(--orange); }
+.toc__link--3 { padding-left: 1.5rem; }
 
 .toc-details {
   border: var(--border) solid var(--rule);
+  border-radius: var(--radius-2);
   padding: var(--sp-3) var(--sp-4);
   margin-bottom: var(--sp-6);
 }
 .toc-details > summary {
   cursor: pointer;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
+  color: var(--fg-mute);
   list-style: none;
 }
 .toc-details > summary::-webkit-details-marker { display: none; }
-.toc-details > summary::after { content: " [+]"; color: var(--orange-text); }
-.toc-details[open] > summary::after { content: " [-]"; }
+.toc-details > summary::after { content: " +"; color: var(--orange); }
+.toc-details[open] > summary::after { content: " \2212"; }
 .toc-details .toc__list { margin-top: var(--sp-3); }
-
-@media (min-width: 72rem) { .toc-details { display: none; } }
-@media (max-width: 71.9375rem) { .rail .toc { display: none; } }
+@media (min-width: 68rem) { .toc-details { display: none; } }
+@media (max-width: 67.9375rem) { .rail .toc { display: none; } }

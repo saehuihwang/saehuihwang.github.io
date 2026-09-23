@@ -7,12 +7,12 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: var(--teal);
-  color: var(--ink);
-  --fg: var(--ink);
-  --rule: var(--ink);
-  --fg-soft: #031A1D;
-  border-bottom: var(--border-heavy) solid var(--ink);
+  background-color: var(--blue-soft);
+  color: var(--blue);
+  --fg: var(--blue);
+  --rule: var(--rule);
+  --fg-mute: var(--blue-mute);
+  border-bottom: var(--border) solid var(--blue);
   margin-bottom: clamp(2rem, 5vw, 4rem);
   padding-block: clamp(2.5rem, 6vw, 5rem);
 }
@@ -48,19 +48,18 @@
 }
 
 .fellow-info {
-  background: var(--ink);
-  color: var(--canvas);
-  border: var(--border-heavy) solid var(--ink);
-  box-shadow: var(--offset) var(--offset) 0 var(--canvas);
+  background: var(--blue);
+  color: var(--cream);
+  border-radius: var(--radius-2);
   padding: clamp(1.25rem, 3vw, 2rem);
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: var(--step-1);
   line-height: 1.15;
   letter-spacing: -.02em;
 }
 .fellow-info h3 {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: .16em;
@@ -70,14 +69,15 @@
 }
 
 .panel-body {
-  background: var(--canvas);
-  color: var(--ink);
-  border: var(--border-heavy) solid var(--ink);
-  box-shadow: var(--offset) var(--offset) 0 var(--ink);
+  background: var(--paper);
+  color: var(--blue);
+  border: var(--border) solid var(--rule);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 .panel-body h4 {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: .16em;
@@ -114,11 +114,11 @@
   gap: clamp(1.5rem, 4vw, 3rem);
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  border: var(--border-heavy) solid var(--ink);
-  box-shadow: var(--offset) var(--offset) 0 var(--teal);
+  border: var(--border) solid var(--blue);
+  box-shadow: var(--shadow-1);
   padding: clamp(1.5rem, 3vw, 2.5rem);
   margin-block: clamp(2rem, 5vw, 3.5rem);
-  margin-right: var(--offset);
+  
 }
 @media (min-width: 48rem) {
   .journey-note { grid-template-columns: 14rem minmax(0, 1fr); }
@@ -130,7 +130,7 @@
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  border: var(--border-heavy) solid var(--ink);
+  border: var(--border) solid var(--blue);
 }
 
 /* ---- Map with the photograph overlapping, printed with an offset ---- */
@@ -142,8 +142,8 @@
   inset: 0;
   border-radius: 50%;
   background: var(--orange);
-  transform: translate(12px, 12px);
-  mix-blend-mode: multiply;
+  transform: translate(10px, 10px);
+  opacity: .85;
 }
 
 .img-circle-map {
@@ -153,8 +153,8 @@
   width: clamp(200px, 30vw, 300px);
   height: clamp(200px, 30vw, 300px);
   object-fit: cover;
-  border: var(--border-heavy) solid var(--ink);
-  background: var(--canvas);
+  border: var(--border) solid var(--blue);
+  background: var(--paper);
   filter: grayscale(1) contrast(1.1);
 }
 
@@ -167,7 +167,7 @@
   height: clamp(100px, 15vw, 150px);
   object-fit: cover;
   transform: translate(10%, 10%);
-  border: var(--border-heavy) solid var(--ink);
+  border: var(--border) solid var(--blue);
   transition: transform var(--dur-2) var(--ease);
 }
 .map-image-container:hover .img-circle-photo { transform: translate(10%, 10%) scale(1.07); }
@@ -175,7 +175,7 @@
 .journey-block__media figcaption {
   margin-top: var(--sp-5);
   text-align: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: .18em;

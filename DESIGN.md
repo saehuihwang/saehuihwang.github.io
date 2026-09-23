@@ -1,132 +1,96 @@
-# Design system — risograph
+# Design system — editorial
 
-Two spot inks printed flat on white, plus black. Where the inks overlap they
-multiply, the way a real two-colour riso pull does. No rounded corners, no
-gradients, no soft shadows, no centred column.
+Cream ground, royal blue doing nearly all the talking, orange reserved for the
+one thing you want clicked. High-contrast serif at display size; everything
+else small and quiet. Work is presented as **postage stamps** with
+perforated edges and blue duotone imagery.
 
 ## Where things live
 
 | What | Where |
 |---|---|
-| Inks, type scale, spacing, edges | `_sass/_tokens.scss` |
-| Colour slabs (`.on-orange` etc.) | `_sass/_tokens.scss` |
-| Grain, halftone, overprint | `_sass/_texture.scss` |
+| Colour, type scale, spacing, edges | `_sass/_tokens.scss` |
+| Stamp cards + duotone | `_sass/_cards.scss` |
+| Halftone, grain, patterns | `_sass/_texture.scss` |
 | Hand-drawn SVGs | `assets/patterns/` |
-| Pattern URLs (Liquid, baseurl-safe) | `assets/css/style.scss` |
 | Partial load order | `_sass/main.scss` |
 | Behaviour | `assets/js/site.js` |
 
-## The inks
+## Colour
 
 | Token | Value | Use |
 |---|---|---|
-| `--orange` | `#E96629` | Fills, slabs, display type |
-| `--teal` | `#0093A5` | Fills, slabs, display type |
-| `--ink` | `#0E0E0E` | Type, rules, borders |
-| `--canvas` | `#FFFFFF` | Paper |
-| `--orange-text` | `#B8410F` | Orange at body size on white (5.5:1) |
-| `--teal-text` | `#006B78` | Teal at body size on white (6.2:1) |
+| `--cream` | `#FFFCF5` | Page ground |
+| `--paper` | `#FFFFFF` | Stamp paper — must differ from the ground or perforations vanish |
+| `--cream-3` | `#EFE7D3` | The tinted bed stamps sit on |
+| `--blue` | `#3465AE` | Primary. 5.7:1 on cream, so it carries body copy |
+| `--blue-mute` | `#5B7195` | Muted text, 4.8:1 |
+| `--orange` | `#E96629` | Actions only |
+| `--ink` | `#16233A` | Text sitting *on* orange (4.8:1) |
 
-The raw inks only reach ~3:1 on white. That clears AA for large text and for
-borders, but **not** for body copy — hence the `-text` variants. Black on
-orange is 5.9:1 and black on teal is 5.3:1, so type sitting *on* a slab is
-always black.
+Orange only reaches 3.2:1 on cream, so it never carries body text — it fills
+buttons, and anything on top of it uses `--ink`. Read `var(--fg)` and
+`var(--accent)` in components rather than naming a colour, so panels can
+retint themselves (`.on-blue`, `.on-cream-2`).
 
-## Colour slabs
+## Stamps
 
-Put one of these on a section and everything inside — section numbers, rules,
-borders, links, buttons — retints itself:
+Perforated edges are four repeating `radial-gradient` masks intersected with
+`mask-composite`. Two consequences worth knowing:
 
-```html
-<section class="slab on-ink">   <!-- black field, orange accents -->
-<section class="slab on-teal">  <!-- teal field, orange accents -->
-<section class="slab on-orange"><!-- orange field, teal accents -->
-<section class="slab on-canvas"><!-- white -->
+1. **A mask cuts the border too**, so stamps get depth from
+   `filter: drop-shadow()`, not `box-shadow`.
+2. **The notches show the page through the card.** A stamp on a background the
+   same colour as itself looks like a plain rectangle. That is why stamp grids
+   sit on `.grid--stamps` (a `--cream-3` bed) and the home carousel sits on
+   `.slab--sky`. If you add stamps somewhere new, give them a darker bed.
+
+Browsers without `mask-composite` union the layers instead, which resolves to
+a plain rectangle — so it degrades to a clean edge rather than breaking.
+
+## Duotone
+
+Blue behind, greyscale photo screened over the top: blacks become the blue,
+whites stay paper.
+
+```css
+.card__media      { background: var(--blue); }
+.card__media img  { filter: grayscale(1) contrast(1.45) brightness(.72);
+                    mix-blend-mode: screen; }
 ```
 
-Each sets `--bg`, `--fg`, `--fg-soft`, `--rule` and `--accent`. Never hard-code
-a colour in a component; read `var(--fg)` / `var(--accent)` and it will work on
-any slab.
+Hovering a card restores the real photograph. The `contrast`/`brightness`
+values matter — without them bright photos wash out to almost nothing.
 
-The home page runs white → black → teal → orange top to bottom.
-
-## Overprint
-
-The signature move. Two inks that overlap genuinely mix, because the top layer
-is set to `mix-blend-mode: multiply`:
-
-```html
-<span class="halftone" style="--halftone-ink: var(--orange); --halftone-size: 12px"></span>
-```
-
-`.halftone`, `.pattern` and `.overprint` all multiply by default, and flip to
-`screen` in dark mode so the effect survives inversion. Orange over teal gives
-the dark green you see on the Watson hero — that is correct, not a bug.
-
-## Patterns
-
-Every pattern is a **CSS mask**, so the SVG's own colours are ignored. Draw in
-solid black on transparent and the CSS tints it:
-
-- `halftone.svg` — one dot per tile; the screen
-- `squiggle.svg` — tiles horizontally
-- `contour.svg` — the Watson hero field
-- `scribble.svg` — fallback art for projects with no image
-- `arch.svg` — solid organic blob
-- `dots.svg`, `underline.svg`
-
-To place one, the parent needs `position: relative`:
-
-```html
-<span class="pattern" aria-hidden="true"
-      style="--pattern: var(--pat-contour); --pattern-color: var(--teal);
-             inset: -10% -5%;"></span>
-```
-
-Register a new file by adding a `--pat-*` line in `assets/css/style.scss`.
+Projects with no image get a white halftone dot plate instead.
 
 ## Type
 
-- **Bricolage Grotesque** — display. Variable: `"wdth" 75` is condensed (used
-  for the logotype), `100` is wide. Headings are uppercase and tightly tracked.
-- **Space Grotesk** — body.
-- **Space Mono** — every label, year, number and nav item, uppercase and
-  widely tracked.
+- **Instrument Serif** — display. One weight, high contrast, set large and tight.
+- **Newsreader** — body copy.
+- **Instrument Sans** — every label, tag, nav item and button, uppercase and letterspaced.
 
 Sizes are fluid: `var(--step--2)` … `var(--step-6)`, never fixed px.
 
-Headings shout in caps; the hero lede deliberately does **not** — a 30-word
-sentence in all caps is genuinely hard to read.
+`.bracket` wraps a label in `[ ]`, the reference's nav idiom.
+`.arrow-out` adds the ↗ on external links.
 
 ## Layout
 
-Navigation is a fixed orange rail down the left edge (`--rail-w`, 16rem above
-60rem, collapsing to a solid orange top bar below it). `body` carries a
-matching `padding-left`. `.shell` is left-aligned rather than centred, so the
-page reads as a poster with a wide right margin.
+Centred: a sticky top bar, then a `--shell` column. Sections are
+`.section` / `.slab`, and `.slab--sky` is the gradient band the home
+carousel floats on.
 
-Card grids have **no gutters**: cards butt together and share one ink rule via
-negative margins, like frames on a contact sheet.
-
-## Page titles
-
-Most pages open with their own Markdown heading, and for project documents
-`page.title` is a Jekyll-generated slug rather than the real name. So
-`_layouts/page.html` renders **no** title by default — set `page_title: true`
-in front matter on pages that need one.
+Project pages can set `wide: true` in front matter to drop the reading column
+and contents rail — used by Silly Bots, which is a headline plus a deck.
 
 ## Accessibility
 
-Worth holding onto, given what you research:
-
-- All motion is gated behind `prefers-reduced-motion`.
-- The TOC, carousels and galleries work with JavaScript disabled.
-- Focus rings are teal, 3px, always visible; there's a skip link.
-- Every page has exactly one `h1`, a `lang`, and no duplicate ids.
-- Icon-only links carry `aria-label`.
-- Photographs are duotone by default and return to full colour on hover/focus
-  — remove the `filter` on `.portrait__img`, `.card__media img` and
-  `.feature__media img` to turn that off.
+- Every page has one `h1`, a `lang`, no duplicate ids, alt text on every image.
+- Motion is gated on `prefers-reduced-motion`.
+- Contents rail, carousels, galleries and the focus deck all work without JS.
+- Focus rings are orange, 2px, always visible; there is a skip link.
+- Duotone is decorative: hovering or focusing restores the true photo.
 
 ```bash
 bundle exec jekyll serve --livereload

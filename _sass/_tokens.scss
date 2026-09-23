@@ -1,63 +1,52 @@
 /* =========================================================
-   Design tokens — RISOGRAPH
-   Two spot inks (orange, teal) printed flat on white, plus
-   black. Where inks overlap they multiply, exactly like a
-   real two-colour riso pull. No rounded corners, no soft
-   shadows, no gradients: everything is a flat field.
+   Design tokens — EDITORIAL
+   Cream ground, royal blue doing nearly all the talking,
+   orange reserved for the one thing you want clicked.
+   High-contrast serif at display size; everything else small.
    ========================================================= */
 
 :root {
-  /* ---- Inks ---- */
-  --orange:  #E96629;
-  --teal:    #0093A5;
-  --ink:     #0E0E0E;
-  --canvas:  #FFFFFF;
+  /* ---- Ground ---- */
+  --cream:    #FFFCF5;
+  --cream-2:  #F8F3E6;
+  --cream-3:  #EFE7D3;
+  --paper:    #FFFFFF;   /* stamp paper, so notches read against cream */
 
-  /* Darkened inks, for text-size use on white.
-     The raw inks only reach ~3:1 on white, so they are for
-     FILLS and DISPLAY TYPE only — never body copy. */
-  --orange-text: #B8410F;
-  --teal-text:   #006B78;
+  /* ---- Blue: primary. 5.7:1 on cream, so it carries body copy ---- */
+  --blue:      #3465AE;
+  --blue-deep: #24477C;
+  --blue-soft: #E5EBF5;
+  --blue-mute: #5B7195;   /* 4.8:1 — muted text */
 
-  /* Ink at low strength, for halftone washes */
-  --orange-wash: #FBE0D2;
-  --teal-wash:   #D2EAEE;
+  /* ---- Orange: the accent, for actions only ---- */
+  --orange:      #E96629;
+  --orange-soft: #FCE7DA;
 
-  /* ---- Contextual: overridden inside colour slabs ---- */
-  --bg:      var(--canvas);
-  --fg:      var(--ink);
-  --fg-soft: #4A4A4A;
-  --accent:  var(--orange);
-  --accent-text: var(--orange-text);
-  --rule:    var(--ink);
+  /* Orange only reaches 3.2:1 on cream, so it never carries body
+     text; anything sitting on orange uses --ink (4.8:1). */
+  --ink: #16233A;
 
-  /* ---- Texture ---- */
-  --grain-opacity: .16;
-
-  /* ---- Edges ---- */
-  --radius: 0;
-  --border: 2px;
-  --border-heavy: 3px;
-  --offset: 8px;                       /* registration offset */
-  --shadow-hard: var(--offset) var(--offset) 0 var(--ink);
-  --shadow-hard-teal: var(--offset) var(--offset) 0 var(--teal);
-  --shadow-hard-orange: var(--offset) var(--offset) 0 var(--orange);
+  /* ---- Contextual, overridden inside panels ---- */
+  --bg:     var(--cream);
+  --fg:     var(--blue);
+  --fg-mute:var(--blue-mute);
+  --rule:   #DCD5C4;
+  --accent: var(--orange);
 
   /* ---- Type ---- */
-  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-  --font-body:    "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --font-mono:    "Space Mono", ui-monospace, Menlo, monospace;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body:    "Newsreader", Georgia, serif;
+  --font-ui:      "Instrument Sans", -apple-system, "Segoe UI", sans-serif;
 
-  /* Aggressive scale — the jumps are meant to be violent */
-  --step--2: clamp(0.70rem, 0.68rem + 0.10vw, 0.78rem);
-  --step--1: clamp(0.84rem, 0.81rem + 0.16vw, 0.94rem);
-  --step-0:  clamp(1.00rem, 0.96rem + 0.22vw, 1.14rem);
-  --step-1:  clamp(1.25rem, 1.15rem + 0.50vw, 1.56rem);
-  --step-2:  clamp(1.60rem, 1.38rem + 1.10vw, 2.37rem);
-  --step-3:  clamp(2.10rem, 1.66rem + 2.20vw, 3.60rem);
-  --step-4:  clamp(2.80rem, 1.92rem + 4.40vw, 5.50rem);
-  --step-5:  clamp(3.60rem, 1.90rem + 8.50vw, 9.00rem);
-  --step-6:  clamp(4.20rem, 0.90rem + 16.5vw, 16.0rem);
+  --step--2: clamp(0.68rem, 0.66rem + 0.09vw, 0.74rem);
+  --step--1: clamp(0.81rem, 0.78rem + 0.15vw, 0.90rem);
+  --step-0:  clamp(1.00rem, 0.97rem + 0.18vw, 1.11rem);
+  --step-1:  clamp(1.20rem, 1.13rem + 0.35vw, 1.42rem);
+  --step-2:  clamp(1.50rem, 1.33rem + 0.85vw, 2.05rem);
+  --step-3:  clamp(2.00rem, 1.62rem + 1.90vw, 3.20rem);
+  --step-4:  clamp(2.70rem, 1.90rem + 4.00vw, 5.20rem);
+  --step-5:  clamp(3.40rem, 1.80rem + 8.00vw, 8.00rem);
+  --step-6:  clamp(4.00rem, 1.00rem + 15.0vw, 14.0rem);
 
   --measure: 62ch;
 
@@ -65,74 +54,52 @@
   --sp-1: .25rem;  --sp-2: .5rem;   --sp-3: .75rem;  --sp-4: 1rem;
   --sp-5: 1.5rem;  --sp-6: 2rem;    --sp-7: 3rem;    --sp-8: 4rem;
   --sp-9: 6rem;    --sp-10: 9rem;
-  --gutter: clamp(1.25rem, 3.5vw, 3.5rem);
-  --rail-w: 0px;                       /* set at the desktop breakpoint */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --shell:  76rem;
 
-  /* ---- Motion: fast and mechanical, like a switch ---- */
-  --ease: cubic-bezier(.2, .8, .2, 1);
-  --dur-1: 90ms;
-  --dur-2: 180ms;
-  --dur-3: 320ms;
+  /* ---- Edges: soft again. Pills for actions, stamps for cards ---- */
+  --radius-1: 4px;
+  --radius-2: 10px;
+  --radius-pill: 999px;
+  --border: 1px;
+
+  --shadow-1: 0 1px 2px rgba(22,35,58,.05), 0 6px 20px -8px rgba(22,35,58,.12);
+  --shadow-2: 0 2px 6px rgba(22,35,58,.07), 0 18px 40px -14px rgba(22,35,58,.22);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur-1: 130ms;
+  --dur-2: 260ms;
+  --dur-3: 460ms;
 
   color-scheme: light;
 }
 
-@media (min-width: 60rem) {
-  :root { --rail-w: 16rem; }
-}
-
 [data-theme="dark"] {
-  --ink:    #F2F2F2;
-  --canvas: #0E0E0E;
-  --orange-text: #FF8A4C;
-  --teal-text:   #2FC2D6;
-  --orange-wash: #34190E;
-  --teal-wash:   #06272C;
-  --fg-soft: #A8A8A8;
-  --grain-opacity: .12;
-  --shadow-hard: var(--offset) var(--offset) 0 var(--ink);
+  --cream:    #12161F;
+  --cream-2:  #182030;
+  --cream-3:  #1F293C;
+  --paper:    #1A2331;
+  --blue:      #8FB4EA;
+  --blue-deep: #B9D0F5;
+  --blue-soft: #1B2A44;
+  --blue-mute: #8595B3;
+  --orange:      #F5834C;
+  --orange-soft: #33200F;
+  --ink: #0B0F17;
+  --rule: #2A3446;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-2: 0 2px 6px rgba(0,0,0,.4), 0 18px 40px -14px rgba(0,0,0,.6);
   color-scheme: dark;
 }
 
-/* ---------- Colour slabs ----------
-   Drop one of these on any section and every child — rules,
-   labels, borders, links — retints itself. */
-.on-orange {
-  --bg: var(--orange);
-  --fg: var(--ink);
-  --fg-soft: #3A1C0D;
-  --rule: var(--ink);
-  --accent: var(--teal);
-  --accent-text: var(--ink);
+/* ---------- Panels ---------- */
+.on-blue {
+  --bg: var(--blue);
+  --fg: var(--cream);
+  --fg-mute: #C9D8F0;
+  --rule: rgba(255,252,245,.35);
   background: var(--bg);
   color: var(--fg);
 }
-
-.on-teal {
-  --bg: var(--teal);
-  --fg: var(--ink);
-  --fg-soft: #031A1D;
-  --rule: var(--ink);
-  --accent: var(--orange);
-  --accent-text: var(--ink);
-  background: var(--bg);
-  color: var(--fg);
-}
-
-.on-ink {
-  --bg: var(--ink);
-  --fg: var(--canvas);
-  --fg-soft: #9A9A9A;
-  --rule: var(--canvas);
-  --accent: var(--orange);
-  --accent-text: var(--orange);
-  background: var(--bg);
-  color: var(--fg);
-}
-
-.on-canvas {
-  --bg: var(--canvas);
-  --fg: var(--ink);
-  background: var(--bg);
-  color: var(--fg);
-}
+.on-cream-2 { --bg: var(--cream-2); background: var(--bg); }

@@ -1,103 +1,106 @@
 /* ---------- Typography ----------
-   Bricolage Grotesque set very tight and very large for display;
-   Space Grotesk for reading; Space Mono, uppercase and widely
-   tracked, for every label, number and nav item. */
+   Instrument Serif does the shouting; Newsreader does the reading;
+   Instrument Sans handles every label, tag and nav item. */
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "wdth" 100, "opsz" 48;
-  line-height: .92;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   text-wrap: balance;
+  color: var(--fg);
 }
 
-h1 { font-size: var(--step-4); }
+h1 { font-size: var(--step-4); letter-spacing: -0.03em; }
 h2 { font-size: var(--step-3); }
-h3 { font-size: var(--step-2); letter-spacing: -0.025em; }
-h4 { font-size: var(--step-1); letter-spacing: -0.015em; }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); }
 
 h5, h6 {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--1);
-  font-weight: 700;
-  letter-spacing: .12em;
+  font-weight: 500;
+  letter-spacing: .1em;
   text-transform: uppercase;
+  color: var(--fg-mute);
 }
 
 p { text-wrap: pretty; }
-strong, b { font-weight: 700; }
+strong, b { font-weight: 600; }
+em, i { font-style: italic; }
 
-/* The mono voice: labels, years, numbers, nav */
+/* Small letter-spaced UI label */
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .16em;
+  font-weight: 500;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  line-height: 1.3;
+  color: var(--fg-mute);
+  line-height: 1.4;
 }
 
-/* Display type, set to run big and tight */
+/* [ bracketed ] — the reference's nav idiom */
+.bracket::before { content: "[\00a0"; }
+.bracket::after  { content: "\00a0]"; }
+
+/* Display lockup */
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "wdth" 100, "opsz" 96;
-  line-height: .84;
-  letter-spacing: -0.05em;
+  font-weight: 400;
+  line-height: .94;
+  letter-spacing: -0.035em;
+}
+
+/* Superscript index letter before a word: ᴀBrands */
+.index-letter {
+  font-family: var(--font-ui);
+  font-size: .42em;
+  font-weight: 500;
   text-transform: uppercase;
+  letter-spacing: .08em;
+  vertical-align: .85em;
+  margin-right: .15em;
+  color: var(--fg-mute);
 }
 
-/* Registration offset: a second copy of the word printed
-   slightly out of alignment in the other ink, the way a
-   two-colour riso pull misregisters. */
-.misreg {
-  position: relative;
-  display: inline-block;
-  color: var(--ink);
-}
-.misreg::before {
-  content: attr(data-word);
-  position: absolute;
-  left: 5px;
-  top: 4px;
-  color: var(--misreg-ink, var(--teal));
-  z-index: -1;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-[data-theme="dark"] .misreg::before { mix-blend-mode: screen; }
-
-/* Solid block highlight instead of an underline */
-.block-mark {
-  background: var(--accent);
-  color: var(--ink);
-  padding: 0 .16em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+/* Hand-drawn circle annotation, e.g. around a smiley */
+.annotate {
+  font-family: var(--font-body);
+  font-size: var(--step--2);
+  font-style: italic;
+  color: var(--fg-mute);
+  line-height: 1.2;
 }
 
-.text-soft { color: var(--fg-soft); }
+.text-mute { color: var(--fg-mute); }
+.text-muted, .text-faint { color: var(--fg-mute); }
 
-/* Links: a fat ink underline that fills the whole word on hover */
+/* Links: a fine rule that thickens */
 .link,
 .prose a:not(.btn):not(.tag):not(.no-underline) {
   color: inherit;
   text-decoration: none;
-  background-image: linear-gradient(var(--accent), var(--accent));
+  background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
   background-position: 0 100%;
-  background-size: 100% 3px;
+  background-size: 100% 1px;
+  padding-bottom: .04em;
   transition: background-size var(--dur-2) var(--ease), color var(--dur-1) var(--ease);
-  padding-bottom: 1px;
-  font-weight: 500;
 }
 .link:hover,
 .prose a:not(.btn):not(.tag):not(.no-underline):hover {
-  background-size: 100% 100%;
-  color: var(--ink);
+  background-size: 100% 2px;
+  color: var(--orange);
 }
 
-/* Aliases kept so existing templates keep working */
-.text-muted, .text-faint { color: var(--fg-soft); }
+/* External links get the reference's arrow */
+.arrow-out::after {
+  content: "\2197";
+  display: inline-block;
+  margin-left: .25em;
+  font-size: .8em;
+  transition: transform var(--dur-2) var(--ease);
+}
+a:hover > .arrow-out::after,
+a.arrow-out:hover::after { transform: translate(2px, -2px); }

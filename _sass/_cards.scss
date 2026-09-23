@@ -1,107 +1,137 @@
-/* ---------- Cards ----------
-   No gutters: cards butt together and share a single ink rule,
-   like frames on a contact sheet. Hovering floods the card with
-   ink and knocks the type out in orange. */
-
-.grid > .card {
-  border: var(--border) solid var(--rule);
-  margin-right: calc(var(--border) * -1);
-  margin-bottom: calc(var(--border) * -1);
-}
+/* ---------- Postage-stamp cards ----------
+   Perforated edges are four repeating radial-gradient masks
+   intersected. Browsers without mask-composite union the layers
+   instead, which resolves to a plain rectangle — so the card
+   degrades to a clean edge rather than breaking. */
 
 .card {
+  --perf: 10px;
+  --step: 19px;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: var(--fg);
-  background: var(--bg);
-  transition: background-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
-  position: relative;
-}
-.card:hover, .card:focus-visible { background: var(--ink); color: var(--canvas); z-index: 1; }
-.card:hover .card__title { color: var(--orange); }
-.card:hover .card__foot { border-top-color: var(--canvas); }
-.card:hover .tag { border-color: var(--canvas); color: var(--canvas); background: transparent; }
+  background: var(--paper);
+  padding: 9px 9px 0;
+  transition: transform var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
+  filter: drop-shadow(0 2px 4px rgba(22,35,58,.10));
 
+  -webkit-mask:
+    radial-gradient(circle calc(var(--perf)/2) at 50% 0,    #0000 97%, #000) 50% 0    / var(--step) 100% repeat-x,
+    radial-gradient(circle calc(var(--perf)/2) at 50% 100%, #0000 97%, #000) 50% 100% / var(--step) 100% repeat-x,
+    radial-gradient(circle calc(var(--perf)/2) at 0 50%,    #0000 97%, #000) 0 50%    / 100% var(--step) repeat-y,
+    radial-gradient(circle calc(var(--perf)/2) at 100% 50%, #0000 97%, #000) 100% 50% / 100% var(--step) repeat-y;
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+  mask:
+    radial-gradient(circle calc(var(--perf)/2) at 50% 0,    #0000 97%, #000) 50% 0    / var(--step) 100% repeat-x,
+    radial-gradient(circle calc(var(--perf)/2) at 50% 100%, #0000 97%, #000) 50% 100% / var(--step) 100% repeat-x,
+    radial-gradient(circle calc(var(--perf)/2) at 0 50%,    #0000 97%, #000) 0 50%    / 100% var(--step) repeat-y,
+    radial-gradient(circle calc(var(--perf)/2) at 100% 50%, #0000 97%, #000) 100% 50% / 100% var(--step) repeat-y;
+  mask-composite: intersect;
+}
+
+.card:hover, .card:focus-visible {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 8px 16px rgba(22,35,58,.18));
+}
+
+/* ---- Duotone image plate ----
+   Blue behind, greyscale photo screened over it: blacks become the
+   blue, whites stay paper. */
 .card__media {
+  position: relative;          /* the empty-plate halftone anchors to this */
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-bottom: var(--border) solid var(--rule);
-  background: var(--teal-wash);
+  background: var(--blue);
 }
-.card__media--empty {
-  position: relative;
-  background: var(--teal-wash);
+.card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.45) brightness(.72);
+  mix-blend-mode: screen;
+  transition: filter var(--dur-3) var(--ease);
 }
+.card:hover .card__media img { filter: none; mix-blend-mode: normal; }
+
+.card__media--empty { display: grid; place-items: center; }
 .card__media--empty .halftone {
   position: absolute;
   inset: 0;
-  --halftone-ink: var(--teal);
-  --halftone-size: 11px;
+  --halftone-ink: var(--paper);
+  --halftone-size: 10px;
+  --halftone-opacity: .55;
+  mix-blend-mode: normal;
 }
-.card:hover .card__media--empty { background: var(--ink); }
-
-.card__media img { width: 100%; height: 100%; object-fit: cover; }
 
 .card__body {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
-  padding: var(--sp-5);
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-3) var(--sp-4);
   flex: 1;
 }
 
 .card__title {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: var(--step-1);
-  line-height: .95;
-  letter-spacing: -.03em;
-  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--blue);
   transition: color var(--dur-2) var(--ease);
 }
-/* Paper titles are long: smaller and sentence case so a card stays readable */
-.card--paper .card__title {
-  font-size: var(--step-0);
-  text-transform: none;
-  line-height: 1.12;
-  letter-spacing: -.015em;
+.card:hover .card__title { color: var(--orange); }
+
+.card--paper .card__title { font-size: var(--step-0); line-height: 1.2; }
+
+.card__desc, .card__authors {
+  font-size: var(--step--2);
+  color: var(--fg-mute);
+  font-family: var(--font-ui);
+  line-height: 1.45;
 }
 
-.card__desc, .card__authors { font-size: var(--step--1); color: inherit; }
-.card:not(:hover) .card__desc,
-.card:not(:hover) .card__authors { color: var(--fg-soft); }
-
+/* Stamp footer: caption left, denomination right */
 .card__foot {
   margin-top: auto;
-  padding-top: var(--sp-3);
-  border-top: var(--border) solid var(--rule);
-  font-family: var(--font-mono);
-  font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  padding-top: var(--sp-2);
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   gap: var(--sp-3);
-}
-
-/* ---------- Tags: hard rectangles, no pills ---------- */
-.tag {
-  display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: var(--step--2);
-  font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  padding: .2rem .5rem;
-  border: var(--border) solid currentColor;
-  color: var(--fg);
-  text-decoration: none;
-  line-height: 1.4;
-  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+  color: var(--fg-mute);
 }
-a.tag:hover { background: var(--orange); color: var(--ink); border-color: var(--ink); }
-.tag--accent { background: var(--orange); color: var(--ink); border-color: var(--ink); }
-.tag--teal   { background: var(--teal);   color: var(--ink); border-color: var(--ink); }
-.tag--quiet  { color: var(--fg-soft); }
+.card__foot > :last-child {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: var(--blue);
+}
+
+/* ---------- Tags ---------- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .18rem .6rem;
+  border: var(--border) solid var(--rule);
+  border-radius: var(--radius-pill);
+  color: var(--fg-mute);
+  text-decoration: none;
+  line-height: 1.5;
+  transition: background-color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+a.tag:hover { background: var(--orange); border-color: var(--orange); color: var(--ink); }
+.tag--accent { color: var(--blue); border-color: var(--blue-soft); background: var(--blue-soft); }
+.tag--teal   { color: var(--ink); border-color: var(--orange); background: var(--orange-soft); }
+.tag--quiet  { color: var(--fg-mute); }
