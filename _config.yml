@@ -12,12 +12,16 @@ plugins:
   - jemoji
 
 ### Navbar Settings ###
-nav_exclude: # The following paths are excluded from navbar
-  - pages/tags.html
-  - pages/404.html
-  - pages/index.md
-  - pages/stories.html
-  - pages/watson.html
+# The header is this list, in order. `url` can be a page, a section
+# anchor, or a file. Nothing else appears in the header.
+nav:
+  - title: Research
+    url: /projects/#research
+  - title: Creative Projects
+    url: /projects/#creative-projects
+  - title: Résumé
+    url: /assets/pdf/resume.pdf
+
 
 ### Author Info ###
 author:

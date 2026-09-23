@@ -27,6 +27,7 @@ check the **Actions** tab on github.com for a red build.
 | Your name, email, social links | `_config.yml` |
 | Images | `assets/images/` |
 | PDFs | `assets/pdf/` — `papers/`, `reports/`, `resume.pdf` |
+| Header links | `nav:` in `_config.yml` |
 | Colours, fonts, spacing | `_sass/_tokens.scss` (see `DESIGN.md`) |
 
 ## Front matter
@@ -188,22 +189,29 @@ Map coordinates come from the [Mapbox static playground](https://docs.mapbox.com
 
 ## Navigation
 
-The left orange rail is built from pages that have a `title`, ordered by
-`weight` (low to high):
+The header is an explicit list in `_config.yml` — what's in it is what
+shows, in that order:
 
-| Page | weight |
-|---|---|
-| Projects | 2 |
-| Teaching | 4 |
-| Videography | 5 |
-| My Watson Year | 6 |
+```yaml
+nav:
+  - title: Research
+    url: /projects/#research
+  - title: Creative Projects
+    url: /projects/#creative-projects
+  - title: Résumé
+    url: /assets/pdf/resume.pdf
+```
 
-Change the number in that page's front matter to reorder. To hide a page from
-the rail, add its path to `nav_exclude` in `_config.yml`.
+`url` can be a page (`/teaching/`), a section anchor (`/projects/#research`),
+or a file. Section anchors come from the `category:` name, lowercased and
+hyphenated — so a new category called "Field Notes" is `#field-notes`.
 
-**Your writing is currently hidden.** `pages/stories.html` is listed under
-`nav_exclude`, so `/stories/` exists but nothing links to it. Remove that line
-from `_config.yml` to put it in the rail.
+Adding a page no longer adds it to the header; add a line here if you want it
+linked. **Restart `jekyll serve` after editing `_config.yml`.**
+
+**Two pages are currently reachable only by typing the URL:** `/teaching/` and
+`/stories/` (your eight blog posts). Add them to `nav` above, or link them
+from a project card the way Videography and the Watson year are.
 
 ## Page titles
 
