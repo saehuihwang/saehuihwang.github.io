@@ -149,3 +149,55 @@ img.emoji {
   border: 0;
   box-shadow: none;
 }
+
+/* ---------- Vertical focus deck ----------
+   Slides run down the page; whichever sits nearest the centre of the
+   viewport is scaled up and full strength, the rest are dimmed but
+   still readable. Without JS every slide simply shows at full
+   strength, so nothing is hidden behind the effect. */
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 4vh, 3rem);
+  padding-block: clamp(1rem, 6vh, 4rem) clamp(4rem, 20vh, 12rem);
+}
+
+.deck__slide {
+  margin: 0;
+  width: min(60rem, 100%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: var(--border-heavy) solid var(--ink);
+  background: var(--canvas);
+  transform-origin: center;
+}
+.deck__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.js .deck__slide {
+  position: relative;
+  transform: scale(.92);
+  transition: transform 420ms var(--ease);
+}
+.js .deck__slide.is-focus { transform: scale(1); }
+
+/* An ink scrim rather than a filter: the out-of-focus slides read as
+   darkened but stay legible, and the animated slides keep playing at
+   full frame rate underneath. */
+.js .deck__slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  opacity: .5;
+  pointer-events: none;
+  transition: opacity 420ms var(--ease);
+}
+.js .deck__slide.is-focus::after { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .deck__slide { transform: none; }
+  .js .deck__slide::after { opacity: .5; }
+  .js .deck__slide.is-focus::after { opacity: 0; }
+}

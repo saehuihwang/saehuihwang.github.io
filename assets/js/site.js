@@ -186,6 +186,48 @@
     });
   }
 
+  /* ---------- Vertical focus deck ----------
+     Marks whichever slide sits nearest the centre of the viewport, so
+     it can be scaled up while the rest stay dimmed but legible. */
+  function initDecks() {
+    var decks = document.querySelectorAll("[data-deck]");
+    if (!decks.length) return;
+
+    var slides = [];
+    Array.prototype.forEach.call(decks, function (deck) {
+      slides = slides.concat([].slice.call(deck.querySelectorAll(".deck__slide")));
+    });
+    if (!slides.length) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var mid = window.innerHeight / 2;
+      var best = null, bestDist = Infinity;
+      slides.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestDist) { bestDist = d; best = el; }
+      });
+      slides.forEach(function (el) {
+        el.classList.toggle("is-focus", el === best);
+      });
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    // Keyboard and programmatic focus should pull a slide forward too.
+    slides.forEach(function (el) {
+      el.addEventListener("focusin", function () {
+        slides.forEach(function (s) { s.classList.toggle("is-focus", s === el); });
+      });
+    });
+    update();
+  }
+
   /* ---------- Reveal on scroll ---------- */
   function initReveal() {
     var items = document.querySelectorAll("[data-reveal]");
@@ -215,6 +257,7 @@
     initToc();
     initCarousels();
     initGalleries();
+    initDecks();
     initReveal();
   }
 

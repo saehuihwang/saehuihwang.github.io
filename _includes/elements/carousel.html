@@ -9,6 +9,23 @@
 {%- assign gallery_id = include.carousel_id | default: "gallery" -%}
 {%- assign images = include.carousel_images | strip | newline_to_br | split: '<br />' -%}
 
+{%- if include.deck -%}
+{%- comment -%}
+  Vertical "deck": slides stack down the page, the one nearest the
+  centre of the viewport is brought into focus and the rest are dimmed
+  but still legible and clickable. No dots, no scroll hint.
+{%- endcomment -%}
+<div class="deck" data-deck>
+  {%- for image in images -%}
+    {%- assign src = image | strip -%}
+    {%- if src != "" -%}
+    <figure class="deck__slide">
+      <img src="{{ src }}" alt="" loading="lazy">
+    </figure>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- else -%}
 <div class="gallery{% if include.wide %} gallery--wide{% endif %}" data-gallery id="{{ gallery_id }}">
   <div class="gallery__track" data-gallery-track tabindex="0" role="group" aria-label="Image gallery">
     {%- for image in images -%}
@@ -35,3 +52,4 @@
     <span class="label">Scroll &rarr;</span>
   </div>
 </div>
+{%- endif -%}

@@ -24,4 +24,4 @@ description: Handwriting is outdated. Put on a clown nose instead.
 /assets/images/sillybots/slide-11.jpg
 /assets/images/sillybots/slide-12.jpg
 {% endcapture %}
-{% include elements/carousel.html carousel_id="sillybots" carousel_images=carousel_images wide=true %}
+{% include elements/carousel.html carousel_id="sillybots" carousel_images=carousel_images deck=true %}
