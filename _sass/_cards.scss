@@ -92,7 +92,8 @@
   line-height: 1.45;
 }
 
-/* Stamp footer: caption left, denomination right */
+/* Stamp footer: denomination bottom right, with a caption beside
+   it where there is one (blog cards use the date) */
 .card__foot {
   margin-top: auto;
   padding-top: var(--sp-2);
@@ -113,6 +114,9 @@
   text-transform: none;
   color: var(--blue);
 }
+
+/* Project stamps carry only the denomination; blog cards keep a date too */
+.card__foot--solo { justify-content: flex-end; }
 
 /* ---------- Tags ---------- */
 .tag {

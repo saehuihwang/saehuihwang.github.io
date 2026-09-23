@@ -2,8 +2,7 @@
 order: 1
 category: Research
 layout: publication
-image: /assets/images/papers/capsmith-teaser.jpg
-image_position: 78% 50%
+image: /assets/images/papers/capsmith-thumb.jpg
 pdf: /assets/pdf/papers/capsmith-cc26.pdf
 title: "CapSmith: Contextual Refinement of Additive Text Captions for Video Storytelling"
 year: 2026

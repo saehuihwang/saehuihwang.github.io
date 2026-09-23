@@ -236,6 +236,24 @@ For a caption:
 {% include elements/figure.html image="/assets/images/photo.jpg" caption="Bermuda, 2022" %}
 ```
 
+### Stamp thumbnails
+
+The `image:` on a project or paper fills the stamp, so crop it yourself rather
+than hoping a teaser figure happens to frame well. Make it **square**: the
+projects grid shows the middle 4:3 of it and the homepage carousel shows the
+whole square, so a square file reads the same in both.
+
+The paper thumbnails in `assets/images/papers/` are `*-thumb.*`, cut from the
+full teaser figure next to them. A teaser that is already close to 4:3 only
+needs padding out to square; the white bands disappear into the plate, since
+the figure's own background is white too:
+
+```bash
+# pick a meaningful 4:3 region, then pad it out to a square
+sips -c 495 660 --cropOffset 168 432 teaser.jpg --out crop.jpg   # offset is top-left y x
+sips -p 660 660 --padColor FFFFFF crop.jpg --out paper-thumb.jpg
+```
+
 ## Site-wide settings
 
 `_config.yml` holds your name, email, and social handles:

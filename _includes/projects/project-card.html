@@ -3,8 +3,7 @@
 
   {%- if card_img -%}
   <div class="card__media">
-    <img src="{{ card_img }}" alt="" loading="lazy"
-         style="{% if card_pos %}object-position:{{ card_pos }};{% endif %}{% if card_scale %}transform:scale({{ card_scale }});{% endif %}">
+    <img src="{{ card_img }}" alt="" loading="lazy">
   </div>
   {%- else -%}
   <div class="card__media card__media--empty" aria-hidden="true">
@@ -43,9 +42,8 @@
       {%- endif -%}
     {%- endif -%}
 
-    <div class="card__foot">
-      <span>{% if card_type == "publication" %}Paper{% elsif card_type == "remote" %}Repository{% else %}Project{% endif %}</span>
-      <span>{% if card_year %}{{ card_year }}{% else %}&rarr;{% endif %}</span>
+    <div class="card__foot card__foot--solo">
+      <span aria-hidden="true">&rarr;</span>
     </div>
   </div>
 </a>
