@@ -2,8 +2,9 @@
    {%- if external and site.open_new_tab %} target="_blank" rel="noopener"{% endif -%}>
 
   {%- if card_img -%}
-  <div class="card__media{% if card_fit == 'contain' %} media--contain{% endif %}">
-    <img src="{{ card_img }}" alt="" loading="lazy">
+  <div class="card__media">
+    <img src="{{ card_img }}" alt="" loading="lazy"
+         style="{% if card_pos %}object-position:{{ card_pos }};{% endif %}{% if card_scale %}transform:scale({{ card_scale }});{% endif %}">
   </div>
   {%- else -%}
   <div class="card__media card__media--empty" aria-hidden="true">

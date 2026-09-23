@@ -19,7 +19,8 @@
     <div class="grid grid--stamps">
       {%- for project in group -%}
         {%- assign card_img = project.image -%}
-        {%- assign card_fit = project.image_fit -%}
+        {%- assign card_pos = project.image_position -%}
+        {%- assign card_scale = project.image_scale -%}
         {%- assign card_year    = nil -%}
         {%- assign card_journal = nil -%}
         {%- assign card_authors = nil -%}

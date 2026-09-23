@@ -43,9 +43,10 @@
             {%- assign p_name = project.name -%}{%- assign p_desc = project.description -%}
           {%- endif -%}
           <a class="feature" href="{{ project.url | relative_url }}">
-            <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}{% if project.image_fit == 'contain' %} media--contain{% endif %}">
+            <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}">
               {%- if project.image -%}
-                <img src="{{ project.image }}" alt="" loading="lazy">
+                <img src="{{ project.image }}" alt="" loading="lazy"
+                     style="{% if project.image_position %}object-position:{{ project.image_position }};{% endif %}{% if project.image_scale %}transform:scale({{ project.image_scale }});{% endif %}">
               {%- else -%}
                 <span class="halftone" aria-hidden="true"></span>
               {%- endif -%}

@@ -3,7 +3,8 @@ order: 2
 category: Research
 layout: publication
 image: /assets/images/papers/codesign-artefacts.png
-image_fit: contain
+image_position: 88% 45%
+image_scale: 1.45
 pdf: /assets/pdf/papers/blv-data-statistics-chi25.pdf
 title: "Promoting Comprehension and Engagement in Introductory Data and Statistics for Blind and Low-Vision Students: A Co-Design Study"
 year: 2025
