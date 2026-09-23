@@ -14,4 +14,5 @@
   --pat-dots:      #{'url("' + '{{ "/assets/patterns/dots.svg"      | relative_url }}' + '")'};
   --pat-arch:      #{'url("' + '{{ "/assets/patterns/arch.svg"      | relative_url }}' + '")'};
   --pat-halftone:  #{'url("' + '{{ "/assets/patterns/halftone.svg"  | relative_url }}' + '")'};
+  --img-sky:       #{'url("' + '{{ "/assets/images/site/sky.jpg"     | relative_url }}' + '")'};
 }

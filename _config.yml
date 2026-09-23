@@ -91,3 +91,4 @@ exclude:
   - LICENSE
   - "*.log"
   - "*.pptx"
+  - nivedhanirmal.jpg   # design reference, not ours to publish

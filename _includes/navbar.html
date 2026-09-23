@@ -46,6 +46,8 @@
            {%- if nav_page.external_url and site.open_new_tab %} target="_blank" rel="noopener"{% endif -%}>{{ nav_page.title }}</a>
       {%- endfor -%}
 
+      <a class="btn btn--nav" href="mailto:{{ site.author.email }}">Contact me</a>
+
       <span class="nav__extras">
         <button class="theme-toggle" type="button" id="theme-toggler"
                 aria-label="Switch colour theme" title="Switch colour theme">

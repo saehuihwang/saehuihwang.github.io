@@ -16,3 +16,6 @@ _site/
 
 # Source decks kept alongside the repo, not published
 *.pptx
+
+# Design references kept locally, not published
+nivedhanirmal.jpg

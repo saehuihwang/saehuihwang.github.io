@@ -111,5 +111,16 @@ main { flex: 1 0 auto; }
 
 /* The reference floats its stamps on a sky; this is the same idea */
 .slab--sky {
-  background: linear-gradient(180deg, var(--blue-soft) 0%, var(--cream-3) 78%, var(--cream-2) 100%);
+  background-color: var(--blue-soft);
+  background-image:
+    linear-gradient(180deg, rgba(255,252,245,0) 55%, rgba(255,252,245,.92) 100%),
+    var(--img-sky);
+  background-size: cover, cover;
+  background-position: center top, center top;
+  background-repeat: no-repeat, no-repeat;
+}
+[data-theme="dark"] .slab--sky {
+  background-image:
+    linear-gradient(180deg, rgba(18,22,31,.55) 0%, rgba(18,22,31,.92) 100%),
+    var(--img-sky);
 }

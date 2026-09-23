@@ -9,7 +9,10 @@
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  border: var(--border) solid var(--rule);
+  border: var(--border) solid rgba(52,101,174,.28);
+  background: rgba(255,252,245,.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   color: var(--blue);
   transition: background-color var(--dur-1) var(--ease),
               border-color var(--dur-1) var(--ease),
@@ -22,13 +25,19 @@
 
 .carousel__track {
   display: flex;
+  /* safe centre: centred when the stamps fit, left-aligned and
+     scrollable when they don't, so the first one is never unreachable */
+  justify-content: safe center;
   gap: clamp(1rem, 2vw, 1.75rem);
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  margin-inline: calc(var(--gutter) * -1);
-  padding: .5rem var(--gutter) 1.5rem;
+  /* No negative-margin bleed: combined with centring it let the first
+     stamp sit flush against the viewport edge at some widths. The
+     track stays inside the shell and scrolls instead. */
+  padding: .5rem 0 1.5rem;
+  scroll-padding-inline: 0;
   scrollbar-width: none;
 }
 .carousel__track::-webkit-scrollbar { display: none; }
@@ -119,3 +128,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* A quiet pair of arrows under the strip; site.js hides them when
+   there is nothing to scroll. */
+.carousel__hint {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.carousel__hint[hidden] { display: none; }

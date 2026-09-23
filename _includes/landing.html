@@ -7,14 +7,14 @@
   <div class="shell">
 
     <h1 class="hero__name" data-reveal>
-      <span class="hero__line">saehui</span>
+      <span class="hero__line">Saehui</span>
       <span class="hero__line hero__line--noted">
         <span class="hero__note">
           I'm a PhD candidate in Mechanical Engineering at Stanford University,
           working on designing multimodal media applied to learning,
           entertainment, and accessibility.
         </span>
-        <span class="hero__word">hwang</span>
+        <span class="hero__word">Hwang</span>
       </span>
     </h1>
 
@@ -54,6 +54,17 @@
           </a>
         {%- endfor -%}
       </div>
+
+      <div class="carousel__hint" data-carousel-nav>
+        <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous work">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+        </button>
+        <button class="carousel__btn" type="button" data-carousel-next aria-label="More work">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -64,7 +75,7 @@
 <section class="section closing">
   <div class="shell">
     <p class="closing__text" data-reveal>
-      I believe in telling personal stories and making with your hands
+      I believe in telling personal stories and hands-on building
     </p>
     <div class="cluster" data-reveal>
       <a class="btn btn--solid" href="{{ '/projects/#creative-projects' | relative_url }}">

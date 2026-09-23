@@ -153,3 +153,23 @@
 }
 
 .btn--icon { width: 2.4rem; height: 2.4rem; padding: 0; }
+
+/* Header call to action, blue so it doesn't compete with the orange
+   one at the foot of the page */
+.btn--nav {
+  padding: .45rem 1rem;
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--cream);
+  flex: none;
+}
+.btn--nav:hover, .btn--nav:focus-visible {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--ink);
+  transform: none;
+}
+@media (max-width: 52rem) {
+  .btn--nav { order: -1; margin-left: auto; margin-right: var(--sp-3); font-size: var(--step--2); padding: .35rem .8rem; }
+}
+
