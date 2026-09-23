@@ -7,3 +7,12 @@
 
 # IntelliJ
 .idea
+# Jekyll build output (GitHub Pages builds from source)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.DS_Store
+
+# Source decks kept alongside the repo, not published
+*.pptx
