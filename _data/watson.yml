@@ -1,0 +1,155 @@
+# Content for the /watson page. Add, remove or reorder a stop by editing
+# this file — the page template loops over `stops` and alternates the
+# layout automatically. No HTML required.
+#
+# `map` is a static map image committed under assets/images/watson/maps/.
+# To add one, export a 600x600 PNG from
+# https://docs.mapbox.com/playground/static/ and drop it in that folder.
+# Deliberately not fetched from the Mapbox API at page load: that would
+# put an access token in the published HTML.
+
+fellowship:
+  label: Thomas J. Watson Fellow 2022
+  quote: >
+    "The Watson Fellowship is a rare window after college and pre-career to
+    engage your deepest interest on a global scale. " Watson Foundation
+
+project:
+  kicker: Project
+  title: Communicating Science from Classrooms to Theaters
+  countries: Bermuda, France, Kenya, Germany, Switzerland, Brazil, Uruguay, Chile, Ecuador
+
+intro:
+  photo: /assets/images/watson/profile.png
+  alt: Saehui sitting on a doorstep with a backpack before the trip
+  paragraphs:
+    - >
+      I didn't know what I wanted to do with my life straight out of Caltech
+      (Later, I would learn that this is a common sentiment). Growing up,
+      thought I would be doing big, exciting things. But I just didn't know
+      just what that would be. I couldn't decide between all my different
+      passions and felt like I needed time to figure out what I truly loved
+      doing.
+    - >
+      Through my Watson Project, I wanted to understand science communication
+      in different communities and contexts to better and in doing so, I
+      wanted to understand how I came to love science and how to help others
+      feel the same way. Here is a picture of slightly clueless me before
+      embarking on the trip of a lifetime that changed my perspectives forever.
+
+stops:
+  - place: Bermuda
+    map: /assets/images/watson/maps/bermuda.png
+    photo: /assets/images/watson/bermuda.jpeg
+    alt: Saehui teaching a robotics class in Bermuda
+    paragraphs:
+      - >
+        In Bermuda, where there’s just a single two-way highway across the
+        country and where the nearest coffee shop was a 30 minute bus ride
+        away, there are no universities or national laboratories. BIOS is the
+        only scientific research station on the island. What was surprising is
+        that, almost equally important as its role in deep-sea oceanography
+        research, BIOS holds a critical piece in science education on the island.
+      - >
+        During my time with BIOS, I designed a robotics curriculum for their
+        summer STEM programs geared towards for local Bermudian students and
+        helped teach the courses.
+
+  - place: Kenya
+    map: /assets/images/watson/maps/kenya.png
+    photo: /assets/images/watson/kenya.png
+    alt: Saehui with the EduTab team in Kitale, Kenya
+    paragraphs:
+      - >
+        My time in Kenya starts with the realization that every facet of my
+        identity marks me as an outsider. It’s an inevitable reality that I am
+        treated differently because of my skin color. There is no such thing as
+        blending in. Heads turn when I walk past, students whisper, and some
+        even reach out to touch my hair. I hear derogatory phrases like “Ching
+        chong!”, or witness attempts to mock me with exaggerated kung-fu moves.
+        All of these interactions make me squirm inside.
+      - >
+        Despite these experiences that highlight differences between cultures,
+        What made my experience in Kitale so special is the presence of friends
+        who look out for me, making me feel part of a community. EduTab, while
+        not a million-dollar Ed-tech startup, go out of their way to ensure I
+        feel at home. They pick me up from the airport, arrange breakfasts for
+        me to meet the entire team, share snacks like kangumu, and eagerly
+        explain Kenyan customs and lifestyles. Mike listen with genuine interest
+        to my stories about visiting the slums in Nairobi, Patrick shares
+        stories about his tribe, Maxwell explain to me the detailed process of
+        slaughtering a goat. I forge deep connections with some of the kindest,
+        warmest people I have ever met.
+
+  - place: Brazil
+    map: /assets/images/watson/maps/brazil.png
+    photo: /assets/images/watson/ship.JPG
+    alt: The tall ship Saehui sailed on, under full sail
+    paragraphs:
+      - >
+        In Brazil, I hop on a 200-year-old tall ship that is making a global
+        voyage that recreates Charles Darwin's journey. For the next several
+        months, I follow the ship around South America, from Brazil to Uruguay
+        to Argentina to Chile to Peru, producing professional documentaries with
+        filmmakers and local conservationists to raise awareness about the
+        conservation work they are doing. I mentored a multinational team of
+        young filmmakers and conservationists and helped them produce impactful
+        conservation-focused narratives.
+
+  - place: Chile
+    map: /assets/images/watson/maps/chile.png
+    photo: /assets/images/watson/chile.jpg
+    alt: Filming in Patagonia, Chile
+    paragraphs:
+      - >
+        In Chile, I take on the director's seat and directed a documentary about
+        the conservation of huemul. The people I work with in Patagonia are
+        heroic people, ones who have shown me how much passion, dedication and
+        love it takes to make a meaningful difference they've made in the realm
+        of cosnervation.
+
+  - place: Ecuador
+    map: /assets/images/watson/maps/ecuador.png
+    photo: /assets/images/watson/ecuador.png
+    alt: Saehui in Riobamba, Ecuador
+    paragraphs:
+      - >
+        When I landed in Ecuador, I learned that the boat I had arranged to live
+        on had to be grounded for repair. If the Watson Year has taught me
+        anything, it is to be flexible and resourceful. I went to a region
+        called Riobamba where I got to be a part of a professional video
+        production project about the natural sights of the Highlands of the Andes.
+      - >
+        Thanks to the welcoming family who embraced me and shared their lives, I
+        experienced Riobamba as they do. To me, the Chimborazo volcano is not
+        remembered by a typical touristy photo but by the stories of Juan-Carlos
+        and Karen taking Lisa on her first camping trip there. It’s the same
+        volcano that will be one of the first things Natalie’s newborn will see
+        in her life. My memories of Riobamba are filled with moments like taking
+        Matteo and Ragnar the crazy two-year-old for $3 haircuts, and laughing
+        uncontrollably with Lisa at the stray dog that followed our car for
+        miles. I learned to love without a common language.
+
+  - place: France
+    map: /assets/images/watson/maps/france.png
+    photo: /assets/images/watson/france.JPG
+    alt: Saehui at the Cannes Film Festival
+    paragraphs:
+      - >
+        In France, I had the opportunity to attend the Cannes Film Festival
+        where there was a big conference about how Artificial intelligence is
+        affecting the film industry. Communicating science properly and in an
+        accessible manner is more important than ever and I started thinking
+        that I want to be more serious about being a good storyteller in science.
+
+outro:
+  photo: /assets/images/watson/profile.png
+  alt: Saehui sitting on a doorstep with a backpack
+  paragraphs:
+    - >
+      All my life, I had been on a full speed direct flight to a blurry
+      destination. My Watson Year was a rountrtip ticket with lots of stops so
+      that I could take a look at the map for once during my long layovers.
+    - >
+      And in doing so, I feel a step closer to knowing who I am, and that's how
+      I know my Watson Experience has just started.
