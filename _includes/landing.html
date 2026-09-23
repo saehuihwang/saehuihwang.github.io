@@ -55,14 +55,12 @@
           </a>
         {%- endfor -%}
 
-        <a class="feature feature--more" href="{{ '/projects/' | relative_url }}">
-          <span class="feature__media feature__media--more">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
-                 stroke-linecap="round" aria-hidden="true">
-              <path d="M16 8v16M8 16h16"/>
-            </svg>
+        <a class="strip-more" href="{{ '/projects/' | relative_url }}">
+          <span class="strip-more__circle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+                 stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg>
           </span>
-          <h2 class="feature__title">All projects</h2>
+          <span class="strip-more__label">All projects</span>
         </a>
       </div>
 
