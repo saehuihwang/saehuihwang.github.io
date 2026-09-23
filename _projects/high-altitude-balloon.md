@@ -5,7 +5,7 @@ name: High Altitude Balloon
 tools: [ESP32]
 image: /assets/images/HAB.jpeg
 description: Going to Space!
-#pdf: /assets/publications/Final Report.pdf
+#pdf: /assets/pdf/reports/portable-ecg.pdf
 ---
 
 # Building Payloads to send to Space

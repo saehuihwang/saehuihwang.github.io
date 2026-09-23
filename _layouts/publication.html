@@ -31,10 +31,14 @@ layout: default
     {%- if page.buttons -%}
     <div class="cluster" style="margin-top: var(--sp-5)">
       {%- for button in page.buttons -%}
+        {%- comment -%} Absolute paths and URLs are used as-is; a bare
+          filename is still resolved against the papers folder. {%- endcomment -%}
         {%- if button.link contains "http" -%}
           {%- assign blink = button.link -%}
+        {%- elsif button.link contains "/" -%}
+          {%- assign blink = button.link | relative_url -%}
         {%- else -%}
-          {%- assign blink = button.link | prepend: '/assets/publications/' | relative_url -%}
+          {%- assign blink = button.link | prepend: '/assets/pdf/papers/' | relative_url -%}
         {%- endif -%}
         <a class="btn" href="{{ blink }}">
           {%- if button.icon -%}<i class="{{ button.icon }}" aria-hidden="true"></i>{%- endif -%}
@@ -70,24 +74,9 @@ layout: default
 
       {{ content }}
 
-      {%- if page.buttons and page.buttons[0].link -%}
-        {%- unless page.buttons[0].link contains "http" -%}
+      {%- if page.pdf -%}
         <h2 id="full-text">Full text</h2>
-        <div id="adobe-dc-view" style="width:100%;min-height:80vh"></div>
-        <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
-        <script>
-          document.addEventListener("adobe_dc_view_sdk.ready", function () {
-            new AdobeDC.View({
-              clientId: "8913b8b0c5754cfcaf2029e658e36f44",
-              divId: "adobe-dc-view"
-            }).previewFile(
-              { content: { location: { url: "{{ page.buttons[0].link | prepend: '/assets/publications/' | relative_url }}" } },
-                metaData: { fileName: "Main Text" } },
-              { embedMode: "IN_LINE" }
-            );
-          });
-        </script>
-        {%- endunless -%}
+        {% include elements/pdf.html src=page.pdf title=page.title %}
       {%- endif -%}
     </article>
   </div>

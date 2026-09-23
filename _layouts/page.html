@@ -30,6 +30,7 @@ layout: default
   {%- if page.wide -%}
     <article class="prose prose--wide" data-toc-source>
       {{ content }}
+      {%- if page.pdf -%}{% include elements/pdf.html src=page.pdf %}{%- endif -%}
     </article>
   {%- else -%}
   <div class="reading">
@@ -43,6 +44,7 @@ layout: default
     <article class="reading__body prose" data-toc-source>
       {% include toc.html %}
       {{ content }}
+      {%- if page.pdf -%}{% include elements/pdf.html src=page.pdf %}{%- endif -%}
     </article>
   </div>
   {%- endif -%}

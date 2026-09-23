@@ -2,6 +2,7 @@
 order: 3
 category: Research
 layout: publication
+pdf: /assets/pdf/papers/vibrotactile-modeling-chi25ea.pdf
 title: "Computational Modeling of Non-Visual Vibrotactile Touchscreen Exploration"
 year: 2025
 journal: ACM CHI '25 (Extended Abstracts)
@@ -29,6 +30,9 @@ abstract: >
   to understand non-visual exploration strategies and inform vibrotactile
   graphics design.
 buttons:
+  - name: PDF
+    icon: fas fa-file-pdf
+    link: /assets/pdf/papers/vibrotactile-modeling-chi25ea.pdf
   - name: ACM DL
     icon: fas fa-external-link-alt
     link: https://doi.org/10.1145/3706599.3719851

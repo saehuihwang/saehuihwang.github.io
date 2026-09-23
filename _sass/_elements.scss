@@ -205,3 +205,42 @@ img.emoji {
   .js .deck__slide::after { opacity: .55; }
   .js .deck__slide.is-focus::after { opacity: 0; }
 }
+
+/* ---------- Inline PDF preview ---------- */
+.pdf { margin: var(--sp-7) 0 0; }
+
+.pdf__frame {
+  display: block;
+  width: 100%;
+  height: min(78vh, 900px);
+  border: var(--border) solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--cream-2);
+}
+
+.pdf__fallback {
+  display: grid;
+  place-items: center;
+  gap: var(--sp-4);
+  height: 100%;
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--fg-mute);
+}
+
+.pdf__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  font-family: var(--font-ui);
+  font-size: var(--step--2);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  text-align: left;
+}
+.pdf__link { color: var(--blue); text-decoration: none; }
+.pdf__link:hover { color: var(--orange); }

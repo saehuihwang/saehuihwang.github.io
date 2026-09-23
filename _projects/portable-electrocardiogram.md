@@ -5,7 +5,7 @@ name: Portable Electrocardiogram
 tools: [ESP32]
 image: /assets/images/EKG.png
 # description:
-pdf: /assets/publications/Final Report.pdf
+pdf: /assets/pdf/reports/portable-ecg.pdf
 ---
 
 # Portable Electrocardiogram

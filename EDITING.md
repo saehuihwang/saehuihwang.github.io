@@ -26,7 +26,7 @@ check the **Actions** tab on github.com for a red build.
 | Watson page | `_data/watson.yml` |
 | Your name, email, social links | `_config.yml` |
 | Images | `assets/images/` |
-| PDFs (résumé, papers) | `assets/publications/` |
+| PDFs | `assets/pdf/` — `papers/`, `reports/`, `resume.pdf` |
 | Colours, fonts, spacing | `_sass/_tokens.scss` (see `DESIGN.md`) |
 
 ## Front matter
@@ -115,12 +115,27 @@ abstract: >
   The scientific abstract.
 summary: >
   Optional plain-language version, shown above the abstract.
+pdf: /assets/pdf/papers/your-paper.pdf   # renders an inline preview
 buttons:
   - name: PDF
     icon: fas fa-file-pdf
-    link: YourPaper.pdf      # a file in assets/publications/
+    link: /assets/pdf/papers/your-paper.pdf
+  - name: ACM DL
+    icon: fas fa-external-link-alt
+    link: https://doi.org/10.1145/xxxxxxx
 ---
 ```
+
+### PDFs
+
+Drop the file in `assets/pdf/papers/` (or `reports/` for course and project
+write-ups) and name it after the project, not the DOI. Then add a `pdf:` line
+in front matter — any project or paper with one gets an inline preview at the
+foot of the page, using the browser's own PDF viewer.
+
+Keep them under a few MB. `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/printer
+-o out.pdf in.pdf` takes a typical conference PDF from tens of megabytes to
+one or two without visible loss.
 
 Your own name is bolded automatically in the author list.
 

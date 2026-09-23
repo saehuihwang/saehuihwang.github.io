@@ -2,6 +2,7 @@
 order: 4
 category: Research
 layout: publication
+pdf: /assets/pdf/papers/inflatable-skin-ais23.pdf
 image: /assets/images/SNUPPY.jpg
 year: 2023
 doi: "10.1002/aisy.202300172"
@@ -20,7 +21,7 @@ journal: Adv. Intell. Syst.
 buttons:
   - name: PDF
     icon: fas fa-file-pdf
-    link: InflatableSkin.pdf
+    link: /assets/pdf/papers/inflatable-skin-ais23.pdf
 #   - name: Template GitHub Repository
 #     icon: fas fa-solid fa-github
 ---

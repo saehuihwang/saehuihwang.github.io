@@ -2,6 +2,7 @@
 order: 1
 category: Research
 layout: publication
+pdf: /assets/pdf/papers/capsmith-cc26.pdf
 title: "CapSmith: Contextual Refinement of Additive Text Captions for Video Storytelling"
 year: 2026
 journal: ACM Creativity & Cognition (C&C '26)
@@ -28,6 +29,9 @@ abstract: >
   that variation-from-example workflow supported refinement without requiring
   creators to articulate tacit intent while preserving authorship.
 buttons:
+  - name: PDF
+    icon: fas fa-file-pdf
+    link: /assets/pdf/papers/capsmith-cc26.pdf
   - name: ACM DL
     icon: fas fa-external-link-alt
     link: https://doi.org/10.1145/3803784.3807559

@@ -2,6 +2,7 @@
 order: 2
 category: Research
 layout: publication
+pdf: /assets/pdf/papers/blv-data-statistics-chi25.pdf
 title: "Promoting Comprehension and Engagement in Introductory Data and Statistics for Blind and Low-Vision Students: A Co-Design Study"
 year: 2025
 journal: ACM CHI '25
@@ -40,6 +41,9 @@ abstract: >
   findings alongside participants’ experiences and discuss their implications
   for inclusive learning frameworks and tools.
 buttons:
+  - name: PDF
+    icon: fas fa-file-pdf
+    link: /assets/pdf/papers/blv-data-statistics-chi25.pdf
   - name: ACM DL
     icon: fas fa-external-link-alt
     link: https://doi.org/10.1145/3706598.3713333

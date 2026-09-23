@@ -1,0 +1,26 @@
+{%- comment -%}
+  Inline PDF preview. Uses the browser's own viewer rather than the
+  Adobe View SDK: no third-party script, no API key tied to a domain.
+  iOS Safari refuses to render PDFs in an <object>, so the download
+  link in the bar is always visible rather than being a fallback.
+
+  Usage: {% include elements/pdf.html src="/assets/pdf/papers/x.pdf" title="Full text" %}
+{%- endcomment -%}
+
+{%- assign pdf_url = include.src | relative_url -%}
+{%- assign pdf_title = include.title | default: "Full text" -%}
+
+<figure class="pdf">
+  <object class="pdf__frame" data="{{ pdf_url }}#view=FitH" type="application/pdf">
+    <div class="pdf__fallback">
+      <p>This browser can’t show PDFs inline.</p>
+      <a class="btn btn--solid" href="{{ pdf_url }}">Open the PDF</a>
+    </div>
+  </object>
+  <figcaption class="pdf__bar">
+    <span>{{ pdf_title }}</span>
+    <a class="pdf__link" href="{{ pdf_url }}" target="_blank" rel="noopener">
+      Open in a new tab<span class="arrow-out" aria-hidden="true"></span>
+    </a>
+  </figcaption>
+</figure>
