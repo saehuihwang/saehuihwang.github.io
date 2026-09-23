@@ -10,7 +10,7 @@
 {%- for section in sections -%}
   {%- assign group = ordered | where: 'category', section -%}
   {%- if group.size > 0 -%}
-  <section class="project-section">
+  <section class="project-section" id="{{ section | slugify }}">
     <div class="section-head">
       <span class="section-head__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
       <h2 class="section-head__title">{{ section }}</h2>

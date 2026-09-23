@@ -38,7 +38,7 @@
 .feature {
   --perf: 10px;
   --step: 19px;
-  flex: 0 0 min(16rem, 62vw);
+  flex: 0 0 min(15rem, 58vw);
   scroll-snap-align: start;
   text-decoration: none;
   color: var(--fg);
@@ -89,18 +89,7 @@
   mix-blend-mode: normal;
 }
 
-.feature__num {
-  position: absolute;
-  top: var(--sp-2); left: var(--sp-2);
-  z-index: 2;
-  font-family: var(--font-ui);
-  font-size: var(--step--2);
-  letter-spacing: .1em;
-  padding: .1rem .4rem;
-  border-radius: var(--radius-pill);
-  background: var(--cream);
-  color: var(--blue);
-}
+
 
 .feature__title {
   margin-top: var(--sp-3);

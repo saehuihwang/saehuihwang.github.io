@@ -6,21 +6,17 @@
 <section class="hero">
   <div class="shell">
 
-    <p class="hero__lede" data-reveal>
-      I'm a PhD candidate in Mechanical Engineering at Stanford University, working on designing
-      <span class="block-mark">multimodal media</span> applied to learning, entertainment, and accessibility.
-    </p>
-
-    <div class="cluster" style="margin-top: var(--sp-6)" data-reveal>
-      <a class="btn btn--solid" href="{{ '/assets/publications/Master_Resume.pdf' | relative_url }}">Résumé</a>
-      <a class="btn" href="mailto:{{ site.author.email }}">Email</a>
-      <a class="btn" href="https://www.linkedin.com/in/{{ site.author.linkedin }}/"
-         target="_blank" rel="noopener">LinkedIn<span class="arrow-out" aria-hidden="true"></span></a>
-      <a class="btn" href="https://scholar.google.com/citations?user=EnAM_4kAAAAJ&hl=en"
-         target="_blank" rel="noopener">Scholar<span class="arrow-out" aria-hidden="true"></span></a>
-      <a class="btn" href="https://orcid.org/{{ site.author.orcid }}"
-         target="_blank" rel="noopener">ORCID<span class="arrow-out" aria-hidden="true"></span></a>
-    </div>
+    <h1 class="hero__name" data-reveal>
+      <span class="hero__line">saehui</span>
+      <span class="hero__line hero__line--noted">
+        <span class="hero__note">
+          I'm a PhD candidate in Mechanical Engineering at Stanford University,
+          working on designing multimodal media applied to learning,
+          entertainment, and accessibility.
+        </span>
+        <span class="hero__word">hwang</span>
+      </span>
+    </h1>
 
     <div class="portrait" data-reveal>
       <img class="portrait__img"
@@ -32,31 +28,13 @@
 </section>
 
 
-{%- comment -%} ---------- Featured work: ink slab ---------- {%- endcomment -%}
+{%- comment -%} ---------- Featured work: stamps only ---------- {%- endcomment -%}
 {%- assign featured = site.projects | sort: 'order' | slice: 0, 6 -%}
 {%- if featured.size > 0 -%}
 <section class="slab slab--sky">
   <div class="shell">
     <div class="carousel" data-carousel>
-
-      <div class="section-head">
-        <span class="section-head__num">01</span>
-        <h2 class="section-head__title">Selected work</h2>
-        <span class="section-head__rule" aria-hidden="true"></span>
-        <span class="carousel__nav" data-carousel-nav>
-          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous projects">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"
-                 stroke-linecap="square" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
-          </button>
-          <button class="carousel__btn" type="button" data-carousel-next aria-label="More projects">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"
-                 stroke-linecap="square" aria-hidden="true"><path d="M6 2l6 6-6 6"/></svg>
-          </button>
-        </span>
-        <a class="section-head__link" href="{{ '/projects/' | relative_url }}">All &rarr;</a>
-      </div>
-
-      <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Featured projects">
+      <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Selected work">
         {%- for project in featured -%}
           {%- if project.layout == 'publication' -%}
             {%- assign p_name = project.title -%}{%- assign p_desc = project.journal -%}
@@ -65,20 +43,33 @@
           {%- endif -%}
           <a class="feature" href="{{ project.url | relative_url }}">
             <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}">
-              <span class="feature__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
               {%- if project.image -%}
                 <img src="{{ project.image }}" alt="" loading="lazy">
               {%- else -%}
                 <span class="halftone" aria-hidden="true"></span>
               {%- endif -%}
             </div>
-            <h3 class="feature__title">{{ p_name }} <span class="arrow" aria-hidden="true">&rarr;</span></h3>
+            <h2 class="feature__title">{{ p_name }}</h2>
             {%- if p_desc -%}<p class="feature__desc">{{ p_desc | strip_html }}</p>{%- endif -%}
           </a>
         {%- endfor -%}
       </div>
-
     </div>
   </div>
 </section>
 {%- endif -%}
+
+
+{%- comment -%} ---------- Closing note ---------- {%- endcomment -%}
+<section class="section closing">
+  <div class="shell">
+    <p class="closing__text" data-reveal>
+      I believe in telling personal stories and making with your hands
+    </p>
+    <div class="cluster" data-reveal>
+      <a class="btn btn--solid" href="{{ '/projects/#creative-projects' | relative_url }}">
+        See my creative projects
+      </a>
+    </div>
+  </div>
+</section>

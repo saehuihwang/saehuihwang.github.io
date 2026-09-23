@@ -135,3 +135,10 @@ a.tag:hover { background: var(--orange); border-color: var(--orange); color: var
 .tag--accent { color: var(--blue); border-color: var(--blue-soft); background: var(--blue-soft); }
 .tag--teal   { color: var(--ink); border-color: var(--orange); background: var(--orange-soft); }
 .tag--quiet  { color: var(--fg-mute); }
+
+/* Image-less stamps sit next to each other; vary the screen so they
+   don't read as three copies of the same plate. */
+.feature:nth-of-type(3n+2) .feature__media--empty .halftone { --halftone-size: 13px; }
+.feature:nth-of-type(3n)   .feature__media--empty .halftone { --halftone-size: 8px; }
+.grid > .card:nth-of-type(3n+2) .card__media--empty .halftone { --halftone-size: 13px; }
+.grid > .card:nth-of-type(3n)   .card__media--empty .halftone { --halftone-size: 8px; }
