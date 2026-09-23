@@ -1,13 +1,11 @@
-<div class="col mt-4">
-  <div class="timeline-body bg-themed">
-    {% for item in site.data.timeline %}
-      <div class="timeline-item">
-        <div class="content">
-          <h2>{{ item.title }}</h2>
-          <h6 class="date">{{ item.from }} — {{ item.to }}</h6>
-          <p>{{ item.description }}</p>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+<div class="timeline">
+  {%- for item in site.data.timeline -%}
+    <div class="timeline__item" data-reveal>
+      <p class="timeline__when">{{ item.from }} &mdash; {{ item.to }}</p>
+      <h3 class="timeline__what">{{ item.title }}</h3>
+      {%- if item.description -%}
+        <p class="timeline__desc">{{ item.description }}</p>
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
 </div>

@@ -3,6 +3,7 @@ layout: page
 title: Videography
 permalink: /videography/
 weight: 5
+page_title: true
 ---
 
 ## Documentary

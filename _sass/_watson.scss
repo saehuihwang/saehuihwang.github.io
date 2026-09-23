@@ -1,0 +1,183 @@
+/* ---------- /watson — the Watson year ----------
+   Content comes from _data/watson.yml; this is pure layout.
+   CSS grid throughout — the Bootstrap grid shim this page used to
+   depend on is gone. */
+
+.watson-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--teal);
+  color: var(--ink);
+  --fg: var(--ink);
+  --rule: var(--ink);
+  --fg-soft: #031A1D;
+  border-bottom: var(--border-heavy) solid var(--ink);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* Contour map printed over the teal in orange: the two inks overprint.
+   Held back so the panels on top stay legible. */
+.watson-hero::before {
+  content: "";
+  position: absolute;
+  inset: -15% -8%;
+  z-index: -1;
+  background-color: var(--orange);
+  mix-blend-mode: multiply;
+  opacity: .45;
+  -webkit-mask-image: var(--pat-contour);
+          mask-image: var(--pat-contour);
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+
+.watson-hero__grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+}
+@media (min-width: 52rem) {
+  .watson-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+}
+
+.fellow-info {
+  background: var(--ink);
+  color: var(--canvas);
+  border: var(--border-heavy) solid var(--ink);
+  box-shadow: var(--offset) var(--offset) 0 var(--canvas);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--step-1);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+.fellow-info h3 {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: var(--sp-4);
+}
+
+.panel-body {
+  background: var(--canvas);
+  color: var(--ink);
+  border: var(--border-heavy) solid var(--ink);
+  box-shadow: var(--offset) var(--offset) 0 var(--ink);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.panel-body h4 {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--orange-text);
+}
+.panel-body h1 { font-size: var(--step-2); margin-top: var(--sp-3); line-height: .92; }
+.panel-body p { margin-top: var(--sp-4); font-size: var(--step--1); }
+
+/* ---- Journey blocks: text one side, map the other, alternating ---- */
+.journey-block {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-bottom: var(--border) solid var(--rule);
+}
+@media (min-width: 48rem) {
+  .journey-block { grid-template-columns: minmax(0, 1fr) auto; }
+  /* Text always comes first in the DOM for screen readers; only the
+     visual order flips. */
+  .journey-block--flip .journey-block__media { order: -1; }
+}
+
+.journey-block__text p { max-width: 56ch; }
+.journey-block__text p + p { margin-top: var(--sp-4); }
+
+.journey-block__media { margin: 0; justify-self: center; }
+
+/* ---- Opening and closing notes ---- */
+.journey-note {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  border: var(--border-heavy) solid var(--ink);
+  box-shadow: var(--offset) var(--offset) 0 var(--teal);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  margin-block: clamp(2rem, 5vw, 3.5rem);
+  margin-right: var(--offset);
+}
+@media (min-width: 48rem) {
+  .journey-note { grid-template-columns: 14rem minmax(0, 1fr); }
+  .journey-note--flip .journey-note__photo { order: 2; }
+}
+.journey-note__text p + p { margin-top: var(--sp-4); }
+.journey-note__photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: var(--border-heavy) solid var(--ink);
+}
+
+/* ---- Map with the photograph overlapping, printed with an offset ---- */
+.map-image-container { position: relative; display: inline-block; }
+
+.map-image-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  transform: translate(12px, 12px);
+  mix-blend-mode: multiply;
+}
+
+.img-circle-map {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  width: clamp(200px, 30vw, 300px);
+  height: clamp(200px, 30vw, 300px);
+  object-fit: cover;
+  border: var(--border-heavy) solid var(--ink);
+  background: var(--canvas);
+  filter: grayscale(1) contrast(1.1);
+}
+
+.img-circle-photo {
+  position: absolute;
+  z-index: 2;
+  bottom: 0; right: 0;
+  border-radius: 50%;
+  width: clamp(100px, 15vw, 150px);
+  height: clamp(100px, 15vw, 150px);
+  object-fit: cover;
+  transform: translate(10%, 10%);
+  border: var(--border-heavy) solid var(--ink);
+  transition: transform var(--dur-2) var(--ease);
+}
+.map-image-container:hover .img-circle-photo { transform: translate(10%, 10%) scale(1.07); }
+
+.journey-block__media figcaption {
+  margin-top: var(--sp-5);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}

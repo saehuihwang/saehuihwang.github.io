@@ -1,0 +1,158 @@
+/* ---------- Long-form prose ---------- */
+
+.prose, .markdown-body { font-size: var(--step-0); line-height: 1.62; }
+.prose > * + *, .markdown-body > * + * { margin-top: var(--sp-5); }
+
+.prose h2, .markdown-body h2 {
+  font-size: var(--step-2);
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-4);
+  border-top: var(--border-heavy) solid var(--rule);
+  scroll-margin-top: var(--sp-6);
+}
+.prose h3, .markdown-body h3 {
+  font-size: var(--step-1);
+  margin-top: var(--sp-7);
+  scroll-margin-top: var(--sp-6);
+}
+.prose h3::before, .markdown-body h3::before {
+  content: "";
+  display: inline-block;
+  width: .55em; height: .55em;
+  margin-right: .45em;
+  background: var(--orange);
+  vertical-align: .02em;
+}
+.prose h4, .markdown-body h4 {
+  font-size: var(--step-0);
+  margin-top: var(--sp-6);
+  scroll-margin-top: var(--sp-6);
+  color: var(--teal-text);
+}
+
+.prose h2 + *, .prose h3 + *, .prose h4 + *,
+.markdown-body h2 + *, .markdown-body h3 + *, .markdown-body h4 + * { margin-top: var(--sp-3); }
+
+/* Lists */
+.prose ul, .prose ol, .markdown-body ul, .markdown-body ol { padding-left: 1.3rem; }
+.prose li + li, .markdown-body li + li { margin-top: var(--sp-2); }
+.prose li::marker, .markdown-body li::marker { color: var(--orange-text); font-weight: 700; }
+.prose ul.task-list, .markdown-body ul.task-list { list-style: none; padding-left: 1rem; }
+input.task-list-item-checkbox { margin-right: .6rem; accent-color: var(--orange); }
+
+/* Blockquote as a solid teal block */
+.prose blockquote, .markdown-body blockquote {
+  background: var(--teal);
+  color: var(--ink);
+  border: var(--border-heavy) solid var(--ink);
+  box-shadow: var(--offset) var(--offset) 0 var(--orange);
+  padding: var(--sp-5);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--step-1);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  margin-right: var(--offset);
+}
+.prose blockquote p + p { margin-top: var(--sp-3); }
+
+/* Images: hard border, ink shadow */
+.prose img:not(.emoji), .markdown-body img:not(.emoji) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: var(--border-heavy) solid var(--ink);
+}
+
+figure { margin: var(--sp-7) 0; }
+figure img { box-shadow: var(--offset) var(--offset) 0 var(--teal); }
+figcaption {
+  margin-top: var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+}
+
+/* Tables */
+.prose table, .markdown-body table {
+  width: 100%; display: block; overflow-x: auto;
+  border-collapse: collapse; font-size: var(--step--1);
+}
+.prose th, .markdown-body th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: var(--orange);
+  color: var(--ink);
+  border: var(--border) solid var(--ink);
+  padding: .6rem .8rem;
+}
+.prose td, .markdown-body td { padding: .6rem .8rem; border: var(--border) solid var(--rule); }
+
+hr {
+  margin-block: var(--sp-8);
+  border: 0;
+  height: var(--border-heavy);
+  background: var(--rule);
+}
+
+/* Video embeds */
+.video-container {
+  display: grid;
+  gap: var(--sp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  margin-block: var(--sp-7);
+}
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: var(--border-heavy) solid var(--ink);
+  background: var(--teal);
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Inner page heads ---------- */
+.page-body { padding-top: clamp(2rem, 4vw, 3.5rem); }
+
+.page-head { padding-block: 0 var(--sp-6); }
+.page-head__title {
+  font-size: var(--step-4);
+  line-height: .86;
+  letter-spacing: -.045em;
+}
+.page-head__meta {
+  margin-top: var(--sp-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.page-kicker { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+
+/* A project's own leading <h1> acts as the page title */
+.prose > h1:first-child,
+.prose > .toc-details + h1 {
+  font-size: var(--step-4);
+  line-height: .86;
+  letter-spacing: -.045em;
+  margin-top: 0;
+  scroll-margin-top: var(--sp-6);
+}
+
+/* Full-width variant: for project pages that are mostly imagery */
+.prose--wide { max-width: none; }
+.prose--wide > h1:first-child { max-width: 20ch; margin-bottom: var(--sp-7); }

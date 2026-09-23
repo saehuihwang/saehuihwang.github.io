@@ -2,66 +2,93 @@
 layout: default
 ---
 
-<div class="col-lg-10 mx-auto mt-0 markdown-body">
-  <h2>{{page.title}}</h2>
-  <p>
-    {% for auth in page.authors %}{%if auth == page.authors.last%}{% if auth !=
-    pub.authors.first %}{%endif%} {%if auth contains "Saehui Hwang"
-    %}<b>{{auth}}</b>{%else%}{{auth}}{%endif%}{%else%}{% if auth contains
-    "Saehui Hwang" %}<b>{{auth}}</b>,{% if page.authors.length > 2
-    %},{%endif%}{%else%}{{auth}},{% if page.authors.length > 2 %},{%endif%}
-    {%endif%} {%endif%} {%endfor%}<br />
+<div class="shell">
+  <header class="page-head">
+    <h1 class="page-head__title">{{ page.title }}</h1>
 
-    {% for button in page.buttons %} {% if button.link contains "https" %}<a
-      class="m-1 btn btn-outline-primary btn-md"
-      href="{{button.link}}"
-      >{%else%}<a
-        class="m-1 btn btn-outline-primary btn-md"
-        href="{{site.baseurl}}/assets/publications/{{button.link}}"
-        >{%endif%} <i class="{{button.icon}}"></i> {{button.name}}</a
-      >
-      {%endfor%}
-      <br />
-      {% if page.notes %} {% for note in page.notes %}
-      <i style="color: #6c757d">{{note}}</i><br />
-      {%endfor%} {% endif %}
+    <p class="card__authors" style="margin-top: var(--sp-4); max-width: 60ch">
+      {%- for auth in page.authors -%}
+        {%- if auth contains "Saehui Hwang" -%}<b>{{ auth }}</b>{%- else -%}{{ auth }}{%- endif -%}
+        {%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    </p>
 
-      <hr />
+    <div class="page-head__meta">
+      {%- if page.year -%}<span class="tag tag--quiet">{{ page.year }}</span>{%- endif -%}
+      {%- if page.status -%}<span class="tag tag--accent">{{ page.status }}</span>{%- endif -%}
+      {%- if page.journal -%}
+        {%- if page.journal contains 'xiv' -%}
+          <span class="tag tag--teal">Preprint · {{ page.journal }}</span>
+        {%- else -%}
+          <span class="tag tag--teal">{{ page.journal }}</span>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if page.doi -%}
+        <a class="tag" href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">DOI {{ page.doi }}</a>
+      {%- endif -%}
+    </div>
 
-      {% if page.summary %}
-      <hr />
-      <h3>Non-expert Summary</h3>
-      <p>{{page.summary}}</p>
+    {%- if page.buttons -%}
+    <div class="cluster" style="margin-top: var(--sp-5)">
+      {%- for button in page.buttons -%}
+        {%- if button.link contains "http" -%}
+          {%- assign blink = button.link -%}
+        {%- else -%}
+          {%- assign blink = button.link | prepend: '/assets/publications/' | relative_url -%}
+        {%- endif -%}
+        <a class="btn" href="{{ blink }}">
+          {%- if button.icon -%}<i class="{{ button.icon }}" aria-hidden="true"></i>{%- endif -%}
+          {{ button.name }}
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </header>
 
-      <hr />
-      {% endif %}
+  <div class="reading">
+    <aside class="rail" data-toc>
+      <nav class="toc" aria-label="On this page">
+        <p class="toc__title">On this page</p>
+        <div class="toc__list" data-toc-list></div>
+      </nav>
+    </aside>
 
-      <h3>Scientific Abstract</h3>
+    <article class="reading__body prose" data-toc-source>
+      {%- if page.notes -%}
+        {%- for note in page.notes -%}<p class="text-muted"><em>{{ note }}</em></p>{%- endfor -%}
+      {%- endif -%}
 
-      <p>{{page.abstract}}</p>
+      {%- if page.summary -%}
+        <h2 id="non-expert-summary">Non-expert summary</h2>
+        <p>{{ page.summary }}</p>
+      {%- endif -%}
 
-      <hr />
-      <div id="adobe-dc-view" style="width: 800px"></div>
-      <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
-      <script type="text/javascript">
-        document.addEventListener("adobe_dc_view_sdk.ready", function () {
-          var adobeDCView = new AdobeDC.View({
-            clientId: "8913b8b0c5754cfcaf2029e658e36f44",
-            divId: "adobe-dc-view",
+      {%- if page.abstract -%}
+        <h2 id="abstract">Abstract</h2>
+        <p>{{ page.abstract }}</p>
+      {%- endif -%}
+
+      {{ content }}
+
+      {%- if page.buttons and page.buttons[0].link -%}
+        {%- unless page.buttons[0].link contains "http" -%}
+        <h2 id="full-text">Full text</h2>
+        <div id="adobe-dc-view" style="width:100%;min-height:80vh"></div>
+        <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+        <script>
+          document.addEventListener("adobe_dc_view_sdk.ready", function () {
+            new AdobeDC.View({
+              clientId: "8913b8b0c5754cfcaf2029e658e36f44",
+              divId: "adobe-dc-view"
+            }).previewFile(
+              { content: { location: { url: "{{ page.buttons[0].link | prepend: '/assets/publications/' | relative_url }}" } },
+                metaData: { fileName: "Main Text" } },
+              { embedMode: "IN_LINE" }
+            );
           });
-          adobeDCView.previewFile(
-            {
-              content: {
-                location: {
-                  url: "{{site.baseurl}}/assets/publications/{{page.buttons[0]['link']}}",
-                },
-              },
-              metaData: { fileName: "Main Text" },
-            },
-            { embedMode: "IN_LINE" }
-          );
-        });
-      </script></a
-    >
-  </p>
+        </script>
+        {%- endunless -%}
+      {%- endif -%}
+    </article>
+  </div>
 </div>

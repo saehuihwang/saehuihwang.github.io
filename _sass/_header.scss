@@ -1,0 +1,155 @@
+/* ---------- Site rail ----------
+   Navigation is a fixed orange column down the left edge rather
+   than a bar across the top: a permanent field of the brand ink,
+   and the name set vertically at its foot. Collapses to a solid
+   orange top bar below 60rem. */
+
+.site-header {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--rail-w);
+  z-index: 80;
+  background: var(--orange);
+  color: var(--ink);
+  border-right: var(--border-heavy) solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-4);
+}
+
+/* --- Logotype --- */
+.brand {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  /* Narrowest width axis: a tall condensed logotype that fits the
+     rail. overflow-wrap is reset because the h1 wrapper inherits
+     break-word from the reset and was splitting the name mid-letter. */
+  font-variation-settings: "wdth" 75, "opsz" 48;
+  font-size: clamp(1.5rem, 2.1vw, 2.1rem);
+  line-height: .86;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+}
+.brand span { display: block; }
+.brand:hover { color: var(--canvas); }
+
+/* --- Navigation --- */
+.nav { display: flex; flex-direction: column; gap: 0; }
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  padding: .7rem 0;
+  border-top: var(--border) solid var(--ink);
+  transition: padding-left var(--dur-2) var(--ease), background-color var(--dur-1) var(--ease);
+}
+.nav__link:last-of-type { border-bottom: var(--border) solid var(--ink); }
+.nav__link:hover,
+.nav__link:focus-visible {
+  background: var(--ink);
+  color: var(--orange);
+  padding-left: .5rem;
+}
+.nav__link[aria-current="page"] {
+  background: var(--ink);
+  color: var(--orange);
+  padding-left: .5rem;
+}
+
+.nav__extras { margin-top: var(--sp-5); }
+
+/* --- Theme toggle: a hard square, not a pill --- */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: var(--border) solid var(--ink);
+  color: var(--ink);
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.theme-toggle:hover { background: var(--ink); color: var(--orange); }
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* Vertical wordmark at the foot of the rail */
+.rail-foot {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  align-self: flex-start;
+}
+
+.nav-toggle { display: none; }
+
+/* ---------- Below 60rem: solid orange top bar ---------- */
+@media (max-width: 59.9375rem) {
+  .site-header {
+    position: sticky;
+    inset: 0 0 auto 0;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-3) var(--gutter);
+    border-right: 0;
+    border-bottom: var(--border-heavy) solid var(--ink);
+  }
+
+  .rail-foot { display: none; }
+
+  .brand { font-size: 1.45rem; }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: var(--border) solid var(--ink);
+    padding: .4rem .6rem;
+  }
+  .nav-toggle__bars { display: grid; gap: 3px; width: 16px; }
+  .nav-toggle__bars i { display: block; height: 2px; background: currentColor; }
+  [aria-expanded="true"] .nav-toggle__bars i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  [aria-expanded="true"] .nav-toggle__bars i:nth-child(2) { opacity: 0; }
+  [aria-expanded="true"] .nav-toggle__bars i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+  .nav {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    background: var(--orange);
+    border-bottom: var(--border-heavy) solid var(--ink);
+    padding: 0 var(--gutter) var(--sp-4);
+  }
+  .nav.is-open { display: flex; }
+  .nav__link { font-size: var(--step--1); }
+  .nav__extras { margin-top: var(--sp-4); }
+}
+
+@media (min-width: 60rem) {
+  .nav { display: flex !important; }
+}

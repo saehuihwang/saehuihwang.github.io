@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 14" width="120" height="14">
+  <!-- PLACEHOLDER: tiling hand-drawn wave, used as a section divider.
+       Tiles horizontally; keep the start/end y at 7 so seams stay invisible.
+       Solid black on transparent — the CSS uses this as a mask. -->
+  <path d="M0,7 C6,1 14,1 20,7 C26,13 34,13 40,7 C46,1.4 54,1.1 60,7 C66,12.6 74,13 80,7 C86,1.5 94,1.2 100,7 C106,12.4 114,12.8 120,7"
+        fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+</svg>

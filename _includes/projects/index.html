@@ -1,31 +1,78 @@
-<div class="card-columns m-3 mt-5">
-  <!-- Remote Projects -->
-  {% for remote_project in page.remote_projects %} {%- for repo in
-  site.github.public_repositories -%} {%- if remote_project == repo.name -%} {%-
-  assign project = repo -%} {%- assign words = project.name | split: '-' -%} {%-
-  capture titlecase -%} {%- for word in words -%} {{ word | capitalize | append:
-  ' ' }} {%- endfor -%} {%- endcapture -%} {%- assign project_id = project.name
-  -%} {%- assign project_img = false -%} {%- assign project_name = titlecase |
-  strip -%} {%- assign project_desc = project.description -%} {%- assign
-  project_url = project.html_url -%} {%- assign project_tools = project.topics
-  -%} {%- assign external = true -%} {%- assign project_type = "remote" -%} {%-
-  include projects/project-card.html -%} {%- endif -%} {%- endfor -%} {% endfor
-  %}
+{%- comment -%}
+  Projects grouped into sections. Section order is the list below;
+  order within a section comes from each project's `order:` field.
+  To add a section, add its name here and use it as a `category:`.
+{%- endcomment -%}
 
-  <!-- Local Projects -->
-  {% for project in site.projects %} {%- assign project_url = project.url |
-  relative_url -%}{%- assign project_img = project.image -%}{%- assign
-  project_pdf = project.pdf -%} {%- assign project_name = project.name -%}{%- if
-  project.layout == "publication" -%} {%- assign project_type = "publication"
-  -%} {%- assign pub_id = project.title | slugify -%} {%- assign journal =
-  project.journal -%} {%- assign title = project.title -%} {%- assign year =
-  project.year -%} {%- assign title = project.title -%} {%- assign doi =
-  project.doi -%} {%- assign authors = project.authors -%} {%- else -%} {%-
-  assign project_id = project.name | slugify -%} {%- assign project_desc =
-  project.description -%} {%- assign project_tools = project.tools -%} {%- if
-  project.external_url -%} {%- assign project_url = project.external_url -%} {%-
-  assign external = true -%} {%- else -%} {%- assign project_url = project.url |
-  relative_url -%} {%- assign external = false -%} {%- endif -%} {%- assign
-  project_type = "local" -%} {%- endif -%} {%- include
-  projects/project-card.html -%} {% endfor %}
-</div>
+{%- assign sections = "Research,Creative Projects,Misc Projects" | split: "," -%}
+{%- assign ordered = site.projects | sort: 'order' -%}
+
+{%- for section in sections -%}
+  {%- assign group = ordered | where: 'category', section -%}
+  {%- if group.size > 0 -%}
+  <section class="project-section">
+    <div class="section-head">
+      <span class="section-head__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <h2 class="section-head__title">{{ section }}</h2>
+      <span class="section-head__rule" aria-hidden="true"></span>
+      <span class="section-head__count label">{{ group.size }}</span>
+    </div>
+
+    <div class="grid">
+      {%- for project in group -%}
+        {%- assign card_img = project.image -%}
+        {%- assign card_year    = nil -%}
+        {%- assign card_journal = nil -%}
+        {%- assign card_authors = nil -%}
+        {%- assign card_desc    = nil -%}
+        {%- assign card_tools   = nil -%}
+        {%- assign external     = false -%}
+
+        {%- if project.layout == "publication" -%}
+          {%- assign card_type    = "publication" -%}
+          {%- assign card_url     = project.url | relative_url -%}
+          {%- assign card_name    = project.title -%}
+          {%- assign card_year    = project.year -%}
+          {%- assign card_journal = project.journal -%}
+          {%- assign card_authors = project.authors -%}
+        {%- else -%}
+          {%- assign card_type  = "local" -%}
+          {%- assign card_name  = project.name -%}
+          {%- assign card_desc  = project.description -%}
+          {%- assign card_tools = project.tools -%}
+          {%- if project.external_url -%}
+            {%- assign card_url = project.external_url -%}
+            {%- assign external = true -%}
+          {%- else -%}
+            {%- assign card_url = project.url | relative_url -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- include projects/project-card.html -%}
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Anything without a recognised category still shows up {%- endcomment -%}
+{%- assign uncategorised = ordered | where_exp: "p", "p.category == nil" -%}
+{%- if uncategorised.size > 0 -%}
+<section class="project-section">
+  <div class="section-head">
+    <h2 class="section-head__title">Other</h2>
+    <span class="section-head__rule" aria-hidden="true"></span>
+  </div>
+  <div class="grid">
+    {%- for project in uncategorised -%}
+      {%- assign card_type = "local" -%}
+      {%- assign card_url  = project.url | relative_url -%}
+      {%- assign card_name = project.name | default: project.title -%}
+      {%- assign card_desc = project.description -%}
+      {%- assign card_img  = project.image -%}
+      {%- assign card_tools = project.tools -%}
+      {%- assign external = false -%}
+      {%- include projects/project-card.html -%}
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

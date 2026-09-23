@@ -1,37 +1,38 @@
 ---
-layout: page
+layout: default
 ---
 
-<h1><b>{{ page.title }}</b></h1>
+<div class="shell">
+  <header class="page-head">
+    <h1 class="page-head__title">{{ page.title }}</h1>
+    <div class="page-head__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      <span aria-hidden="true">·</span>
+      {%- assign words = content | number_of_words -%}
+      <span>{% if words < 360 %}1 min read{% else %}{{ words | divided_by: 180 }} min read{% endif %}</span>
+      {%- if page.tags != empty -%}
+        {%- for tag in page.tags -%}
+          <a class="tag" href="{{ tag | slugify | prepend: '/blog/tags#' | relative_url }}">{{ tag }}</a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </header>
 
-<p class="post-metadata text-muted">
-  {{ page.date | date_to_long_string }} -  
-  <b>
-  {%- assign words = content | number_of_words -%}
-  {%- if words < 360 -%}
-    less than 1 min read time
-  {%- else -%}
-    {{ words | divided_by: 180 }} mins read time
-  {%- endif -%}
-  </b>
+  <div class="reading">
+    <aside class="rail" data-toc>
+      <nav class="toc" aria-label="On this page">
+        <p class="toc__title">On this page</p>
+        <div class="toc__list" data-toc-list></div>
+      </nav>
+    </aside>
 
-  <br>
+    <article class="reading__body prose" data-toc-source>
+      {% include toc.html %}
+      {{ content }}
 
-  {%- if page.tags != empty -%}
-    Tags: 
-    {% for tag in page.tags %}
-    <a class="text-decoration-none no-underline" href="{{ tag | slugify | prepend:'/blog/tags#' | relative_url }}">
-      <span class="tag badge badge-pill text-primary border border-primary">{{ tag }}</span>
-    </a>
-    {% endfor %}
-  {%- endif -%}
-
-</p>
-
-{{ content }}
-
-{% if page.comments %}
-<div class="pt-5">
-  {% include blog/disqus.html %}
+      {%- if page.comments -%}
+        <div style="margin-top: var(--sp-8)">{% include blog/disqus.html %}</div>
+      {%- endif -%}
+    </article>
+  </div>
 </div>
-{% endif %}

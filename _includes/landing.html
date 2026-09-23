@@ -1,44 +1,95 @@
-<div class="row justify-content-center align-items-center p-4">
-  <div class="col-lg-3 col-md-6 text-center mt-4">
-    <!-- Fine Circle Responsive Image -->
-    <div id="container" class="my-2">
-      <div id="dummy"></div>
-      <div id="element">
-        <img src="../assets/images/Saehui_Profile_square.png" alt="{{ site.title }}" class="circle-image wow animated zoomIn"
-          data-wow-delay=".1s" />
+{%- comment -%}
+  Home page: a stack of full-bleed ink slabs. The name lives in the
+  fixed orange rail, which also serves as this page's <h1>.
+{%- endcomment -%}
+
+<section class="hero on-canvas">
+  <div class="shell hero__grid">
+
+    <div>
+      <p class="hero__lede" data-reveal>
+        I'm a PhD candidate in Mechanical Engineering at Stanford University, working on designing
+        <span class="block-mark">multimodal media</span> applied to learning, entertainment, and accessibility.
+      </p>
+
+      <div class="hero__body" data-reveal>
+        <p>
+          <!-- I care about storytelling, making, and inclusive design.   -->
+        </p>
+      </div>
+
+      <div class="cluster" style="margin-top: var(--sp-6)" data-reveal>
+        <a class="btn btn--solid" href="{{ '/assets/publications/Master_Resume.pdf' | relative_url }}">Résumé</a>
+        <a class="btn" href="mailto:{{ site.author.email }}">Email</a>
+        <a class="btn btn--icon" href="https://www.linkedin.com/in/{{ site.author.linkedin }}/"
+           aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a class="btn btn--icon" href="https://scholar.google.com/citations?user=EnAM_4kAAAAJ&hl=en"
+           aria-label="Google Scholar" target="_blank" rel="noopener"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+        <a class="btn btn--icon" href="https://orcid.org/{{ site.author.orcid }}"
+           aria-label="ORCID" target="_blank" rel="noopener"><i class="fab fa-orcid" aria-hidden="true"></i></a>
       </div>
     </div>
-  </div>
-  <div class="col-lg-8 col-md-8 mt-4">
-    <h1 class="display-5 fw-bold lh-1 mb-3">Saehui Hwang</h1>
-    <p class="text-muted wow animated fadeIn" data-wow-delay=".25s">
-      I'm a PhD Student in Mechanical Engineering at Stanford University, focusing on accessibility, HCI, and cognitive modeling. 
-      I am advised by Prof. Sean Follmer at <a href="https://shape.stanford.edu/"> SHAPE Lab </a>. 
-    </p>
-    <p class="text-muted wow animated fadeIn" data-wow-delay=".25s">
-      :woman_technologist: <b>I'm working on:</b> Developing accessible graphic interaction through congitive modeling <br>
-      :book: <b>I'm learning:</b> Unity, Julia, French <br>
-      :heart: <b>I'm passionate about: creating stories </b> <a href="/videography">through video</a> and helping others do the same. I'm the AI Curator 
-      at the <a href="https://www.biff.kr/eng/"> Busan International Film Festival</a> Film Market <br>
-    </p>
-    
-    <p class="text-muted wow animated fadeIn" data-wow-delay=".25s">
-      Before coming to Stanford, I studied Electrical Engineering at the California Institute of Technology. I am also currently a Knight Hennessy Scholar at Stanford.</p>
 
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a href="mailto:saehui@stanford.edu" class="m-1 btn btn-outline-primary btn-sm"><i
-              class="fa fa-envelope"></i></a>
-          <a href="{{site.baseurl}}/assets/publications/Master_Resume.pdf" class="m-1 btn btn-outline-primary btn-sm"><i
-              class="fa fa-address-card"></i></a>
-          <a href="https://www.linkedin.com/in/saehui-hwang-3ba1a3165/" class="m-1 btn btn-outline-primary btn-sm"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://scholar.google.com/citations?user=EnAM_4kAAAAJ&hl=en"
-            class="m-1 btn btn-outline-primary btn-sm"><i class="fa fa-graduation-cap"></i></a>
-          <a href="https://orcid.org/0000-0002-7684-3309" class="m-1 btn btn-outline-primary btn-sm"><i
-              class="fab fa-orcid"></i></a>
-        </div>
-    <!-- Add more text content here -->
-    <!-- <p class="additional-text wow animated slideInUp" data-wow-delay=".15s">
-       
-    </p> -->
+    <aside class="hero__aside">
+      <div class="portrait" data-reveal>
+        <span class="portrait__blob" aria-hidden="true"></span>
+        <img class="portrait__img"
+             src="{{ '/assets/images/Saehui_Profile_square.png' | relative_url }}"
+             alt="Saehui Hwang" width="600" height="600">
+      </div>
+    </aside>
+
   </div>
-</div>
+</section>
+
+
+{%- comment -%} ---------- Featured work: ink slab ---------- {%- endcomment -%}
+{%- assign featured = site.projects | sort: 'order' | slice: 0, 6 -%}
+{%- if featured.size > 0 -%}
+<section class="slab on-ink">
+  <div class="shell">
+    <div class="carousel" data-carousel>
+
+      <div class="section-head">
+        <span class="section-head__num">01</span>
+        <h2 class="section-head__title">Selected work</h2>
+        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="carousel__nav" data-carousel-nav>
+          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous projects">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="square" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+          </button>
+          <button class="carousel__btn" type="button" data-carousel-next aria-label="More projects">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="square" aria-hidden="true"><path d="M6 2l6 6-6 6"/></svg>
+          </button>
+        </span>
+        <a class="section-head__link" href="{{ '/projects/' | relative_url }}">All &rarr;</a>
+      </div>
+
+      <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Featured projects">
+        {%- for project in featured -%}
+          {%- if project.layout == 'publication' -%}
+            {%- assign p_name = project.title -%}{%- assign p_desc = project.journal -%}
+          {%- else -%}
+            {%- assign p_name = project.name -%}{%- assign p_desc = project.description -%}
+          {%- endif -%}
+          <a class="feature" href="{{ project.url | relative_url }}">
+            <div class="feature__media{% unless project.image %} feature__media--empty{% endunless %}">
+              <span class="feature__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              {%- if project.image -%}
+                <img src="{{ project.image }}" alt="" loading="lazy">
+              {%- else -%}
+                <span class="pattern" aria-hidden="true"></span>
+              {%- endif -%}
+            </div>
+            <h3 class="feature__title">{{ p_name }} <span class="arrow" aria-hidden="true">&rarr;</span></h3>
+            {%- if p_desc -%}<p class="feature__desc">{{ p_desc | strip_html }}</p>{%- endif -%}
+          </a>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+{%- endif -%}

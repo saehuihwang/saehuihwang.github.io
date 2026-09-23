@@ -1,3 +1,17 @@
 ---
 ---
-@import "portfolYOU";
+@import "main";
+
+/* Hand-drawn pattern sources. Swap any file in assets/patterns/
+   and every place that uses it re-skins automatically.
+   Values are interpolated because Ruby Sass (the version GitHub
+   Pages ships) cannot parse a bare url() inside a custom property. */
+:root {
+  --pat-squiggle:  #{'url("' + '{{ "/assets/patterns/squiggle.svg"  | relative_url }}' + '")'};
+  --pat-underline: #{'url("' + '{{ "/assets/patterns/underline.svg" | relative_url }}' + '")'};
+  --pat-contour:   #{'url("' + '{{ "/assets/patterns/contour.svg"   | relative_url }}' + '")'};
+  --pat-scribble:  #{'url("' + '{{ "/assets/patterns/scribble.svg"  | relative_url }}' + '")'};
+  --pat-dots:      #{'url("' + '{{ "/assets/patterns/dots.svg"      | relative_url }}' + '")'};
+  --pat-arch:      #{'url("' + '{{ "/assets/patterns/arch.svg"      | relative_url }}' + '")'};
+  --pat-halftone:  #{'url("' + '{{ "/assets/patterns/halftone.svg"  | relative_url }}' + '")'};
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10">
+  <!-- Halftone screen: one dot per tile. The CSS tiles and tints it.
+       Bigger r = denser screen. Solid black on transparent (used as a mask). -->
+  <circle cx="5" cy="5" r="3" fill="#000"/>
+</svg>

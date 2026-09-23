@@ -1,0 +1,106 @@
+/* ---------- Layout ----------
+   A fixed ink-orange rail down the left edge, content to its
+   right. Sections are full-bleed colour slabs that butt directly
+   against each other with no gap — like pages of a printed zine. */
+
+body { padding-left: var(--rail-w); }
+
+main { flex: 1 0 auto; }
+
+/* Left-aligned rather than centred: content is anchored to the orange
+   rail. The cap is high enough to fill a 1920 display; beyond that a
+   right margin returns, but line length is held by --measure and by
+   each component's own max-width rather than by the container. */
+.shell {
+  width: 100%;
+  max-width: 110rem;
+  margin-right: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Full-bleed colour section */
+.slab {
+  padding-block: clamp(3rem, 7vw, 6.5rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.slab--tight { padding-block: clamp(2rem, 4vw, 3.5rem); }
+
+/* Section head: giant number, heavy rule, title */
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-7);
+  flex-wrap: wrap;
+}
+.section-head__num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-3);
+  line-height: .8;
+  letter-spacing: -.05em;
+  color: var(--accent);
+  flex: none;
+}
+.section-head__title {
+  font-size: var(--step-3);
+  flex: none;
+  line-height: .8;
+}
+.section-head__rule {
+  flex: 1 1 6rem;
+  height: var(--border-heavy);
+  background: var(--rule);
+  margin-bottom: .35em;
+}
+.section-head__link {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  border: var(--border) solid var(--rule);
+  padding: .45rem .8rem;
+  margin-bottom: .2em;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+.section-head__link:hover { background: var(--rule); color: var(--bg); }
+
+/* Reading layout: TOC rail stays on the left of the text column */
+.reading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: start;
+}
+@media (min-width: 72rem) {
+  .reading {
+    grid-template-columns: 12rem minmax(0, var(--measure)) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+  .reading > .rail { grid-column: 1; position: sticky; top: var(--sp-6); }
+  .reading > .reading__body { grid-column: 2; }
+}
+
+.cluster { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
+
+.grid {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+}
+
+.grid--wide { grid-template-columns: repeat(auto-fill, minmax(min(26rem, 100%), 1fr)); }
+
+/* Grouped project sections */
+.project-section + .project-section { margin-top: clamp(3rem, 6vw, 5rem); }
+.section-head__count {
+  flex: none;
+  color: var(--fg-soft);
+  margin-bottom: .35em;
+}

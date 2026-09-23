@@ -1,19 +1,16 @@
 {%- assign items = list_items | strip | newline_to_br | split: '<br />' -%}
 
-<div class="list-group my-3">
-
-  {%- if include.title -%}
-    <a class="list-group-item active disabled text-white">{{ include.title }}</a>
-  {%- endif -%}
-
-  {% for item in items %}
-    {%- if include.type == "toc" -%}
-      <a class="list-group-item list-group-item-action" href="#{{ item | slugify }}">{{ item }}</a>
-    {%- else -%}
-      {%- assign item_object = item | split: ',' -%}
-      <a class="list-group-item list-group-item-action" href="{{ item_object[1] }}">{{ item_object[0] }}</a>
+<nav class="linklist">
+  {%- if include.title -%}<p class="linklist__title">{{ include.title }}</p>{%- endif -%}
+  {%- for item in items -%}
+    {%- assign entry = item | strip -%}
+    {%- if entry != "" -%}
+      {%- if include.type == "toc" -%}
+        <a class="linklist__item" href="#{{ entry | slugify }}">{{ entry }}</a>
+      {%- else -%}
+        {%- assign parts = entry | split: ',' -%}
+        <a class="linklist__item" href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
+      {%- endif -%}
     {%- endif -%}
-  {% endfor %}
-
-</div>
-
+  {%- endfor -%}
+</nav>

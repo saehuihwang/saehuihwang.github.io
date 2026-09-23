@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 12" width="200" height="12" preserveAspectRatio="none">
+  <!-- PLACEHOLDER: hand-drawn underline for the .marker class.
+       Stretched to fit the word, so a little unevenness is the point. -->
+  <path d="M3,8.4 C34,4.6 68,4.0 104,5.2 C138,6.3 168,7.6 197,5.4"
+        fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+  <path d="M12,10.6 C44,8.4 80,8.0 120,8.6 C150,9.1 172,9.6 190,8.8"
+        fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+</svg>

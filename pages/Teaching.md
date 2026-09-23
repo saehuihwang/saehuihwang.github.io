@@ -5,7 +5,7 @@ permalink: /teaching/
 weight: 4
 ---
 
-## Teaching
+# Teaching
 
 Teaching has shaped my academic career and travels. It thrills me to share the exciting things that I am learning myself, and I am constantly looking for ways to deliver material effectively. Below are some courses I've had the privilege to TA.
 

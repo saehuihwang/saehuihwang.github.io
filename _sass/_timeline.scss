@@ -1,46 +1,46 @@
-.timeline-body {
+/* ---------- Timeline: heavy rule, hard square markers ---------- */
+
+.timeline { border-left: var(--border-heavy) solid var(--rule); }
+
+.timeline__item {
   position: relative;
-  border-radius: 0 $rounded-borders $rounded-borders 0;
-  padding: 5px 0;
-
-  &:after {
-    // Left Border
-    content: "";
-    width: 4px;
-    height: 100%;
-    background-color: $primary;
-    position: absolute;
-    left: -4px;
-    top: 0;
-  }
-
-  .timeline-item {
-    position: relative;
-
-    &:after {
-      // Circle
-      content: "";
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 4px solid $primary;
-      background-color: $light;
-      position: absolute;
-      left: -12px;
-      top: 8px;
-      z-index: 10;
-    }
-
-    .content {
-      margin: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed $dark;
-
-      .date {
-        margin-top: -5px;
-        margin-bottom: 15px;
-        color: #6c757d;
-      }
-    }
-  }
+  padding: 0 0 var(--sp-7) clamp(1.5rem, 3vw, 2.5rem);
 }
+.timeline__item:last-child { padding-bottom: 0; }
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--border-heavy) * -1);
+  top: .3rem;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: var(--border) solid var(--rule);
+  transition: transform var(--dur-2) var(--ease);
+}
+.timeline__item:hover::before { transform: scale(1.5) rotate(45deg); }
+
+.timeline__when {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.timeline__what {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-2);
+  line-height: .9;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  margin-top: .3rem;
+}
+.timeline__desc { margin-top: var(--sp-3); font-size: var(--step--1); max-width: 58ch; }
+.timeline__desc a {
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 -.15em 0 var(--accent);
+}
+.timeline__desc a:hover { background: var(--accent); color: var(--ink); box-shadow: none; }

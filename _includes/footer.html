@@ -1,12 +1,16 @@
-<footer class="mt-auto py-3 text-center">
-  <small class="text-muted mb-2">
-    {%- assign theme_repo = "https://github.com/YoussefRaafatNasry/portfolYOU"
-    -%} {%- assign theme_name = "portfolYOU" -%}
-    (c) Saehui Hwang 2024. Theme adapted from 
-    <span id="attribution">
-      <a href="{{ theme_repo }}">{{ theme_name }}</a>
-    </span>
-  </small>
+<footer class="site-footer on-orange">
+  <div class="shell">
+    <div class="squiggle site-footer__squiggle" aria-hidden="true"></div>
 
-  {% include social.html %}
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__meta">
+          &copy; {{ 'now' | date: "%Y" }} &nbsp;·&nbsp;
+          <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+          &nbsp;·&nbsp; Stanford, CA
+        </p>
+      </div>
+      {% include social.html %}
+    </div>
+  </div>
 </footer>

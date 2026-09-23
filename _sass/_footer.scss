@@ -1,31 +1,53 @@
+/* ---------- Footer: a full orange slab with the name set huge ---------- */
+
+.site-footer {
+  flex-shrink: 0;
+  border-top: var(--border-heavy) solid var(--ink);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) var(--sp-6);
+}
+
+.site-footer__squiggle { margin-bottom: var(--sp-6); --squiggle-color: var(--ink); }
+
+.site-footer__grid {
+  display: grid;
+  gap: var(--sp-6);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+}
+@media (min-width: 48rem) {
+  .site-footer__grid { grid-template-columns: minmax(0, 1fr) auto; }
+}
+
+.site-footer__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 100, "opsz" 96;
+  font-size: var(--step-5);
+  line-height: .78;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+}
+
+.site-footer__meta {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.site-footer__meta a { color: inherit; text-decoration: none; box-shadow: inset 0 -2px 0 currentColor; }
+.site-footer__meta a:hover { background: var(--ink); color: var(--orange); box-shadow: none; }
+
+.socials { display: flex; gap: 0; flex-wrap: wrap; }
 .social {
-  text-decoration: none !important;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: var(--border) solid var(--ink);
+  margin-left: calc(var(--border) * -1);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
 }
-
-#attribution {
-  opacity: 0.5;
-  a {
-    text-decoration: none;
-    font-weight: bold;
-  }
-}
-
-// @media only screen and (min-width: 768px) {
-//   #attribution {
-//     writing-mode: vertical-rl;
-//     transform: rotate(180deg);
-//     position: fixed;
-//     bottom: 120px;
-//     right: 22px;
-//   }
-// }
-
-.github-footer {
-  font-size: 10px;
-  color: #6c757d;
-  text-decoration: underline;
-  text-decoration-color: yellow;
-  text-align: right;
-  margin-top: 4em;
-  margin-right: 2em;
-}
+.social:hover { background: var(--ink); color: var(--orange); }

@@ -1,64 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-themed">
-  <a class="navbar-brand" href="{{ site.baseurl }}/"
-    ><h5>
-      <!-- <img src=/assets/images/icon.png width="40px">&nbsp; -->
-      <b>{{ site.title }}</b>
-    </h5></a
-  >
+{%- comment -%}
+  Site header. The name is the logotype, set large in the top-left and
+  shrinking on scroll. On the home page it doubles as the page <h1>.
+{%- endcomment -%}
 
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <i class="fas fa-1x fa-bars text-themed"></i>
-  </button>
+{%- assign html_pages = site.html_pages | sort: 'weight' -%}
+{%- assign nav_pages = "" | split: "" -%}
+{%- for html_page in html_pages -%}
+  {%- assign exclude = false -%}
+  {%- for exclude_path in site.nav_exclude -%}
+    {%- if exclude_path == html_page.path -%}
+      {%- assign exclude = true -%}{%- break -%}
+    {%- elsif exclude_path contains '**' -%}
+      {%- assign match = exclude_path | remove: '**' -%}
+      {%- if html_page.path contains match -%}
+        {%- assign exclude = true -%}{%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- unless exclude -%}
+    {%- assign nav_pages = nav_pages | push: html_page -%}
+  {%- endunless -%}
+{%- endfor -%}
 
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto">
-      {%- assign html_pages = site.html_pages | sort: 'weight' -%} {%- assign
-      filtered_pages = "" | split: "" -%} {%- for html_page in html_pages -%}
-      {%- assign exclude = false -%} {%- for exclude_path in site.nav_exclude
-      -%} {%- if exclude_path == html_page.path -%} {%- assign exclude = true
-      -%} {%- break -%} {%- elsif exclude_path contains '**' -%} {%- assign
-      match = exclude_path | remove: '**' -%} {%- if html_page.path contains
-      match -%} {%- assign exclude = true -%} {%- break -%} {%- endif -%} {%-
-      endif -%} {%- endfor -%} {%- unless exclude -%} {%- assign filtered_pages
-      = filtered_pages | push: html_page -%} {%- endunless -%} {%- endfor -%} {%
-      for html_page in filtered_pages %} {%- if page.url contains html_page.url
-      -%} {%- assign active_status = "active" -%} {%- else -%} {%- assign
-      active_status = "" -%} {%- endif -%} {%- if html_page.external_url -%} {%-
-      assign url = html_page.external_url -%} {%- else -%} {%- assign url =
-      html_page.url | relative_url -%} {%- endif -%}
+<header class="site-header">
+  <div class="shell site-header__inner">
 
-      <a
-        class="nav-item nav-link {{ active_status }}"
-        href="{{ url }}"
-        {%-
-        if
-        html_page.external_url
-        and
-        site.open_new_tab
-        -%}
-        target="_blank"
-        {%-
-        endif
-        -%}
-        >{{ html_page.title }}</a
-      >
+    {%- if page.url == '/' -%}<h1 style="margin:0">{%- endif -%}
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span>Saehui</span><span>Hwang</span>
+    </a>
+    {%- if page.url == '/' -%}</h1>{%- endif -%}
 
-      {% endfor %}
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__label">Menu</span>
+      <span class="nav-toggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
 
-      <span
-        id="theme-toggler"
-        class="nav-item nav-link"
-        role="button"
-        onclick="toggleTheme()"
-      ></span>
-    </div>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      {%- for nav_page in nav_pages -%}
+        {%- if nav_page.external_url -%}
+          {%- assign url = nav_page.external_url -%}
+        {%- else -%}
+          {%- assign url = nav_page.url | relative_url -%}
+        {%- endif -%}
+        <a class="nav__link" href="{{ url }}"
+           {%- if page.url contains nav_page.url %} aria-current="page"{% endif -%}
+           {%- if nav_page.external_url and site.open_new_tab %} target="_blank" rel="noopener"{% endif -%}>{{ nav_page.title }}</a>
+      {%- endfor -%}
+
+      <span class="nav__extras">
+        <button class="theme-toggle" type="button" id="theme-toggler"
+                aria-label="Switch colour theme" title="Switch colour theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 1.5v2.4M12 20.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M1.5 12h2.4M20.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+          </svg>
+        </button>
+      </span>
+    </nav>
+
   </div>
-</nav>
+</header>

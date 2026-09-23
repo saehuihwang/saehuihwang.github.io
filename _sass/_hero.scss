@@ -1,0 +1,146 @@
+/* ---------- Home hero ----------
+   A wall of display type on white, with a teal field bleeding off
+   the right edge and an orange halftone laid over it so the two
+   inks overprint where they meet. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    /* Centre the columns against each other: the copy is shorter than
+       the portrait, so top-aligning left a void under the buttons. */
+    align-items: center;
+  }
+}
+
+.hero__lede {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 100, "opsz" 72;
+  font-size: var(--step-2);
+  line-height: 1.02;
+  letter-spacing: -.03em;
+  /* Sentence case: the headings shout, but a 30-word lede set in
+     all caps would be genuinely hard to read. */
+  text-transform: none;
+  max-width: 24ch;
+}
+.hero__lede a {
+  color: var(--teal-text);
+  text-decoration: none;
+  box-shadow: inset 0 -.14em 0 var(--teal);
+}
+.hero__lede a:hover { background: var(--teal); color: var(--ink); box-shadow: none; }
+
+.hero__body {
+  margin-top: var(--sp-6);
+  max-width: 48ch;
+  font-size: var(--step-0);
+}
+.hero__body p + p { margin-top: var(--sp-4); }
+
+/* ---- Portrait: photo masked into the hand-drawn blob, with a
+   second blob offset behind it in orange ---- */
+.portrait {
+  position: relative;
+  width: min(100%, 30rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+.portrait__blob,
+.portrait__img {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: var(--pat-arch);
+          mask-image: var(--pat-arch);
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+}
+.portrait__blob {
+  background: var(--orange);
+  translate: 5% 6%;
+  rotate: -9deg;
+}
+.portrait__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: rotate var(--dur-3) var(--ease), scale var(--dur-3) var(--ease);
+}
+.portrait:hover .portrait__img { rotate: 2deg; scale: 1.02; }
+
+/* ---- Field-note rows, hard ruled ---- */
+.notes {
+  margin-top: var(--sp-7);
+  border-top: var(--border-heavy) solid var(--rule);
+}
+.notes__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-1);
+  padding-block: var(--sp-4);
+  border-bottom: var(--border) solid var(--rule);
+}
+@media (min-width: 40rem) {
+  .notes__row { grid-template-columns: 11rem minmax(0, 1fr); gap: var(--sp-5); align-items: baseline; }
+}
+.notes__key {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange-text);
+}
+.notes__val { font-size: var(--step-0); }
+
+/* ---------- Buttons: hard edges, the shadow collapses on press ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  background: var(--bg);
+  padding: .8rem 1.1rem;
+  border: var(--border) solid var(--fg);
+  box-shadow: 5px 5px 0 var(--fg);
+  transition: transform var(--dur-1) var(--ease),
+              box-shadow var(--dur-1) var(--ease),
+              background-color var(--dur-1) var(--ease),
+              color var(--dur-1) var(--ease);
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--orange);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.btn:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--fg); }
+
+.btn--solid { background: var(--fg); color: var(--bg); }
+.btn--solid:hover, .btn--solid:focus-visible { background: var(--teal); color: var(--ink); }
+
+.btn--icon { width: 2.9rem; height: 2.9rem; padding: 0; }

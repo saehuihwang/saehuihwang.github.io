@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-
-<!-- 404 page by https://codepen.io/gxash/pen/rrJYwm -->
-
-<html lang="en">
-
+<html lang="en" data-theme="light">
 {% include head.html %}
-
-<body class="bootstrap">
-
-  <div class="container">
-
-    <div class="wrapper p-5 text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<body>
+  <div class="notfound">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" class="notfound__art" role="img" aria-label="Illustration of a cyclist riding past a large 404">
     
         <g id="Layer_12 yellow-back-fig" data-name="Layer 12">
           <path class="cls-1" d="M600.87,872H156a4,4,0,0,0-3.78,4.19h0a4,4,0,0,0,3.78,4.19H600.87a4,4,0,0,0,3.78-4.19h0A4,4,0,0,0,600.87,872Z"/>
@@ -131,14 +124,15 @@
         </g>
     
       </svg>
-    
-      <h3>Page not Found!</h3>
-      <a class="btn btn-outline-primary mt-1" href="{{ site.baseurl }}/">Go Back Home</a>
-    
+      <h1 class="notfound__title">This page wandered off.</h1>
+      <p class="text-muted">The link may be old, or the page may have moved.</p>
+      <div class="notfound__actions">
+        <a class="btn btn--solid" href="{{ '/' | relative_url }}">Back home</a>
+        <a class="btn" href="{{ '/projects/' | relative_url }}">See the work</a>
+      </div>
     </div>
-
   </div>
-
+  <div class="grain" aria-hidden="true"></div>
+  {% include scripts.html %}
 </body>
-
 </html>

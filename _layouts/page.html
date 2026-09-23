@@ -2,6 +2,48 @@
 layout: default
 ---
 
-<div class="col-lg-10 mx-auto mt-5 markdown-body">
-  {{ content }}
+{%- comment -%}
+  Project docs and most pages open with their own Markdown heading
+  (and for projects, `page.title` is a Jekyll-generated slug, not the
+  real name). So no title is rendered here by default — set
+  `page_title: true` in front matter on pages that need one.
+{%- endcomment -%}
+
+<div class="shell page-body">
+
+  {%- if page.page_title -%}
+  <header class="page-head">
+    <h1 class="page-head__title">{{ page.title | default: page.name }}</h1>
+  </header>
+  {%- endif -%}
+
+  {%- if page.tools -%}
+  <div class="page-kicker">
+    {%- for tool in page.tools -%}<span class="tag tag--accent">{{ tool }}</span>{%- endfor -%}
+  </div>
+  {%- endif -%}
+
+  {%- comment -%}
+    `wide: true` drops the reading column and contents rail, for pages
+    that are mostly imagery rather than prose.
+  {%- endcomment -%}
+  {%- if page.wide -%}
+    <article class="prose prose--wide" data-toc-source>
+      {{ content }}
+    </article>
+  {%- else -%}
+  <div class="reading">
+    <aside class="rail" data-toc>
+      <nav class="toc" aria-label="On this page">
+        <p class="toc__title">On this page</p>
+        <div class="toc__list" data-toc-list></div>
+      </nav>
+    </aside>
+
+    <article class="reading__body prose" data-toc-source>
+      {% include toc.html %}
+      {{ content }}
+    </article>
+  </div>
+  {%- endif -%}
 </div>
