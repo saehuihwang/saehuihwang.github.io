@@ -1,4 +1,6 @@
 ---
+order: 10
+category: Misc Projects
 name: High Altitude Balloon 
 tools: [ESP32]
 image: /assets/images/HAB.jpeg

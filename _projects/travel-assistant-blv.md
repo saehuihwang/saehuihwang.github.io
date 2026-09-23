@@ -1,4 +1,6 @@
 ---
+order: 8
+category: Misc Projects
 name: AI Powered Travel Assistant for BLV
 tools: [HTML, Javascript, chatGPT]
 image: /assets/images/AVEC/Project Slides/ME331ProjectSlides-33.jpg

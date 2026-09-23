@@ -1,4 +1,6 @@
 ---
+order: 9
+category: Misc Projects
 name: Portable Electrocardiogram
 tools: [ESP32]
 image: /assets/images/EKG.png

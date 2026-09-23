@@ -1,4 +1,6 @@
 ---
+order: 7
+category: Creative Projects
 name: Dyson AirWrap &trade; Stand
 tools: [Turning, Sheet metal bending, Waterjet Cutting, Brazing, Polishing]
 image: /assets/images/dyson/HairDryerStand_1.jpg

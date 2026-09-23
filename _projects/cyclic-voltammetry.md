@@ -1,4 +1,6 @@
 ---
+order: 11
+category: Misc Projects
 name: Open Source Hardware - Cyclic Voltammetry
 tools: [Arduino, Python]
 image: https://github.com/saehuihwang/cyclic_voltammetry/blob/main/media/CV_schematic_bb.png?raw=true

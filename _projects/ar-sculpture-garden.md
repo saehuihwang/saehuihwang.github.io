@@ -1,4 +1,6 @@
 ---
+order: 4
+category: Creative Projects
 name: Augmented Reality Piece - A Voyage into the Sculpture Garden
 tools: [Unity]
 image: /assets/images/AR-thumbnail_1.8.2-min.png

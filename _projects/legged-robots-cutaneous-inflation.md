@@ -1,4 +1,6 @@
 ---
+order: 3
+category: Research
 layout: publication
 image: /assets/images/SNUPPY.jpg
 year: 2023
