@@ -1,0 +1,19 @@
+{%- comment -%}
+  How a page's title is set. `page_head:` in front matter picks:
+    hidden  — kept for the document outline but off screen, for pages
+              whose own section heads read as the top level
+    section — set as a section head, for pages that are a run of
+              sections rather than one titled piece
+    unset   — the full-size page title
+  Shared by the `page` and `wide` layouts so the two agree.
+{%- endcomment -%}
+{%- if page.page_head == 'section' -%}
+<header class="section-head">
+  <h1 class="section-head__title">{{ include.title }}</h1>
+  <span class="section-head__rule" aria-hidden="true"></span>
+</header>
+{%- else -%}
+<header class="page-head{% if page.page_head == 'hidden' %} visually-hidden{% endif %}">
+  <h1 class="page-head__title">{{ include.title }}</h1>
+</header>
+{%- endif -%}

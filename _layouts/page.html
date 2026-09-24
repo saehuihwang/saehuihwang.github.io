@@ -11,10 +11,9 @@ layout: default
 
 <div class="shell page-body">
 
-  {%- if page.page_title -%}
-  <header class="page-head">
-    <h1 class="page-head__title">{{ page.title | default: page.name }}</h1>
-  </header>
+  {%- if page.page_title or page.page_head -%}
+    {%- assign head_title = page.title | default: page.name -%}
+    {% include page-head.html title=head_title %}
   {%- endif -%}
 
   {%- if page.tools -%}

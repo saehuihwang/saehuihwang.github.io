@@ -3,14 +3,6 @@ layout: default
 ---
 
 <div class="shell page-body">
-  {%- comment -%}
-    `page_head: false` keeps the h1 for the document outline but takes it
-    off screen, for pages whose own section heads read as the top level.
-  {%- endcomment -%}
-  {%- if page.title -%}
-  <header class="page-head{% if page.page_head == false %} visually-hidden{% endif %}">
-    <h1 class="page-head__title">{{ page.title }}</h1>
-  </header>
-  {%- endif -%}
+  {%- if page.title -%}{% include page-head.html title=page.title %}{%- endif -%}
   {{ content }}
 </div>
