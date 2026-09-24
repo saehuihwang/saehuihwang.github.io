@@ -1,12 +1,12 @@
 ---
-order: 3
+order: 4
 category: Research
 layout: publication
 image: /assets/images/papers/vibrotactile-thumb.png
 pdf: /assets/pdf/papers/vibrotactile-modeling-chi25ea.pdf
 title: "Computational Modeling of Non-Visual Vibrotactile Touchscreen Exploration"
 year: 2025
-journal: ACM CHI '25 (Extended Abstracts)
+journal: CHI EA '25
 doi: "10.1145/3706599.3719851"
 authors:
   - Saehui Hwang

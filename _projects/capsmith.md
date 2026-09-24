@@ -1,12 +1,12 @@
 ---
-order: 1
+order: 2
 category: Research
 layout: publication
 image: /assets/images/papers/capsmith-thumb.jpg
 pdf: /assets/pdf/papers/capsmith-cc26.pdf
 title: "CapSmith: Contextual Refinement of Additive Text Captions for Video Storytelling"
 year: 2026
-journal: ACM Creativity & Cognition (C&C '26)
+journal: C&C '26
 doi: "10.1145/3803784.3807559"
 authors:
   - Saehui Hwang

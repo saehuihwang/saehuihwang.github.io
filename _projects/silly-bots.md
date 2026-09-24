@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 category: Misc Projects
 wide: true
 name: Silly Bots

@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 category: Research
 layout: publication
 pdf: /assets/pdf/papers/inflatable-skin-ais23.pdf

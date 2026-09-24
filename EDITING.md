@@ -246,7 +246,9 @@ whole square, so a square file reads the same in both.
 The paper thumbnails in `assets/images/papers/` are `*-thumb.*`, cut from the
 full teaser figure next to them. A teaser that is already close to 4:3 only
 needs padding out to square; the white bands disappear into the plate, since
-the figure's own background is white too:
+the figure's own background is white too. A photograph has no white background
+to pad with, so crop those to 4:3 instead and let the carousel take the centre
+square:
 
 ```bash
 # pick a meaningful 4:3 region, then pad it out to a square

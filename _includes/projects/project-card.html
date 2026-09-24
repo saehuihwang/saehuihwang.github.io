@@ -25,6 +25,7 @@
         {%- endfor -%}
       </p>
       <div class="cluster">
+        {%- if card_status -%}<span class="tag tag--accent">{{ card_status }}</span>{%- endif -%}
         {%- if card_journal -%}
           {%- if card_journal contains 'xiv' -%}
             <span class="tag tag--teal">Preprint · {{ card_journal }}</span>

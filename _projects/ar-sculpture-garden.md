@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 category: Misc Projects
 name: Augmented Reality Piece - A Voyage into the Sculpture Garden
 tools: [Unity]

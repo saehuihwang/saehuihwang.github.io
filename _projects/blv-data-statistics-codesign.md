@@ -1,12 +1,12 @@
 ---
-order: 2
+order: 3
 category: Research
 layout: publication
 image: /assets/images/papers/codesign-thumb.png
 pdf: /assets/pdf/papers/blv-data-statistics-chi25.pdf
 title: "Promoting Comprehension and Engagement in Introductory Data and Statistics for Blind and Low-Vision Students: A Co-Design Study"
 year: 2025
-journal: ACM CHI '25
+journal: CHI '25
 doi: "10.1145/3706598.3713333"
 authors:
   - Danyang Fan

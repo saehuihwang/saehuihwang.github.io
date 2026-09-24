@@ -20,6 +20,7 @@
       {%- for project in group -%}
         {%- assign card_img = project.image -%}
         {%- assign card_journal = nil -%}
+        {%- assign card_status  = nil -%}
         {%- assign card_authors = nil -%}
         {%- assign card_desc    = nil -%}
         {%- assign card_tools   = nil -%}
@@ -30,6 +31,7 @@
           {%- assign card_url     = project.url | relative_url -%}
           {%- assign card_name    = project.title -%}
           {%- assign card_journal = project.journal -%}
+          {%- assign card_status  = project.status -%}
           {%- assign card_authors = project.authors -%}
         {%- else -%}
           {%- assign card_type  = "local" -%}
