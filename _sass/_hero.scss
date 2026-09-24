@@ -1,6 +1,7 @@
 /* ---------- Home hero ----------
    The reference's lockup: one enormous display line, then a second
-   line with a small paragraph tucked to its left. */
+   line with a small paragraph tucked to its left. Wide enough, and the
+   portrait sits beside the lockup rather than under it. */
 
 .hero {
   position: relative;
@@ -8,10 +9,16 @@
   padding-block: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 
+.hero__layout {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
 .hero__name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(3.2rem, 11.5vw, 9rem);
+  font-size: clamp(3.2rem, 12vw, 9.5rem);
   line-height: .9;
   letter-spacing: -.035em;
   color: var(--blue);
@@ -47,12 +54,19 @@
   .hero__word { order: 1; }
 }
 
+/* Two columns once there is room: the lockup left, the portrait right */
+@media (min-width: 62rem) {
+  .hero__layout { grid-template-columns: minmax(0, 1fr) clamp(16rem, 27vw, 22rem); }
+  .portrait { width: 100%; margin: 0; }
+}
+
 /* ---- Portrait: in colour ---- */
 .portrait {
   position: relative;
   width: min(100%, 20rem);
   aspect-ratio: 4 / 5;
   margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+  justify-self: center;
   overflow: hidden;
   border-radius: var(--radius-2);
   background: var(--cream-2);

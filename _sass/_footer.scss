@@ -8,27 +8,8 @@
 }
 .site-footer__squiggle { display: none; }
 
-.site-footer__grid {
-  display: grid;
-  gap: var(--sp-5);
-  grid-template-columns: minmax(0, 1fr);
-  align-items: center;
-}
-@media (min-width: 44rem) {
-  .site-footer__grid { grid-template-columns: minmax(0, 1fr) auto; }
-}
-
-.site-footer__meta {
-  font-family: var(--font-ui);
-  font-size: var(--step--2);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--fg-mute);
-}
-.site-footer__meta a { color: var(--blue); text-decoration: none; }
-.site-footer__meta a:hover { color: var(--orange); }
-
-.socials { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
+/* The socials are the whole footer now, so they sit centred */
+.socials { display: flex; gap: var(--sp-4); flex-wrap: wrap; justify-content: center; }
 .social {
   font-family: var(--font-ui);
   font-size: var(--step--2);

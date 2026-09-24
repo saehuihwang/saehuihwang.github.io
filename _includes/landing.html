@@ -4,7 +4,7 @@
 {%- endcomment -%}
 
 <section class="hero">
-  <div class="shell">
+  <div class="shell hero__layout">
 
     <h1 class="hero__name" data-reveal>
       <span class="hero__line">Saehui</span>
@@ -38,7 +38,9 @@
       <div class="carousel__track" data-carousel-track tabindex="0" role="group" aria-label="Selected work">
         {%- for project in featured -%}
           {%- if project.layout == 'publication' -%}
-            {%- assign p_name = project.title -%}{%- assign p_desc = project.journal -%}
+            {%- assign p_name = project.title -%}
+            {%- comment -%} Unpublished work has no venue, so it says where it stands {%- endcomment -%}
+            {%- assign p_desc = project.journal | default: project.status -%}
           {%- else -%}
             {%- assign p_name = project.name -%}{%- assign p_desc = project.description -%}
           {%- endif -%}
@@ -84,7 +86,7 @@
 <section class="section closing">
   <div class="shell">
     <p class="closing__text" data-reveal>
-      I believe in telling personal stories and hands-on building
+      I like making things that are delightful and personal
     </p>
     <div class="cluster" data-reveal>
       <a class="btn btn--solid" href="{{ '/videography/' | relative_url }}">
